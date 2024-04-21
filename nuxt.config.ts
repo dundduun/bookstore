@@ -15,9 +15,13 @@ export default defineNuxtConfig({
         },
     },
 
-    alias: {
-        '@': '/<srcDir>',
-        '@@': '/<rootDir>',
-        assets: '/srcDir/assets',
+    vite: {
+        css: {
+            preprocessorOptions: {
+                scss: {
+                    additionalData: '@use "@/assets/styles/_variables.scss" as *;',
+                },
+            },
+        },
     },
 });
