@@ -11,7 +11,24 @@
                 </nav>
             </div>
         </header>
+        
         <slot />
+
+        <footer>
+            <div class="links">
+                <div class="masters-project">
+
+                </div>
+
+                <div class="masters-bookstore">
+
+                </div>
+            </div>
+
+            <div class="news">
+
+            </div>
+        </footer>
     </div>
 </template>
 
@@ -30,14 +47,14 @@ header {
         align-items: center;
         margin: 0 22px;
         padding: 22px 0;
-        border-bottom: 1px $primary solid;
+        border-bottom: 1px $primary-yellow solid;
 
         .title {
-            padding: 3px;
+            padding: 5px;
             font-size: 24px;
             font-weight: 600;
-            color: $primary;
-            background-color: $primary-background;
+            color: $primary-yellow;
+            background-color: $primary-black;
         }
 
         nav {
@@ -52,6 +69,40 @@ header {
                 color: $font-color;
             }
         }
+    }
+}
+
+footer {
+    
+    /// //// 
+    margin-top: 100px;
+    border: 1px black solid;
+    /// 
+    /// 
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+
+    .links {
+        max-width: 1206px;
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+
+        .masters-project {
+            width: 300px;
+            height: 161px;
+
+            ////
+            border: 1px black solid;
+            ////
+        }
+    }
+
+    .news {
+        width: 100%;
     }
 }
 </style>
