@@ -1,15 +1,17 @@
 <script setup lang="ts">
-import '@/assets/styles/gilroy-font.scss'
+import '@/assets/styles/gilroy-font.scss';
 
 useHead({
     title: 'Masters Bookstore - книжный магазин',
     meta: [
         { name: 'author', content: 'dundduun' },
-        { name: 'description', content: 'Книжный магазин редких и эксклюзивных изданий по истории искусства, архитектуре, дизайну, моде и фотографии.', },
+        {
+            name: 'description',
+            content:
+                'Книжный магазин редких и эксклюзивных изданий по истории искусства, архитектуре, дизайну, моде и фотографии.',
+        },
     ],
-    link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico', },
-    ],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
 });
 </script>
 
@@ -26,6 +28,6 @@ body {
 
 div.body {
     font-family: Gilroy;
-    font-weight: 300;
+    font-weight: normal;
 }
 </style>
