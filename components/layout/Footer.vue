@@ -2,40 +2,31 @@
     <footer>
         <div class="links-container">
             <div class="masters-project">
-                <div class="name-and-media">
-                    <div class="masters-project-name">
-                        masters<br />
-                        project
-                    </div>
+                <span class="masters-project-name">
+                    masters<br />
+                    project
+                </span>
 
-                    <div class="media">
-                        <a href="https://t.me/artschoolmasters">
-                            <img
-                                class="img-media-link"
-                                src="@/assets/images/black-telegram.png"
-                            />
-                        </a>
+                <a href="https://t.me/artschoolmasters">
+                    <img
+                        class="img-link"
+                        src="@/assets/images/black-telegram.png"
+                    />
+                </a>
 
-                        <a href="https://vk.com/artschoolmaste">
-                            <img
-                                class="img-media-link"
-                                src="@/assets/images/black-vk.png"
-                            />
-                        </a>
-                    </div>
-                </div>
+                <a href="https://vk.com/artschoolmaste">
+                    <img class="img-link" src="@/assets/images/black-vk.png" />
+                </a>
 
-                <div class="school-and-subscribe-links">
-                    <a href="https://masters-project.ru/">
-                        школа<br />
-                        masters
-                    </a>
+                <a href="https://masters-project.ru/">
+                    школа<br />
+                    masters
+                </a>
 
-                    <a href="https://masters-project.ru/subscriptions-promo/">
-                        подписка<br />
-                        masters
-                    </a>
-                </div>
+                <a href="https://masters-project.ru/subscriptions-promo/">
+                    подписка<br />
+                    masters
+                </a>
             </div>
 
             <div class="masters-bookstore"></div>
@@ -62,39 +53,27 @@ footer {
         align-items: center;
 
         .masters-project {
-            width: 400px;
+            width: 300px;
             height: 161px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            display: grid;
+            grid-template: 80px 85px / 75px 75px 8px 70px 10px 70px;
+            grid-template-areas:
+                'project-name project-name project-name . image-links image-links'
+                'masters-school . masters-subscribe masters-subscribe .';
             border: 1px black solid;
 
-            .name-and-media {
-                display: flex;
-                justify-content: space-between;
-
-                .masters-project-name {
-                    font-size: 40px;
-                }
-
-                .media {
-                    display: flex;
-                    gap: 6px;
-
-                    .img-media-link {
-                        width: 27px;
-                        height: 27px;
-                    }
-                }
+            .masters-project-name {
+                font-size: 40px;
+                color: $dark-font-color;
             }
 
-            .school-and-subscribe-links {
-                display: flex;
-                justify-content: space-between;
+            a {
+                text-decoration: none;
+                color: inherit;
 
-                a {
-                    text-decoration: none;
-                    color: inherit;
+                .img-link {
+                    width: 27px;
+                    height: 27px;
                 }
             }
         }
