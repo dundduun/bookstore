@@ -25,6 +25,8 @@ header {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        flex-wrap: wrap;
+        gap: 30px;
         margin: 0 22px;
         padding: 22px 0;
         border-bottom: 1px $primary solid;
@@ -42,10 +44,12 @@ header {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
             font-size: 18px;
 
             .nuxt-link {
-                color: $font-color;
+                color: $primary-font-color;
             }
         }
     }
