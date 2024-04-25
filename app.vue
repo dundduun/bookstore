@@ -24,6 +24,7 @@ useHead({
 <style lang="scss">
 body {
     margin: 0;
+    overflow-x: hidden;
 }
 
 div.body {
