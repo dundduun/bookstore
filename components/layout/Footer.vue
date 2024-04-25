@@ -1,35 +1,92 @@
 <template>
     <footer>
-        <div class="links-container">
+        <div class="social-media">
             <div class="masters-project">
-                <span class="masters-project-name">
+                <span class="project-name">
                     masters<br />
                     project
                 </span>
 
-                <a href="https://t.me/artschoolmasters">
-                    <img
-                        class="img-link"
-                        src="@/assets/images/black-telegram.png"
-                    />
-                </a>
+                <div class="network telegram">
+                    <a
+                        href="https://t.me/artschoolmasters"
+                    >
+                        <img
+                            class="img-link"
+                            src="@/assets/images/black-telegram.png"
+                        />
+                    </a>
+                </div>
 
-                <a href="https://vk.com/artschoolmaste">
-                    <img class="img-link" src="@/assets/images/black-vk.png" />
-                </a>
+                <div class="network vk">
+                    <a href="https://vk.com/artschoolmaste">
+                        <img
+                            class="img-link"
+                            src="@/assets/images/black-vk.png"
+                        />
+                    </a>
+                </div>
 
-                <a href="https://masters-project.ru/">
-                    школа<br />
-                    masters
-                </a>
+                <div class="masters-school text-link">
+                    <a href="https://masters-project.ru/">
+                        школа<br />
+                        masters
+                    </a>
+                </div>
 
-                <a href="https://masters-project.ru/subscriptions-promo/">
-                    подписка<br />
-                    masters
-                </a>
+                <div class="masters-subscribe text-link">
+                    <a href="https://masters-project.ru/subscriptions-promo/">
+                        подписка<br />
+                        masters
+                    </a>
+                </div>
             </div>
 
-            <div class="masters-bookstore"></div>
+            <div class="masters-bookstore">
+                <span class="project-name">
+                    masters<br />
+                    bookstore
+                </span>
+
+                <div class="network vk">
+                    <a href="https://t.me/mastersbookstore">
+                        <img
+                            class="img-link"
+                            src="@/assets/images/red-telegram.png"
+                        />
+                    </a>
+                </div>
+
+                <div class="network telegram">
+                    <a href="https://vk.com/mstrs_bookstore">
+                        <img
+                            class="img-link"
+                            src="@/assets/images/red-vk.png"
+                        />
+                    </a>
+                </div>
+
+                <div class="catalogue text-link">
+                    <a href="https://www.masters-bookstore.ru/books">
+                        книжный<br />
+                        каталог
+                    </a>
+                </div>
+
+                <div class="delivery text-link">
+                    <a href="https://www.masters-bookstore.ru/delivery">
+                        доставка<br />
+                        и оплата
+                    </a>
+                </div>
+
+                <div class="policy text-link">
+                    <a href="https://www.masters-bookstore.ru/policy">
+                        политика<br />
+                        конфиденциальности
+                    </a>
+                </div>
+            </div>
         </div>
 
         <div class="news"></div>
@@ -37,12 +94,38 @@
 </template>
 
 <style scoped lang="scss">
+@mixin network-links {
+    &.vk {
+        margin-top: 8px;
+        grid-area: vk;
+    }
+
+    &.telegram {
+        margin-top: 8px;
+        grid-area: telegram;
+    }
+
+    a {
+        .img-link {
+            width: 27px;
+            height: 27px;
+        }
+    }
+}
+
+@mixin project-name($color) {
+    grid-area: project-name;
+    font-size: 40px;
+    line-height: 97%;
+    color: $color;
+}
+
 footer {
     margin-top: 100px;
-    border: 1px black solid;
     width: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     background-color: white;
 
@@ -50,38 +133,82 @@ footer {
         max-width: 1206px;
         flex-grow: 1;
         display: flex;
+        justify-content: center;
         align-items: center;
 
         .masters-project {
-            width: 300px;
-            height: 161px;
             display: grid;
-            grid-template: 80px 85px / 75px 75px 8px 70px 10px 70px;
+            grid-template: 130px 40px / 75px 80px 73px 38px 35px;
             grid-template-areas:
-                'project-name project-name project-name . image-links image-links'
+                'project-name project-name . telegram vk'
                 'masters-school . masters-subscribe masters-subscribe .';
-            border: 1px black solid;
 
-            .masters-project-name {
-                font-size: 40px;
-                color: $dark-font-color;
+            .project-name {
+                @include project-name($dark-font-color);
             }
 
-            a {
-                text-decoration: none;
-                color: inherit;
+            .network {
+                @include network-links;
+            }
 
-                .img-link {
-                    width: 27px;
-                    height: 27px;
+            .text-link {
+                &.masters-school {
+                    grid-area: masters-school;
+                }
+
+                &.masters-subscribe {
+                    grid-area: masters-subscribe;
+                }
+
+                a {
+                    @include kill-link-decoration;
                 }
             }
         }
 
         .masters-bookstore {
-            width: 700px;
-            height: 161px;
-            border: 1px red solid;
+            display: grid;
+            grid-template: 130px 40px / 164px 20px 149px 145px 40px 27px;
+            grid-template-areas:
+                'project-name project-name . . telegram vk'
+                'catalogue delivery delivery policy . .';
+            margin-left: 100px;
+            padding-left: 100px;
+            border-left: 1px $primary solid;
+
+            .project-name {
+                @include project-name($primary);
+            }
+
+            .network {
+                @include network-links;
+
+                &.telegram {
+                    grid-area: telegram;
+                }
+
+                &.vk {
+                    grid-area: vk;
+                }
+            }
+
+            .text-link {
+                &.catalogue {
+                    grid-area: catalogue;
+                }
+
+                &.delivery {
+                    grid-area: delivery;
+                }
+
+                &.policy {
+                    grid-area: policy;
+                }
+
+                a {
+                    @include kill-link-decoration;
+                }
+            }
         }
     }
 
