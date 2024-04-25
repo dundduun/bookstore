@@ -129,7 +129,7 @@ footer {
     align-items: center;
     background-color: white;
 
-    .links-container {
+    .social-media {
         max-width: 1206px;
         flex-grow: 1;
         display: flex;
