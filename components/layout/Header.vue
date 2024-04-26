@@ -31,11 +31,19 @@ header {
         padding: 22px 0;
         border-bottom: 1px $primary solid;
 
+        @media(max-width: 980px) {
+            flex-direction: column;
+        }
+
         .site-title {
             padding: 5px;
             font-size: 24px;
             font-weight: 600;
             color: $primary;
+
+            @media(max-width: 980px) {
+                margin-top: 10px;
+            }
         }
 
         nav {
@@ -45,8 +53,13 @@ header {
             flex-direction: row;
             justify-content: space-between;
             gap: 20px;
-            flex-wrap: wrap;
             font-size: 18px;
+            text-align: center;
+
+            @media(max-width: 980px) {
+                flex-direction: column;
+                margin-top: 20px;
+            }
 
             .nuxt-link {
                 color: $primary-font-color;
