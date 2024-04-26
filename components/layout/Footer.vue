@@ -48,7 +48,7 @@
                     bookstore
                 </span>
 
-                <div class="network vk">
+                <div class="network telegram">
                     <a href="https://t.me/mastersbookstore">
                         <img
                             class="img-link"
@@ -57,7 +57,7 @@
                     </a>
                 </div>
 
-                <div class="network telegram">
+                <div class="network vk">
                     <a href="https://vk.com/mstrs_bookstore">
                         <img
                             class="img-link"
@@ -118,6 +118,10 @@
     font-size: 40px;
     line-height: 97%;
     color: $color;
+
+    @media(max-width: 980px) {
+        font-size: 25px;
+    }
 }
 
 footer {
@@ -182,14 +186,6 @@ footer {
 
             .network {
                 @include network-links;
-
-                &.telegram {
-                    grid-area: telegram;
-                }
-
-                &.vk {
-                    grid-area: vk;
-                }
             }
 
             .text-link {
