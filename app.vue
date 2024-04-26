@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import '@/assets/styles/gilroy-font.scss';
+import type { Database } from './database.types';
+const client = useSupabaseClient<Database>();
 
 useHead({
     title: 'Masters Bookstore - книжный магазин',
@@ -13,6 +15,10 @@ useHead({
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
 });
+
+const data = ref('')
+const { data: data1 } = await client.from('product').select('*');
+data.value = data1![0].title;
 </script>
 
 <template>

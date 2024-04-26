@@ -3,10 +3,7 @@ export default defineNuxtConfig({
 
     typescript: { strict: true },
 
-    modules: [
-        '@pinia/nuxt', 
-        '@nuxt/test-utils/module'
-    ],
+    modules: ['@pinia/nuxt', '@nuxt/test-utils/module', "@nuxtjs/supabase"],
 
     app: {
         head: {
@@ -23,5 +20,9 @@ export default defineNuxtConfig({
                 },
             },
         },
+    },
+
+    supabase: {
+        redirect: false,
     },
 });
