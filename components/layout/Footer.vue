@@ -8,22 +8,14 @@
                 </span>
 
                 <div class="network telegram">
-                    <a
-                        href="https://t.me/artschoolmasters"
-                    >
-                        <img
-                            class="img-link"
-                            src="@/assets/images/black-telegram.png"
-                        />
+                    <a href="https://t.me/artschoolmasters">
+                        <img class="img-link" src="@/assets/images/black-telegram.png" />
                     </a>
                 </div>
 
                 <div class="network vk">
                     <a href="https://vk.com/artschoolmaste">
-                        <img
-                            class="img-link"
-                            src="@/assets/images/black-vk.png"
-                        />
+                        <img class="img-link" src="@/assets/images/black-vk.png" />
                     </a>
                 </div>
 
@@ -50,19 +42,13 @@
 
                 <div class="network telegram">
                     <a href="https://t.me/mastersbookstore">
-                        <img
-                            class="img-link"
-                            src="@/assets/images/red-telegram.png"
-                        />
+                        <img class="img-link" src="@/assets/images/red-telegram.png" />
                     </a>
                 </div>
 
                 <div class="network vk">
                     <a href="https://vk.com/mstrs_bookstore">
-                        <img
-                            class="img-link"
-                            src="@/assets/images/red-vk.png"
-                        />
+                        <img class="img-link" src="@/assets/images/red-vk.png" />
                     </a>
                 </div>
 
@@ -109,6 +95,11 @@
         .img-link {
             width: 27px;
             height: 27px;
+
+            @media(max-width: 980px) {
+                width: 25px;
+                height: 25px;
+            }
         }
     }
 }
@@ -142,10 +133,17 @@ footer {
 
         .masters-project {
             display: grid;
-            grid-template: 130px 40px / 75px 80px 73px 38px 35px;
+            grid-template: 130px 40px / 155px 73px 38px 35px;
             grid-template-areas:
-                'project-name project-name . telegram vk'
-                'masters-school . masters-subscribe masters-subscribe .';
+                'project-name . telegram vk'
+                'masters-school masters-subscribe masters-subscribe .';
+
+            @media(max-width: 980px) {
+                grid-template: 88px 20px / 105px 33px 33px 30px;
+                grid-template-areas:
+                    'project-name . telegram vk'
+                    'masters-school masters-subscribe masters-subscribe masters-subscribe';
+            }
 
             .project-name {
                 @include project-name($dark-font-color);
@@ -156,6 +154,11 @@ footer {
             }
 
             .text-link {
+
+                @media(max-width: 980px) {
+                    font-size: 13px;
+                }
+
                 &.masters-school {
                     grid-area: masters-school;
                 }
@@ -189,6 +192,11 @@ footer {
             }
 
             .text-link {
+
+                @media(max-width: 980px) {
+                    font-size: 13px;
+                }
+
                 &.catalogue {
                     grid-area: catalogue;
                 }
