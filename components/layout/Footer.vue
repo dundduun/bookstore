@@ -96,9 +96,9 @@
             width: 27px;
             height: 27px;
 
-            @media(max-width: 980px) {
-                width: 25px;
-                height: 25px;
+            @media (max-width: 1125px) {
+                width: 23px;
+                height: 23px;
             }
         }
     }
@@ -110,7 +110,7 @@
     line-height: 97%;
     color: $color;
 
-    @media(max-width: 980px) {
+    @media (max-width: 1125px) {
         font-size: 25px;
     }
 }
@@ -133,16 +133,25 @@ footer {
 
         .masters-project {
             display: grid;
-            grid-template: 130px 40px / 155px 73px 38px 35px;
+            grid-template: 130px 40px / 155px 73px 40px 27px;
             grid-template-areas:
                 'project-name . telegram vk'
                 'masters-school masters-subscribe masters-subscribe .';
 
-            @media(max-width: 980px) {
-                grid-template: 88px 20px / 105px 33px 33px 30px;
+            @media (max-width: 1125px) {
+                grid-template: 88px 30px / 105px 33px 33px 23px;
                 grid-template-areas:
                     'project-name . telegram vk'
                     'masters-school masters-subscribe masters-subscribe masters-subscribe';
+            }
+
+            @media (max-width: 650px) {
+                grid-template: 75px 66px 44px 26px / 37px 53px;
+                grid-template-areas:
+                    'project-name  project-name'
+                    'vk telegram'
+                    'masters-school masters-school'
+                    'masters-subscribe masters-subscribe';
             }
 
             .project-name {
@@ -154,8 +163,7 @@ footer {
             }
 
             .text-link {
-
-                @media(max-width: 980px) {
+                @media (max-width: 1125px) {
                     font-size: 13px;
                 }
 
@@ -183,6 +191,40 @@ footer {
             padding-left: 100px;
             border-left: 1px $primary solid;
 
+            @media (max-width: 1125px) {
+                grid-template: 88px 30px / 161px 161px 100px 33px 23px;
+                grid-template-areas:
+                    'project-name  . . telegram vk'
+                    'catalogue delivery policy policy policy';
+                margin-left: 60px;
+                padding-left: 60px;
+            }
+
+            @media (max-width: 850px) {
+                grid-template: 88px 30px / 130px 130px 70px 33px 23px;
+                grid-template-areas:
+                    'project-name  . . telegram vk'
+                    'catalogue delivery policy policy policy';
+                margin-left: 24px;
+                padding-left: 24px;
+            }
+
+            @media (max-width: 650px) {
+                grid-template: 75px 66px 44px 26px / 33px 68px 73px;
+                grid-template-areas:
+                    'project-name  project-name project-name'
+                    'vk telegram .'
+                    'catalogue catalogue delivery'
+                    'policy policy policy';
+                margin-left: 11vw;
+                padding-left: 11vw;
+            }
+
+            @media(max-width: 360px) {
+                margin-left: 5vw;
+                padding-left: 5vw;
+            }
+
             .project-name {
                 @include project-name($primary);
             }
@@ -192,8 +234,7 @@ footer {
             }
 
             .text-link {
-
-                @media(max-width: 980px) {
+                @media (max-width: 1125px) {
                     font-size: 13px;
                 }
 

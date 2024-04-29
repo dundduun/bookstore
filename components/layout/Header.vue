@@ -31,7 +31,7 @@ header {
         padding: 22px 0;
         border-bottom: 1px $primary solid;
 
-        @media(max-width: 980px) {
+        @media (max-width: 980px) {
             flex-direction: column;
         }
 
@@ -41,7 +41,7 @@ header {
             font-weight: 600;
             color: $primary;
 
-            @media(max-width: 980px) {
+            @media (max-width: 980px) {
                 margin-top: 10px;
             }
         }
@@ -56,7 +56,7 @@ header {
             font-size: 18px;
             text-align: center;
 
-            @media(max-width: 980px) {
+            @media (max-width: 980px) {
                 flex-direction: column;
                 margin-top: 20px;
             }
