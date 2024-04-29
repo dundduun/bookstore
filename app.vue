@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import '@/assets/styles/gilroy-font.scss';
-import type { Database } from './database.types';
+import type { Database } from '@@/database.types';
 const client = useSupabaseClient<Database>();
 
 useHead({
@@ -16,14 +16,16 @@ useHead({
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
 });
 
-const data = ref('')
+const data = ref('');
 const { data: data1 } = await client.from('product').select('*');
 data.value = data1![0].title;
 </script>
 
 <template>
     <div class="body">
-        <NuxtLayout> </NuxtLayout>
+        <NuxtLayout>
+            <NuxtPage />
+        </NuxtLayout>
     </div>
 </template>
 
