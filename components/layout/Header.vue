@@ -39,6 +39,7 @@ header {
             padding: 5px;
             font-size: 24px;
             font-weight: 600;
+            text-align: center;
             color: $primary;
 
             @media (max-width: 980px) {
