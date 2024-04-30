@@ -30,6 +30,10 @@ data.value = data1![0].title;
 </template>
 
 <style lang="scss">
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     overflow-x: hidden;
