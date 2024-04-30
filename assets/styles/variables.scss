@@ -2,8 +2,3 @@ $primary: #d9232f;
 $primary-black: #404040;
 $primary-font-color: #606060;
 $dark-font-color: #363636;
-
-@mixin kill-link-decoration {
-    text-decoration: none;
-    color: inherit;
-}

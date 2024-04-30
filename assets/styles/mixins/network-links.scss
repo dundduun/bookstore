@@ -1,0 +1,23 @@
+@mixin network-links {
+    &.vk {
+        margin-top: 8px;
+        grid-area: vk;
+    }
+
+    &.telegram {
+        margin-top: 8px;
+        grid-area: telegram;
+    }
+
+    a {
+        .img-link {
+            width: 27px;
+            height: 27px;
+
+            @media (max-width: 1125px) {
+                width: 23px;
+                height: 23px;
+            }
+        }
+    }
+}

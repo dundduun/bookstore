@@ -9,13 +9,19 @@
 
                 <div class="network telegram">
                     <a href="https://t.me/artschoolmasters">
-                        <img class="img-link" src="@/assets/images/black-telegram.png" />
+                        <img
+                            class="img-link"
+                            src="@/assets/images/black-telegram.png"
+                        />
                     </a>
                 </div>
 
                 <div class="network vk">
                     <a href="https://vk.com/artschoolmaste">
-                        <img class="img-link" src="@/assets/images/black-vk.png" />
+                        <img
+                            class="img-link"
+                            src="@/assets/images/black-vk.png"
+                        />
                     </a>
                 </div>
 
@@ -42,13 +48,19 @@
 
                 <div class="network telegram">
                     <a href="https://t.me/mastersbookstore">
-                        <img class="img-link" src="@/assets/images/red-telegram.png" />
+                        <img
+                            class="img-link"
+                            src="@/assets/images/red-telegram.png"
+                        />
                     </a>
                 </div>
 
                 <div class="network vk">
                     <a href="https://vk.com/mstrs_bookstore">
-                        <img class="img-link" src="@/assets/images/red-vk.png" />
+                        <img
+                            class="img-link"
+                            src="@/assets/images/red-vk.png"
+                        />
                     </a>
                 </div>
 
@@ -78,40 +90,7 @@
 </template>
 
 <style scoped lang="scss">
-@mixin network-links {
-    &.vk {
-        margin-top: 8px;
-        grid-area: vk;
-    }
-
-    &.telegram {
-        margin-top: 8px;
-        grid-area: telegram;
-    }
-
-    a {
-        .img-link {
-            width: 27px;
-            height: 27px;
-
-            @media (max-width: 1125px) {
-                width: 23px;
-                height: 23px;
-            }
-        }
-    }
-}
-
-@mixin project-name($color) {
-    grid-area: project-name;
-    font-size: 40px;
-    line-height: 97%;
-    color: $color;
-
-    @media (max-width: 1125px) {
-        font-size: 25px;
-    }
-}
+@import '@/assets/styles/mixins.scss';
 
 .social-media {
     width: 100%;
@@ -218,7 +197,7 @@
                 padding-left: 11vw;
             }
 
-            @media(max-width: 360px) {
+            @media (max-width: 360px) {
                 margin-left: 5vw;
                 padding-left: 5vw;
             }

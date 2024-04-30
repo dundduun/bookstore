@@ -1,0 +1,10 @@
+@mixin project-name($color) {
+    grid-area: project-name;
+    font-size: 40px;
+    line-height: 97%;
+    color: $color;
+
+    @media (max-width: 1125px) {
+        font-size: 25px;
+    }
+}
