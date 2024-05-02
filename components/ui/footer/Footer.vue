@@ -43,14 +43,14 @@ footer {
 
         @media (max-width: 820px) {
             grid-template: 60px 163px / 1fr;
-            grid-template-areas: 
+            grid-template-areas:
                 'text'
                 'form';
         }
 
         @media (max-width: 326px) {
             grid-template: 95px 163px / 1fr;
-            grid-template-areas: 
+            grid-template-areas:
                 'text'
                 'form';
         }
@@ -95,13 +95,12 @@ footer {
 
             @media (max-width: 820px) {
                 grid-template: 60px 70px / 82vw;
-                grid-template-areas: 
+                grid-template-areas:
                     'input'
                     'button';
                 justify-self: center;
                 margin: 33px 0 0 0;
             }
-
 
             .email-input {
                 height: 60px;
