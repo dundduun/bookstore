@@ -1,7 +1,7 @@
 <template>
     <header>
         <div class="container">
-            <span class="site-title">masters bookstore</span>
+            <h1 class="site-title">masters bookstore</h1>
             <nav>
                 <NuxtLink class="nuxt-link">книги</NuxtLink>
                 <NuxtLink class="nuxt-link">искусство</NuxtLink>
@@ -39,6 +39,7 @@ header {
             padding: 5px;
             font-size: 24px;
             font-weight: 600;
+            margin: 0;
             text-align: center;
             color: $primary;
 
@@ -63,7 +64,7 @@ header {
             }
 
             .nuxt-link {
-                color: $primary-font-color;
+                color: $font-color;
             }
         }
     }

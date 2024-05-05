@@ -2,10 +2,10 @@
     <div class="social-media">
         <div class="container">
             <div class="masters-project">
-                <span class="project-name">
+                <h3 class="project-name">
                     masters<br />
                     project
-                </span>
+                </h3>
 
                 <div class="network telegram">
                     <a href="https://t.me/artschoolmasters">
@@ -41,10 +41,10 @@
             </div>
 
             <div class="masters-bookstore">
-                <span class="project-name">
+                <h3 class="project-name">
                     masters<br />
                     bookstore
-                </span>
+                </h3>
 
                 <div class="network telegram">
                     <a href="https://t.me/mastersbookstore">
@@ -98,7 +98,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 68px;
+    margin-top: 65px;
     background-color: white;
 
     .container {

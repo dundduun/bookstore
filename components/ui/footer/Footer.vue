@@ -2,7 +2,7 @@
     <footer>
         <div class="news">
             <div class="text">
-                <h3>новости masters bookstore</h3>
+                <h2>новости masters bookstore</h2>
 
                 <span class="description">
                     Подпишитесь, чтобы первыми узнать о новых поступлениях,
@@ -27,7 +27,7 @@ footer {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 40px;
+    margin-top: 65px;
     background-color: $primary;
 
     .news {
@@ -65,7 +65,7 @@ footer {
                 text-align: center;
             }
 
-            h3 {
+            h2 {
                 font-weight: normal;
                 font-size: 23px;
                 color: white;

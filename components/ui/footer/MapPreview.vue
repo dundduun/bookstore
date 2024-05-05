@@ -1,17 +1,12 @@
 <script setup lang="ts">
-import {
-    LMap,
-    LTileLayer,
-    LMarker,
-    LPopup,
-} from '@vue-leaflet/vue-leaflet';
+import { LMap, LTileLayer, LMarker, LPopup } from '@vue-leaflet/vue-leaflet';
 import 'leaflet/dist/leaflet.css';
 
-const zoom = ref(6);
+const zoom = ref(5);
 </script>
 
 <template>
-    <div class="map-container">
+    <div class="map-preview">
         <LMap
             class="map"
             v-model="zoom"
@@ -42,13 +37,17 @@ const zoom = ref(6);
             </LMarker>
         </LMap>
     </div>
-</template> 
+</template>
 
 <style scoped lang="scss">
-.map-container {
+.map-preview {
     width: 50vw;
-    height: 80vw;
-    margin-top: 60px;
+    height: 100%;
+
+    @media (max-width: 900px) {
+        width: 100%;
+        height: 27%;
+    }
 
     .map {
         border: none;

@@ -6,12 +6,18 @@
 
 @font-face {
     font-family: Gilroy;
+    src: url(@/assets/fonts/gilroy/Gilroy-Regular.ttf);
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: Gilroy;
     src: url(@/assets/fonts/gilroy/Gilroy-SemiBold.ttf);
     font-weight: 600;
 }
 
 @font-face {
     font-family: Gilroy;
-    src: url(@/assets/fonts/gilroy/Gilroy-Regular.ttf);
-    font-weight: normal;
+    src: url(@/assets/fonts/gilroy/Gilroy-Bold.ttf);
+    font-weight: bold;
 }
