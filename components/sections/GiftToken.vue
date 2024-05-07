@@ -1,0 +1,177 @@
+<script setup lang="ts">
+import type { Database } from '@@/database.types';
+
+const client = useSupabaseClient<Database>();
+
+const { data: category } = await client
+    .from('category')
+    .select('*')
+    .eq('code', 'gift_token')
+    .single();
+
+const { data: giftToken } = await client
+    .from('product')
+    .select('*')
+    .eq('category_id', category!.id)
+    .limit(1)
+    .single();
+
+const { data: giftTokenImage } = client.storage
+    .from('product_images')
+    .getPublicUrl(giftToken!.pictures[0]);
+</script>
+
+<template>
+    <div class="gift-token">
+        <div class="container">
+            <img :src="giftTokenImage.publicUrl" />
+
+            <div class="text">
+            <span class="title">
+                {{ giftToken!.title }}
+            </span>
+
+                <span class="price"> от {{ giftToken!.price }} р. </span>
+
+                <div class="buttons">
+                    <button class="buy-button">Купить</button>
+                    <button class="like-button">
+                        <img class="like-img" src="@/assets/images/like.svg" />
+                    </button>
+                </div>
+
+                <span class="description">
+                {{ giftToken!.description }}
+            </span>
+            </div>
+        </div>
+    </div>
+</template>
+
+<style scoped lang="scss">
+.gift-token {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+
+    .container {
+        display: flex;
+        justify-content: center;
+
+        @media (max-width: 1000px) {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        @media (max-width: 330px) {
+            margin-left: 20px;
+        }
+
+        img {
+            width: 62vw;
+            height: 46vw;
+            max-width: 760px;
+            max-height: 570px;
+            object-fit: cover;
+
+            @media (max-width: 1000px) {
+                width: 80vw;
+                height: 59vw;
+            }
+        }
+
+        .text {
+            display: flex;
+            flex-direction: column;
+            margin-left: 40px;
+
+            @media (max-width: 1000px) {
+                margin: 30px 0 0 0;
+            }
+
+            .title {
+                font-size: 24px;
+
+                @media (max-width: 1220px) {
+                    font-size: 22px;
+                }
+
+                @media (max-width: 700px) {
+                    font-size: 20px;
+                }
+            }
+
+            .price {
+                margin-top: 25px;
+                font-size: 20px;
+
+                @media (max-width: 1220px) {
+                    font-size: 18px;
+                }
+
+                @media (max-width: 700px) {
+                    font-size: 16px;
+                }
+            }
+
+            .buttons {
+                width: 170px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                margin-top: 25px;
+
+                .buy-button {
+                    padding: 14px 35px;
+                    font-size: 14px;
+                    transition: 0.3s;
+                    font-family: Gilroy;
+                    font-weight: 600;
+                    border: 1px white solid;
+                    background-color: $primary;
+                    color: white;
+
+                    &:hover {
+                        border: 1px $primary solid;
+                        color: $primary;
+                        background-color: white;
+                    }
+                }
+
+                .like-button {
+                    width: 47px;
+                    height: 47px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 0;
+                    border: 1px $border-light-gray solid;
+                    border-radius: 100%;
+                    background-color: white;
+
+                    &:hover {
+                        .like-img {
+                            width: 23px;
+                            height: 20px;
+                        }
+                    }
+
+                    .like-img {
+                        overflow: visible;
+                        width: 20px;
+                        height: 17px;
+                        transition: 0.1s;
+                    }
+                }
+            }
+
+            .description {
+                margin-top: 30px;
+                font-size: 14px;
+                font-weight: 300;
+            }
+        }
+    }
+}
+</style>

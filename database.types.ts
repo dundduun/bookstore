@@ -9,56 +9,23 @@ export type Json =
 export type Database = {
     public: {
         Tables: {
-            cart: {
-                Row: {
-                    id: number;
-                    product_id: number;
-                    quantity: number;
-                    user_id: string;
-                };
-                Insert: {
-                    id?: number;
-                    product_id: number;
-                    quantity?: number;
-                    user_id: string;
-                };
-                Update: {
-                    id?: number;
-                    product_id?: number;
-                    quantity?: number;
-                    user_id?: string;
-                };
-                Relationships: [
-                    {
-                        foreignKeyName: 'cart_product_id_fkey';
-                        columns: ['product_id'];
-                        isOneToOne: false;
-                        referencedRelation: 'product';
-                        referencedColumns: ['id'];
-                    },
-                    {
-                        foreignKeyName: 'cart_user_id_fkey';
-                        columns: ['user_id'];
-                        isOneToOne: false;
-                        referencedRelation: 'users';
-                        referencedColumns: ['id'];
-                    },
-                ];
-            };
             category: {
                 Row: {
+                    code: string | null;
                     created_at: string;
                     id: number;
                     product_ids: number[];
                     title: string;
                 };
                 Insert: {
+                    code?: string | null;
                     created_at?: string;
                     id?: number;
                     product_ids?: number[];
                     title?: string;
                 };
                 Update: {
+                    code?: string | null;
                     created_at?: string;
                     id?: number;
                     product_ids?: number[];
