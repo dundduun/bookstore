@@ -12,10 +12,9 @@ const zoom = ref(5);
             v-model="zoom"
             v-model:zoom="zoom"
             :center="[57.925154, 33.924931]"
-            @move="console.log('move')"
         >
             <LTileLayer
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                url="https://tiles.stadiamaps.com/tiles/stamen_toner_lite/{z}/{x}/{y}{r}.png"
             >
             </LTileLayer>
             <LMarker :lat-lng="[59.939343, 30.285361]">
