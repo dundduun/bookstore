@@ -27,9 +27,9 @@ const { data: giftTokenImage } = client.storage
             <img :src="giftTokenImage.publicUrl" />
 
             <div class="text">
-            <span class="title">
-                {{ giftToken!.title }}
-            </span>
+                <span class="title">
+                    {{ giftToken!.title }}
+                </span>
 
                 <span class="price"> от {{ giftToken!.price }} р. </span>
 
@@ -41,8 +41,8 @@ const { data: giftTokenImage } = client.storage
                 </div>
 
                 <span class="description">
-                {{ giftToken!.description }}
-            </span>
+                    {{ giftToken!.description }}
+                </span>
             </div>
         </div>
     </div>
@@ -125,17 +125,30 @@ const { data: giftTokenImage } = client.storage
                 .buy-button {
                     padding: 14px 35px;
                     font-size: 14px;
-                    transition: 0.3s;
                     font-family: Gilroy;
                     font-weight: 600;
                     border: 1px white solid;
                     background-color: $primary;
                     color: white;
 
-                    &:hover {
-                        border: 1px $primary solid;
-                        color: $primary;
-                        background-color: white;
+                    @media (hover: hover) {
+                        transition: 0.3s;
+
+                        &:hover {
+                            border: 1px $primary solid;
+                            color: $primary;
+                            background-color: white;
+                        }
+                    }
+
+                    @media (hover: none) {
+                        transition: 0.1s;
+
+                        &:active {
+                            border: 1px $primary solid;
+                            color: $primary;
+                            background-color: white;
+                        }
                     }
                 }
 
@@ -150,10 +163,21 @@ const { data: giftTokenImage } = client.storage
                     border-radius: 100%;
                     background-color: white;
 
-                    &:hover {
-                        .like-img {
-                            width: 23px;
-                            height: 20px;
+                    @media (hover: hover) {
+                        &:hover {
+                            .like-img {
+                                width: 23px;
+                                height: 20px;
+                            }
+                        }
+                    }
+
+                    @media (hover: none) {
+                        &:active {
+                            .like-img {
+                                width: 23px;
+                                height: 20px;
+                            }
                         }
                     }
 
