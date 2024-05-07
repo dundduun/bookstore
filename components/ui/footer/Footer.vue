@@ -109,6 +109,7 @@ footer {
                 font-size: 16px;
                 font-family: Gilroy;
                 border: none;
+                border-radius: 0;
 
                 &:focus {
                     outline: none;
