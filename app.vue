@@ -1,7 +1,6 @@
 <script setup lang="ts">
+import '@/assets/styles/global.scss';
 import '@/assets/styles/gilroy-font.scss';
-import type { Database } from '@@/database.types';
-const client = useSupabaseClient<Database>();
 
 useHead({
     title: 'Masters Bookstore - книжный магазин',
@@ -15,10 +14,6 @@ useHead({
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
 });
-
-const data = ref('');
-const { data: data1 } = await client.from('product').select('*');
-data.value = data1![0].title;
 </script>
 
 <template>
@@ -28,19 +23,3 @@ data.value = data1![0].title;
         </NuxtLayout>
     </div>
 </template>
-
-<style lang="scss">
-* {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    overflow-x: hidden;
-}
-
-div.body {
-    font-family: Gilroy;
-    font-weight: normal;
-}
-</style>

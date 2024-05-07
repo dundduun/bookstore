@@ -1,0 +1,17 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    overflow-x: hidden;
+}
+
+div.body {
+    font-family: Gilroy;
+    font-weight: normal;
+}
+
+.leaflet-control-attribution {
+    display: none;
+}
