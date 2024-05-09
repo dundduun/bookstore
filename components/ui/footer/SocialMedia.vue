@@ -50,7 +50,7 @@
                     <a href="https://t.me/mastersbookstore">
                         <img
                             class="img-link"
-                            src="@/assets/images/red-telegram.png"
+                            src="@/assets/images/blue-telegram.png"
                         />
                     </a>
                 </div>
@@ -59,7 +59,7 @@
                     <a href="https://vk.com/mstrs_bookstore">
                         <img
                             class="img-link"
-                            src="@/assets/images/red-vk.png"
+                            src="@/assets/images/blue-vk.png"
                         />
                     </a>
                 </div>
