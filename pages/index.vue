@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import LandingSearch from '@/components/sections/LandingSearch.vue';
 import GiftToken from '@/components/sections/GiftToken.vue';
 import MapPreview from '@/components/ui/footer/MapPreview.vue';
 import Contacts from '@/components/ui/footer/Contacts.vue';
@@ -6,11 +7,15 @@ import SocialMedia from '@/components/ui/footer/SocialMedia.vue';
 </script>
 
 <template>
+    <LandingSearch />
+
     <GiftToken />
+    
     <div class="map-contacts">
         <MapPreview />
         <Contacts />
     </div>
+    
     <SocialMedia />
 </template>
 
