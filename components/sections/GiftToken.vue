@@ -125,9 +125,10 @@ const { data: giftTokenImage } = client.storage
                 .buy-button {
                     padding: 14px 35px;
                     font-size: 14px;
-                    font-family: Gilroy;
+                    font-family: Gilroy, Arial, sans-serif;
                     font-weight: 600;
-                    border: 1px white solid;
+                    border: 1px $primary solid;
+                    cursor: pointer;
                     background-color: $primary;
                     color: white;
 
@@ -135,7 +136,6 @@ const { data: giftTokenImage } = client.storage
                         transition: 0.3s;
 
                         &:hover {
-                            border: 1px $primary solid;
                             color: $primary;
                             background-color: white;
                         }
@@ -145,7 +145,6 @@ const { data: giftTokenImage } = client.storage
                         transition: 0.1s;
 
                         &:active {
-                            border: 1px $primary solid;
                             color: $primary;
                             background-color: white;
                         }

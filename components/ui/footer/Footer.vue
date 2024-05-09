@@ -12,9 +12,10 @@
 
             <form class="email-form">
                 <input
-                    type="email"
                     class="email-input"
+                    type="email"
                     placeholder="Your E-mail"
+                    required
                 />
                 <button class="subscribe">подписаться</button>
             </form>
@@ -107,7 +108,7 @@ footer {
                 grid-area: input;
                 padding: 0 20px;
                 font-size: 16px;
-                font-family: Gilroy;
+                font-family: Gilroy, Arial, sans-serif;
                 border: none;
                 border-radius: 0;
 
@@ -121,7 +122,7 @@ footer {
                 grid-area: button;
                 margin-left: 20px;
                 font-size: 16px;
-                font-family: Gilroy;
+                font-family: Gilroy, Arial, sans-serif;
                 color: white;
                 background-color: black;
                 border: none;
@@ -138,3 +139,4 @@ footer {
     }
 }
 </style>
+<script setup lang="ts"></script>
