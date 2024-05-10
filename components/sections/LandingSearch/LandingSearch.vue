@@ -1,17 +1,53 @@
+<script setup lang="ts">
+import type { Database } from '@@/database.types';
+
+const client = useSupabaseClient<Database>();
+
+const searchQuery = ref('');
+const searchedData = ref();
+const newSearchQuery = ref('');
+
+watchEffect(async (newSearchQuery) => {
+    console.log(newSearchQuery);
+
+    searchedData.value = await client
+        .from('product')
+        .select()
+        .textSearch('title_description', `подарочный`);
+});
+
+///////
+
+// watch(searchQuery, async (newSearchQuery) => {
+//         try {
+//             searchedData.value = await client
+//                 .from('product')
+//                 .select()
+//                 .textSearch('title_description', `newSearchQuery`);
+//         } catch (error) {
+//             searchedData.value = 'Error! Could not reach the API. ' + error;
+//         }
+// });
+</script>
+
 <template>
     <div class="landing-search">
-        <form class="form">
+        <form class="form" @submit.prevent>
             <input
                 class="input"
                 type="text"
                 placeholder="название книги / автор"
+                v-model="searchQuery"
                 required
             />
 
-            <img class="loupe-icon" src="@/assets/images/loupe.svg" />
+            <img class="loupe-icon" src="../../../assets/images/loupe.svg" />
 
             <button class="button">искать</button>
         </form>
+        {{ searchQuery }}
+        {{ searchedData.data }}
+        new search query = {{ newSearchQuery }}
     </div>
 </template>
 
