@@ -1,8 +1,8 @@
 <template>
     <header>
         <div class="container">
-            <h1 class="site-title">masters bookstore</h1>
-            <nav>
+            <NuxtLink class="site-title" to="/">masters bookstore</NuxtLink>
+            <nav class="nav">
                 <NuxtLink class="nuxt-link">книги</NuxtLink>
                 <NuxtLink class="nuxt-link">искусство</NuxtLink>
                 <NuxtLink class="nuxt-link">аксессуары</NuxtLink>
@@ -13,6 +13,8 @@
 </template>
 
 <style scoped lang="scss">
+@import '@/assets/styles/mixins.scss';
+
 header {
     width: 100%;
     display: flex;
@@ -36,10 +38,11 @@ header {
         }
 
         .site-title {
+            @include kill-link-decoration;
             padding: 5px;
+            margin: 0;
             font-size: 24px;
             font-weight: 600;
-            margin: 0;
             text-align: center;
             color: $primary;
 
@@ -48,7 +51,7 @@ header {
             }
         }
 
-        nav {
+        .nav {
             max-width: 435px;
             flex-grow: 1;
             display: flex;

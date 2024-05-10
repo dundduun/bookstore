@@ -11,7 +11,7 @@ import SocialMedia from '@/components/ui/footer/SocialMedia.vue';
 
     <GiftToken />
     
-    <div class="map-contacts">
+    <div class="store-locations">
         <MapPreview />
         <Contacts />
     </div>
@@ -20,7 +20,7 @@ import SocialMedia from '@/components/ui/footer/SocialMedia.vue';
 </template>
 
 <style scoped lang="scss">
-.map-contacts {
+.store-locations {
     height: 110vh;
     width: 100%;
     min-height: 930px;

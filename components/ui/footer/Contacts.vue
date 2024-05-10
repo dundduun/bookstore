@@ -43,7 +43,7 @@ const addressData = [
 
 <template>
     <div class="contacts">
-        <h2>контакты:</h2>
+        <h2 class="title">контакты:</h2>
 
         <div class="all-addresses">
             <Address
@@ -55,27 +55,27 @@ const addressData = [
             />
         </div>
 
-        <span class="our-email"> bookstore@masters-project.ru </span>
+        <span class="our-email">bookstore@masters-project.ru</span>
 
         <div class="links-to-socials">
-            <a
-                href="https://api.whatsapp.com/send/?phone=79312138373&text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9+%D0%B4%D0%B5%D0%BD%D1%8C%21+%D0%AF+%D1%85%D0%BE%D1%82%D0%B5%D0%BB+%D0%B1%D1%8B+%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C+%D0%B2%D0%BE%D1%82+%D1%8D%D1%82%D1%83+%D0%BA%D0%BD%D0%B8%D0%B3%D1%83&type=phone_number&app_absent=0"
+            <a class="link"
+               href="https://api.whatsapp.com/send/?phone=79312138373&text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9+%D0%B4%D0%B5%D0%BD%D1%8C%21+%D0%AF+%D1%85%D0%BE%D1%82%D0%B5%D0%BB+%D0%B1%D1%8B+%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C+%D0%B2%D0%BE%D1%82+%D1%8D%D1%82%D1%83+%D0%BA%D0%BD%D0%B8%D0%B3%D1%83&type=phone_number&app_absent=0"
             >
-                <img
+                <img class="img"
                     src="@/assets/images/white-whatsapp.png"
                     alt="Write to us in whatsapp"
                 />
             </a>
 
-            <a href="https://t.me/mastersbookstore">
-                <img
+            <a class="link" href="https://t.me/mastersbookstore">
+                <img class="img"
                     src="@/assets/images/white-telegram.png"
                     alt="Subscribe to us in telegram"
                 />
             </a>
 
-            <a href="https://www.instagram.com/masters_bookstore/">
-                <img
+            <a class="link" href="https://www.instagram.com/masters_bookstore/">
+                <img class="img"
                     src="@/assets/images/white-instagram.png"
                     alt="Subscribe to us in instagram"
                 />
@@ -101,14 +101,14 @@ const addressData = [
         height: 73%;
     }
 
-    h2 {
+    .title {
         margin: 0;
         font-size: 40px;
         font-weight: normal;
         color: $primary;
     }
 
-    .all-addresses {
+    .all-   addresses {
         width: 350px;
         max-width: 100%;
     }
@@ -123,9 +123,12 @@ const addressData = [
         justify-content: space-between;
         margin-top: 50px;
 
-        img {
-            height: 27px;
-            width: 27px;
+        .link {
+
+            .img {
+                height: 27px;
+                width: 27px;
+            }
         }
     }
 }

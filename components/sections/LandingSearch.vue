@@ -1,8 +1,8 @@
 <template>
     <div class="landing-search">
-        <form class="container">
+        <form class="form">
             <input
-                class="search-input"
+                class="input"
                 type="text"
                 placeholder="название книги / автор"
                 required
@@ -10,7 +10,7 @@
 
             <img class="loupe-icon" src="@/assets/images/loupe.svg" />
 
-            <button class="search-action">искать</button>
+            <button class="button">искать</button>
         </form>
     </div>
 </template>
@@ -24,7 +24,7 @@
     margin-top: 25px;
     background-color: $primary;
 
-    .container {
+    .form {
         height: 100%;
         width: 100%;
         max-width: 1240px;
@@ -38,7 +38,7 @@
             flex-direction: column;
         }
 
-        input {
+        .input {
             height: 60px;
             width: 970px;
             flex: 0 1 auto;
@@ -78,7 +78,7 @@
             }
         }
 
-        .search-action {
+        .button {
             height: 60px;
             width: 170px;
             flex: 0 0 auto;

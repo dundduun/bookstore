@@ -7,7 +7,7 @@
                     project
                 </h3>
 
-                <div class="network telegram">
+                <div class="networks telegram">
                     <a href="https://t.me/artschoolmasters">
                         <img
                             class="img-link"
@@ -16,7 +16,7 @@
                     </a>
                 </div>
 
-                <div class="network vk">
+                <div class="networks vk">
                     <a href="https://vk.com/artschoolmaste">
                         <img
                             class="img-link"
@@ -46,7 +46,7 @@
                     bookstore
                 </h3>
 
-                <div class="network telegram">
+                <div class="networks telegram">
                     <a href="https://t.me/mastersbookstore">
                         <img
                             class="img-link"
@@ -55,7 +55,7 @@
                     </a>
                 </div>
 
-                <div class="network vk">
+                <div class="networks vk">
                     <a href="https://vk.com/mstrs_bookstore">
                         <img
                             class="img-link"
@@ -135,7 +135,7 @@
                 @include project-name($dark-font-color);
             }
 
-            .network {
+            .networks {
                 @include network-links;
             }
 
@@ -216,7 +216,7 @@
                 @include project-name($primary);
             }
 
-            .network {
+            .networks {
                 @include network-links;
             }
 

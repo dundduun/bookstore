@@ -2,7 +2,7 @@
     <footer>
         <div class="news">
             <div class="text">
-                <h2>новости masters bookstore</h2>
+                <h2 class="title">новости masters bookstore</h2>
 
                 <span class="description">
                     Подпишитесь, чтобы первыми узнать о новых поступлениях,
@@ -10,9 +10,9 @@
                 </span>
             </div>
 
-            <form class="email-form">
+            <form class="form">
                 <input
-                    class="email-input"
+                    class="input"
                     type="email"
                     placeholder="Your E-mail"
                     required
@@ -66,7 +66,7 @@ footer {
                 text-align: center;
             }
 
-            h2 {
+            .title {
                 font-weight: normal;
                 font-size: 23px;
                 color: white;
@@ -79,7 +79,7 @@ footer {
             }
         }
 
-        .email-form {
+        .form {
             max-width: 670px;
             grid-area: form;
             display: grid;
@@ -103,7 +103,7 @@ footer {
                 margin: 33px 0 0 0;
             }
 
-            .email-input {
+            .input {
                 height: 60px;
                 grid-area: input;
                 padding: 0 20px;
