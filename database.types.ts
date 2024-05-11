@@ -38,17 +38,18 @@ export type Database = {
                     category_id: number | null;
                     created_at: string;
                     description: string;
-                    id: number;
+                    id: string;
                     in_stock: number | null;
                     pictures: string[];
                     price: number;
                     title: string;
+                    title_description: string | null;
                 };
                 Insert: {
                     category_id?: number | null;
                     created_at?: string;
                     description?: string;
-                    id?: number;
+                    id?: string;
                     in_stock?: number | null;
                     pictures?: string[];
                     price: number;
@@ -58,7 +59,7 @@ export type Database = {
                     category_id?: number | null;
                     created_at?: string;
                     description?: string;
-                    id?: number;
+                    id?: string;
                     in_stock?: number | null;
                     pictures?: string[];
                     price?: number;
@@ -79,7 +80,94 @@ export type Database = {
             [_ in never]: never;
         };
         Functions: {
-            [_ in never]: never;
+            gtrgm_compress: {
+                Args: {
+                    '': unknown;
+                };
+                Returns: unknown;
+            };
+            gtrgm_decompress: {
+                Args: {
+                    '': unknown;
+                };
+                Returns: unknown;
+            };
+            gtrgm_in: {
+                Args: {
+                    '': unknown;
+                };
+                Returns: unknown;
+            };
+            gtrgm_options: {
+                Args: {
+                    '': unknown;
+                };
+                Returns: undefined;
+            };
+            gtrgm_out: {
+                Args: {
+                    '': unknown;
+                };
+                Returns: unknown;
+            };
+            search_books: {
+                Args: {
+                    book_term: string;
+                };
+                Returns: {
+                    id: number;
+                    title: string;
+                    author: string;
+                }[];
+            };
+            search_product:
+                | {
+                      Args: {
+                          book_term: string;
+                      };
+                      Returns: {
+                          id: number;
+                          title: string;
+                          author: string;
+                      }[];
+                  }
+                | {
+                      Args: {
+                          product_term: string;
+                      };
+                      Returns: {
+                          category_id: number | null;
+                          created_at: string;
+                          description: string;
+                          id: string;
+                          in_stock: number | null;
+                          pictures: string[];
+                          price: number;
+                          title: string;
+                      }[];
+                  };
+            set_limit: {
+                Args: {
+                    '': number;
+                };
+                Returns: number;
+            };
+            show_limit: {
+                Args: Record<PropertyKey, never>;
+                Returns: number;
+            };
+            show_trgm: {
+                Args: {
+                    '': string;
+                };
+                Returns: string[];
+            };
+            title_description: {
+                Args: {
+                    '': unknown;
+                };
+                Returns: string;
+            };
         };
         Enums: {
             [_ in never]: never;

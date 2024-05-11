@@ -1,33 +1,23 @@
 <script setup lang="ts">
 import type { Database } from '@@/database.types';
+import type { SearchProductResult } from '@/types';
 
 const client = useSupabaseClient<Database>();
 
 const searchQuery = ref('');
-const searchedData = ref();
-const newSearchQuery = ref('');
+const searchedData = ref<SearchProductResult>([]);
 
-watchEffect(async (newSearchQuery) => {
-    console.log(newSearchQuery);
+watchDebounced(
+    searchQuery,
+    async (newSearchQuery) => {
+        const { data } = await client.rpc('search_product', {
+            product_term: newSearchQuery,
+        });
 
-    searchedData.value = await client
-        .from('product')
-        .select()
-        .textSearch('title_description', `подарочный`);
-});
-
-///////
-
-// watch(searchQuery, async (newSearchQuery) => {
-//         try {
-//             searchedData.value = await client
-//                 .from('product')
-//                 .select()
-//                 .textSearch('title_description', `newSearchQuery`);
-//         } catch (error) {
-//             searchedData.value = 'Error! Could not reach the API. ' + error;
-//         }
-// });
+        searchedData.value = data!;
+    },
+    { debounce: 700, maxWait: 5000 },
+);
 </script>
 
 <template>
@@ -41,13 +31,12 @@ watchEffect(async (newSearchQuery) => {
                 required
             />
 
-            <img class="loupe-icon" src="../../../assets/images/loupe.svg" />
+            {{ searchedData[0]?.title }}
+
+            <img class="loupe-icon" src="@/assets/images/loupe.svg" />
 
             <button class="button">искать</button>
         </form>
-        {{ searchQuery }}
-        {{ searchedData.data }}
-        new search query = {{ newSearchQuery }}
     </div>
 </template>
 
