@@ -58,24 +58,28 @@ const addressData = [
         <span class="our-email">bookstore@masters-project.ru</span>
 
         <div class="links-to-socials">
-            <a class="link"
-               href="https://api.whatsapp.com/send/?phone=79312138373&text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9+%D0%B4%D0%B5%D0%BD%D1%8C%21+%D0%AF+%D1%85%D0%BE%D1%82%D0%B5%D0%BB+%D0%B1%D1%8B+%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C+%D0%B2%D0%BE%D1%82+%D1%8D%D1%82%D1%83+%D0%BA%D0%BD%D0%B8%D0%B3%D1%83&type=phone_number&app_absent=0"
+            <a
+                class="link"
+                href="https://api.whatsapp.com/send/?phone=79312138373&text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9+%D0%B4%D0%B5%D0%BD%D1%8C%21+%D0%AF+%D1%85%D0%BE%D1%82%D0%B5%D0%BB+%D0%B1%D1%8B+%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C+%D0%B2%D0%BE%D1%82+%D1%8D%D1%82%D1%83+%D0%BA%D0%BD%D0%B8%D0%B3%D1%83&type=phone_number&app_absent=0"
             >
-                <img class="img"
+                <img
+                    class="img"
                     src="@/assets/images/white-whatsapp.png"
                     alt="Write to us in whatsapp"
                 />
             </a>
 
             <a class="link" href="https://t.me/mastersbookstore">
-                <img class="img"
+                <img
+                    class="img"
                     src="@/assets/images/white-telegram.png"
                     alt="Subscribe to us in telegram"
                 />
             </a>
 
             <a class="link" href="https://www.instagram.com/masters_bookstore/">
-                <img class="img"
+                <img
+                    class="img"
                     src="@/assets/images/white-instagram.png"
                     alt="Subscribe to us in instagram"
                 />
@@ -108,7 +112,7 @@ const addressData = [
         color: $primary;
     }
 
-    .all-   addresses {
+    .all-addresses {
         width: 350px;
         max-width: 100%;
     }
@@ -124,7 +128,6 @@ const addressData = [
         margin-top: 50px;
 
         .link {
-
             .img {
                 height: 27px;
                 width: 27px;
