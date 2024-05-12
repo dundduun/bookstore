@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import type { Database } from '@@/database.types';
 import type { SearchProductResult } from '@/types';
+import QueryPopupHints from '@/components/sections/LandingSearch/QueryPopupHints.vue';
 
 const client = useSupabaseClient<Database>();
 
 const searchQuery = ref('');
 const searchedData = ref<SearchProductResult>([]);
+
+provide('searchedData', searchedData);
 
 watchDebounced(
     searchQuery,
@@ -18,25 +21,42 @@ watchDebounced(
     },
     { debounce: 700, maxWait: 5000 },
 );
+
+const inputElement = ref(null);
+const inputWidth = ref('');
+
+useResizeObserver(inputElement, (entries) => {
+    const entry = entries[0];
+    const { width } = entry.contentRect;
+    inputWidth.value = width + 70 + 'px';
+});
 </script>
 
 <template>
     <div class="landing-search">
         <form class="form" @submit.prevent>
             <input
+                v-model="searchQuery"
+                ref="inputElement"
                 class="input"
                 type="text"
                 placeholder="название книги / автор"
-                v-model="searchQuery"
                 required
             />
 
-            {{ searchedData[0]?.title }}
+            <!--            {{ searchedData[0]?.title }}-->
 
             <img class="loupe-icon" src="@/assets/images/loupe.svg" />
 
             <button class="button">искать</button>
         </form>
+
+        <QueryPopupHints
+            v-if="searchedData[0]"
+            :container-width="inputWidth"
+            :searched-data="searchedData"
+        />
+        <!--        v-if="searchedData[0]"-->
     </div>
 </template>
 
