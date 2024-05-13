@@ -120,32 +120,21 @@ export type Database = {
                     author: string;
                 }[];
             };
-            search_product:
-                | {
-                      Args: {
-                          book_term: string;
-                      };
-                      Returns: {
-                          id: number;
-                          title: string;
-                          author: string;
-                      }[];
-                  }
-                | {
-                      Args: {
-                          product_term: string;
-                      };
-                      Returns: {
-                          category_id: number | null;
-                          created_at: string;
-                          description: string;
-                          id: string;
-                          in_stock: number | null;
-                          pictures: string[];
-                          price: number;
-                          title: string;
-                      }[];
-                  };
+            search_product: {
+                Args: {
+                    product_term: string;
+                };
+                Returns: {
+                    category_id: number | null;
+                    created_at: string;
+                    description: string;
+                    id: string;
+                    in_stock: number | null;
+                    pictures: string[];
+                    price: number;
+                    title: string;
+                }[];
+            };
             set_limit: {
                 Args: {
                     '': number;

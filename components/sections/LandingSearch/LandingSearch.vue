@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import type { Database } from '@@/database.types';
-import type { SearchProductResult } from '@/types';
+import type { SearchedProductResult } from '@/types';
 import QueryPopupHints from '@/components/sections/LandingSearch/QueryPopupHints.vue';
 
 const client = useSupabaseClient<Database>();
 
 const searchQuery = ref('');
-const searchedData = ref<SearchProductResult>([]);
+const searchedData = ref<SearchedProductResult>([]);
 
 provide('searchedData', searchedData);
 
@@ -44,8 +44,6 @@ useResizeObserver(inputElement, (entries) => {
                 required
             />
 
-            <!--            {{ searchedData[0]?.title }}-->
-
             <img class="loupe-icon" src="@/assets/images/loupe.svg" />
 
             <button class="button">искать</button>
@@ -56,7 +54,6 @@ useResizeObserver(inputElement, (entries) => {
             :container-width="inputWidth"
             :searched-data="searchedData"
         />
-        <!--        v-if="searchedData[0]"-->
     </div>
 </template>
 

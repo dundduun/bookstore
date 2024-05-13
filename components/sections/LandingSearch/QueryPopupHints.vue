@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import PopupHint from '@/components/sections/LandingSearch/PopupHint.vue';
-import type { SearchProductResult } from '@/types';
+import type { SearchedProductResult } from '@/types';
 
 defineProps<{
     containerWidth: string;
-    searchedData: SearchProductResult;
+    searchedData: SearchedProductResult;
 }>();
 </script>
 
@@ -12,7 +12,6 @@ defineProps<{
     <div class="landing-query-popup-hints">
         <PopupHint
             v-for="(searchedInstance, index) in searchedData"
-            v-key="searchedData[index].id"
             :searchedInstance="searchedInstance"
         />
     </div>
@@ -22,7 +21,6 @@ defineProps<{
 .landing-query-popup-hints {
     position: absolute;
     width: v-bind(containerWidth);
-    height: 100px;
     margin-right: 190px;
     margin-top: 150px;
     background-color: white;
