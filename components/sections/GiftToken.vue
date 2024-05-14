@@ -24,7 +24,7 @@ const { data: giftTokenImage } = client.storage
 <template>
     <div class="gift-token">
         <div class="container">
-            <img :src="giftTokenImage.publicUrl" />
+            <img class="img" :src="giftTokenImage.publicUrl" />
 
             <div class="text">
                 <span class="title">
@@ -67,7 +67,7 @@ const { data: giftTokenImage } = client.storage
             margin-left: 20px;
         }
 
-        img {
+        .img {
             width: 62vw;
             height: 46vw;
             max-width: 760px;
@@ -165,8 +165,7 @@ const { data: giftTokenImage } = client.storage
                     @media (hover: hover) {
                         &:hover {
                             .like-img {
-                                width: 23px;
-                                height: 20px;
+                                transform: scale(1.15);
                             }
                         }
                     }
@@ -174,17 +173,16 @@ const { data: giftTokenImage } = client.storage
                     @media (hover: none) {
                         &:active {
                             .like-img {
-                                width: 23px;
-                                height: 20px;
+                                transform: scale(1.15);
                             }
                         }
                     }
 
                     .like-img {
-                        overflow: visible;
+                        transform: scale(1.01);
                         width: 20px;
                         height: 17px;
-                        transition: 0.1s;
+                        transition: 0.3s;
                     }
                 }
             }
