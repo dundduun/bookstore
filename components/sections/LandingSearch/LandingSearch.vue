@@ -40,7 +40,7 @@ useResizeObserver(inputElement, (entries) => {
                 ref="inputElement"
                 class="input"
                 type="text"
-                placeholder="название книги / автор"
+                placeholder="название / описание книги"
                 required
             />
 

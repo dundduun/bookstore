@@ -14,22 +14,17 @@ if (props.searchedInstance.pictures[0]) {
         .from('product_images')
         .getPublicUrl(props.searchedInstance.pictures[0]);
     productImage.value = data;
-    console.log(productImage);
-}
-
-const finishedDescription = ref('');
-if (props.searchedInstance.description.length > 60) {
-    finishedDescription.value =
-        props.searchedInstance.description.slice(0, 60) + '...';
-} else {
-    finishedDescription.value = props.searchedInstance.description;
 }
 </script>
 
 <template>
     <div class="popup-hint">
         <div class="img-container">
-            <img :src="productImage.publicUrl" class="product-image" />
+            <img
+                v-if="productImage.publicUrl"
+                :src="productImage.publicUrl"
+                class="product-image"
+            />
         </div>
 
         <div class="text">
@@ -38,7 +33,7 @@ if (props.searchedInstance.description.length > 60) {
             </span>
 
             <span class="description">
-                {{ finishedDescription }}
+                {{ searchedInstance.description }}
             </span>
 
             <span class="price"> {{ searchedInstance.price }} р. </span>
@@ -49,9 +44,10 @@ if (props.searchedInstance.description.length > 60) {
 <style scoped lang="scss">
 .popup-hint {
     width: 100%;
-    min-height: 100px;
+    height: 100px;
     display: flex;
     align-items: center;
+    padding: 0 15px;
     cursor: pointer;
     transition: 0.2s;
 
@@ -62,32 +58,42 @@ if (props.searchedInstance.description.length > 60) {
     .img-container {
         width: 72px;
         height: 72px;
-        min-width: 72px;
+        flex: 0 0 auto;
         display: flex;
         justify-content: center;
-        margin-left: 15px;
         align-items: center;
         background-color: white;
         border: 1px $border-light-gray solid;
 
         .product-image {
-            height: auto;
-            width: 50%;
+            height: 75%;
+            width: 75%;
+            object-fit: cover;
         }
     }
 
     .text {
+        max-width: calc(100% - 105px);
         display: flex;
         flex-direction: column;
+        align-items: flex-start;
         margin-left: 15px;
         font-size: 16px;
 
         .title {
+            max-width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
             font-weight: 600;
         }
 
         .description {
+            max-width: 100%;
             margin-top: 6px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
             font-weight: 300;
         }
 
