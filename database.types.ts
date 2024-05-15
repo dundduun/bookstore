@@ -110,16 +110,6 @@ export type Database = {
                 };
                 Returns: unknown;
             };
-            search_books: {
-                Args: {
-                    book_term: string;
-                };
-                Returns: {
-                    id: number;
-                    title: string;
-                    author: string;
-                }[];
-            };
             search_product: {
                 Args: {
                     product_term: string;
