@@ -87,7 +87,7 @@ useResizeObserver(inputElement, (entries) => {
             padding: 0 0 0 65px;
             border: 2px $background solid;
             font-size: 16px;
-            font-family: Gilroy, Arial, sans-serif;
+            font-family: $font-family;
             color: white;
             background-color: inherit;
 
@@ -127,7 +127,7 @@ useResizeObserver(inputElement, (entries) => {
             font-size: 16px;
             border: 2px $background solid;
             cursor: pointer;
-            font-family: Gilroy, Arial, sans-serif;
+            font-family: $font-family;
             color: white;
             background-color: $background;
 

@@ -108,7 +108,7 @@ footer {
                 grid-area: input;
                 padding: 0 20px;
                 font-size: 16px;
-                font-family: Gilroy, Arial, sans-serif;
+                font-family: $font-family;
                 border: none;
                 border-radius: 0;
 
@@ -122,7 +122,7 @@ footer {
                 grid-area: button;
                 margin-left: 20px;
                 font-size: 16px;
-                font-family: Gilroy, Arial, sans-serif;
+                font-family: $font-family;
                 color: white;
                 background-color: black;
                 border: none;

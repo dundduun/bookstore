@@ -125,7 +125,7 @@ const { data: giftTokenImage } = client.storage
                 .buy-button {
                     padding: 14px 35px;
                     font-size: 14px;
-                    font-family: Gilroy, Arial, sans-serif;
+                    font-family: $font-family;
                     font-weight: 600;
                     border: 1px $primary solid;
                     cursor: pointer;

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import '@/assets/styles/global.scss';
-import '@/assets/styles/gilroy-font.scss';
 
 useHead({
     title: 'Masters Bookstore - книжный магазин',
