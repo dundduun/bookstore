@@ -70,13 +70,15 @@ watchDebounced(
             <button class="button">искать</button>
         </form>
 
-        <QueryPopupHints
-            v-show="isHintsVisible"
-            ref="hintsElement"
-            :container-width="inputWidth"
-            :searched-data="searchedData"
-            @hints-affected="hintsAffected"
-        />
+        <Transition name="hints" appear class="transition">
+            <QueryPopupHints
+                v-show="isHintsVisible"
+                ref="hintsElement"
+                :container-width="inputWidth"
+                :searched-data="searchedData"
+                @hints-affected="hintsAffected"
+            />
+        </Transition>
     </div>
 </template>
 
@@ -159,9 +161,8 @@ watchDebounced(
             }
 
             @media (hover: hover) {
-                transition:
-                    color 0.3s,
-                    background-color 0.3s;
+                transition: color 0.3s,
+                background-color 0.3s;
 
                 &:hover {
                     color: $background;
@@ -170,9 +171,8 @@ watchDebounced(
             }
 
             @media (hover: none) {
-                transition:
-                    color 0.1s,
-                    background-color 0.1s;
+                transition: color 0.1s,
+                background-color 0.1s;
 
                 &:active {
                     color: $background;
@@ -180,6 +180,16 @@ watchDebounced(
                 }
             }
         }
+    }
+
+    .hints-enter-active,
+    .hints-leave-active {
+        transition: opacity 0.3s ease;
+    }
+
+    .hints-enter-from,
+    .hints-leave-to {
+        opacity: 0;
     }
 }
 </style>
