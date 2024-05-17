@@ -6,10 +6,19 @@ defineProps<{
     containerWidth: string;
     searchedData: SearchedProductResult;
 }>();
+
+const emit = defineEmits(['hintsAffected']);
+
+const hintsElement = ref();
+const { focused: isHintsFocused } = useFocus(hintsElement);
+
+watch(isHintsFocused, () => {
+    emit('hintsAffected');
+});
 </script>
 
 <template>
-    <div class="landing-query-popup-hints">
+    <div class="landing-query-popup-hints" tabindex="0" ref="hintsElement">
         <PopupHint
             v-for="searchedInstance in searchedData"
             :searched-instance="searchedInstance"

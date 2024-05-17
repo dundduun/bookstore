@@ -22,14 +22,36 @@ watchDebounced(
     { debounce: 700, maxWait: 5000 },
 );
 
-const inputElement = ref(null);
+const inputElement = ref();
 const inputWidth = ref('');
-
 useResizeObserver(inputElement, (entries) => {
     const entry = entries[0];
     const { width } = entry.contentRect;
     inputWidth.value = width + 70 + 'px';
 });
+
+const hintsElement = ref();
+const isHintsVisible = ref(true);
+const isHintsFocused = ref(false);
+const { focused: isInputFocused } = useFocus(inputElement);
+
+function hintsAffected() {
+    isHintsFocused.value = !isHintsFocused.value;
+}
+
+watchDebounced(
+    [isInputFocused, isHintsFocused],
+    ([isInputFocused, isHintsFocused]) => {
+        if (isInputFocused || isHintsFocused) {
+            isHintsVisible.value = true;
+            console.log('isHintsVisible.value = true');
+        } else {
+            isHintsVisible.value = false;
+            console.log('isHintsVisible.value = false');
+        }
+    },
+    { debounce: 1 },
+);
 </script>
 
 <template>
@@ -41,7 +63,6 @@ useResizeObserver(inputElement, (entries) => {
                 class="input"
                 type="text"
                 placeholder="название / описание книги"
-                required
             />
 
             <img class="loupe-icon" src="@/assets/images/loupe.svg" />
@@ -50,9 +71,11 @@ useResizeObserver(inputElement, (entries) => {
         </form>
 
         <QueryPopupHints
-            v-if="searchedData[0]"
+            v-show="isHintsVisible"
+            ref="hintsElement"
             :container-width="inputWidth"
             :searched-data="searchedData"
+            @hints-affected="hintsAffected"
         />
     </div>
 </template>
