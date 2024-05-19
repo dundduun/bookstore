@@ -62,15 +62,15 @@ watchDebounced(
             <button class="button">искать</button>
         </form>
 
-            <Transition name="hints" appear>
-                <QueryPopupHints
-                    v-show="isHintsVisible"
-                    ref="hintsElement"
-                    :container-width="inputWidth"
-                    :searched-data="searchedData"
-                    @hints-affected="hintsAffected"
-                />
-            </Transition>
+        <Transition name="hints" appear>
+            <QueryPopupHints
+                v-show="isHintsVisible"
+                ref="hintsElement"
+                :container-width="inputWidth"
+                :searched-data="searchedData"
+                @hints-affected="hintsAffected"
+            />
+        </Transition>
     </div>
 </template>
 

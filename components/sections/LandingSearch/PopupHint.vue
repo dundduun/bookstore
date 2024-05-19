@@ -24,7 +24,7 @@ onMounted(() => {
 
 onBeforeUpdate(() => {
     fetchImage();
-})
+});
 </script>
 
 <template>
