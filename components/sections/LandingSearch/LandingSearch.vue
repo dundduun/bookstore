@@ -8,8 +8,6 @@ const client = useSupabaseClient<Database>();
 const searchQuery = ref('');
 const searchedData = ref<SearchedProductResult>([]);
 
-provide('searchedData', searchedData);
-
 watchDebounced(
     searchQuery,
     async (newSearchQuery) => {
@@ -42,13 +40,7 @@ function hintsAffected() {
 watchDebounced(
     [isInputFocused, isHintsFocused],
     ([isInputFocused, isHintsFocused]) => {
-        if (isInputFocused || isHintsFocused) {
-            isHintsVisible.value = true;
-            console.log('isHintsVisible.value = true');
-        } else {
-            isHintsVisible.value = false;
-            console.log('isHintsVisible.value = false');
-        }
+        isHintsVisible.value = isInputFocused || isHintsFocused;
     },
     { debounce: 1 },
 );
@@ -70,15 +62,15 @@ watchDebounced(
             <button class="button">искать</button>
         </form>
 
-        <Transition name="hints" appear class="transition">
-            <QueryPopupHints
-                v-show="isHintsVisible"
-                ref="hintsElement"
-                :container-width="inputWidth"
-                :searched-data="searchedData"
-                @hints-affected="hintsAffected"
-            />
-        </Transition>
+            <Transition name="hints" appear>
+                <QueryPopupHints
+                    v-show="isHintsVisible"
+                    ref="hintsElement"
+                    :container-width="inputWidth"
+                    :searched-data="searchedData"
+                    @hints-affected="hintsAffected"
+                />
+            </Transition>
     </div>
 </template>
 
@@ -161,8 +153,9 @@ watchDebounced(
             }
 
             @media (hover: hover) {
-                transition: color 0.3s,
-                background-color 0.3s;
+                transition:
+                    color 0.3s,
+                    background-color 0.3s;
 
                 &:hover {
                     color: $background;
@@ -171,8 +164,9 @@ watchDebounced(
             }
 
             @media (hover: none) {
-                transition: color 0.1s,
-                background-color 0.1s;
+                transition:
+                    color 0.1s,
+                    background-color 0.1s;
 
                 &:active {
                     color: $background;

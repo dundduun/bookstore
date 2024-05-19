@@ -51,15 +51,13 @@ if (props.searchedInstance.pictures[0]) {
     cursor: pointer;
     transition: 0.2s;
 
-    @media(hover: hover) {
-
+    @media (hover: hover) {
         &:hover {
             background-color: $hint-background-light-gray;
         }
     }
 
-    @media(hover: none) {
-
+    @media (hover: none) {
         &.active {
             background-color: $hint-background-light-gray;
         }
