@@ -3,22 +3,28 @@ import type { Database } from '@@/database.types';
 
 const client = useSupabaseClient<Database>();
 
-const { data: category } = await client
-    .from('category')
-    .select('*')
-    .eq('code', 'gift_token')
-    .single();
+const { data: giftTokenCategory } = await useAsyncData(async () => {
+    const { data } = await client
+        .from('category')
+        .select('*')
+        .eq('code', 'gift_token')
+        .single();
+    return data;
+});
 
-const { data: giftToken } = await client
-    .from('product')
-    .select('*')
-    .eq('category_id', category!.id)
-    .limit(1)
-    .single();
+const { data: giftToken } = await useAsyncData(async () => {
+    const { data } = await client
+        .from('product')
+        .select('*')
+        .eq('category_id', giftTokenCategory.value!.id)
+        .limit(1)
+        .single();
+    return data;
+});
 
 const { data: giftTokenImage } = client.storage
     .from('product_images')
-    .getPublicUrl(giftToken!.pictures[0]);
+    .getPublicUrl(giftToken.value!.pictures[0]);
 </script>
 
 <template>
