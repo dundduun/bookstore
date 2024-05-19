@@ -9,12 +9,22 @@ const props = defineProps<{
     searchedInstance: SearchedInstanceResult;
 }>();
 
-if (props.searchedInstance.pictures[0]) {
-    const { data } = client.storage
-        .from('product_images')
-        .getPublicUrl(props.searchedInstance.pictures[0]);
-    productImage.value = data;
+function fetchImage() {
+    if (props.searchedInstance.pictures[0]) {
+        const { data } = client.storage
+            .from('product_images')
+            .getPublicUrl(props.searchedInstance.pictures[0]);
+        productImage.value = data;
+    }
 }
+
+onMounted(() => {
+    fetchImage();
+});
+
+onBeforeUpdate(() => {
+    fetchImage();
+})
 </script>
 
 <template>
@@ -32,9 +42,7 @@ if (props.searchedInstance.pictures[0]) {
                 {{ searchedInstance.title }}
             </span>
 
-            <span class="description">
-                {{ searchedInstance.description }}
-            </span>
+            <span class="description" v-html="searchedInstance.description" />
 
             <span class="price"> {{ searchedInstance.price }} р. </span>
         </div>
@@ -74,8 +82,8 @@ if (props.searchedInstance.pictures[0]) {
         border: 1px $border-light-gray solid;
 
         .product-image {
-            height: 75%;
-            width: 75%;
+            height: 100%;
+            width: 100%;
             object-fit: cover;
         }
     }
@@ -98,6 +106,7 @@ if (props.searchedInstance.pictures[0]) {
 
         .description {
             max-width: 100%;
+            max-height: 19px;
             margin-top: 6px;
             overflow: hidden;
             white-space: nowrap;
