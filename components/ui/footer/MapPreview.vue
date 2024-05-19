@@ -3,6 +3,10 @@ import { LMap, LTileLayer, LMarker, LPopup } from '@vue-leaflet/vue-leaflet';
 import 'leaflet/dist/leaflet.css';
 
 const zoom = ref(5);
+
+const tileUrl = process.env.VERCEL_ENV === 'production' ?
+    'https://tiles.stadiamaps.com/tiles/stamen_toner_lite/{z}/{x}/{y}{r}.png' :
+    'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 </script>
 
 <template>
@@ -13,10 +17,7 @@ const zoom = ref(5);
             v-model:zoom="zoom"
             :center="[57.925154, 33.924931]"
         >
-            <LTileLayer
-                url="https://tiles.stadiamaps.com/tiles/stamen_toner_lite/{z}/{x}/{y}{r}.png"
-            >
-            </LTileLayer>
+            <LTileLayer :url="tileUrl" />
             <LMarker :lat-lng="[59.939343, 30.285361]">
                 <LPopup>
                     masters bookstore
