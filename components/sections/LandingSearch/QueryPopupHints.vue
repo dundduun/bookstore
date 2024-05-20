@@ -29,6 +29,7 @@ watch(isHintsFocused, () => {
 <style scoped lang="scss">
 .landing-query-popup-hints {
     position: absolute;
+    z-index: 1;
     width: v-bind(containerWidth);
     margin: 150px 190px 0 0;
     background-color: white;
