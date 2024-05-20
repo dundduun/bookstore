@@ -7,7 +7,7 @@ const { data: giftTokenCategory } = await useAsyncData(async () => {
     const { data } = await client
         .from('category')
         .select('*')
-        .eq('code', 'gift_token')
+        .eq('code', 'gift-token')
         .single();
     return data;
 });
