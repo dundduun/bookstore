@@ -6,7 +6,7 @@ const client = useSupabaseClient<Database>();
 const { data: category } = await client
     .from('category')
     .select('*')
-    .eq('code', 'gift_token')
+    .eq('code', 'gift-token')
     .single();
 
 const { data: giftToken } = await client
