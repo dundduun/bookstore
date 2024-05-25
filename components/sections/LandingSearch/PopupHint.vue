@@ -23,6 +23,7 @@ onMounted(() => {
 });
 
 onBeforeUpdate(() => {
+    productImage.value = { publicUrl: '' };
     fetchImage();
 });
 </script>
