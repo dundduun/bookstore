@@ -166,6 +166,7 @@ const { data: giftTokenImage } = client.storage
                     padding: 0;
                     border: 1px $border-light-gray solid;
                     border-radius: 100%;
+                    cursor: pointer;
                     background-color: white;
 
                     @media (hover: hover) {
