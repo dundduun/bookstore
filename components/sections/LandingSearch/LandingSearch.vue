@@ -12,7 +12,7 @@ watchDebounced(
     searchQuery,
     async (newSearchQuery) => {
         const { data } = await client.rpc('search_product', {
-            product_term: newSearchQuery,
+            search_term: newSearchQuery,
         });
 
         searchedData.value = data!;
