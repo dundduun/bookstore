@@ -44,6 +44,7 @@ const tileUrl =
 .map-preview {
     width: 50vw;
     height: 100%;
+    z-index: 0;
 
     @media (max-width: 900px) {
         width: 100%;
