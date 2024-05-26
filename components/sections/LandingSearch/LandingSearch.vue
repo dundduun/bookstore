@@ -7,15 +7,34 @@ const client = useSupabaseClient<Database>();
 
 const searchQuery = ref('');
 const searchedData = ref<SearchedProductResult>([]);
-
+const similarQueriesChecker = ref('');
+const allowedUpdatesToDatabase = ref(7);
 watchDebounced(
     searchQuery,
     async (newSearchQuery) => {
-        const { data } = await client.rpc('search_product', {
-            search_term: newSearchQuery,
-        });
+        if (newSearchQuery) {
+            if (similarQueriesChecker.value !== newSearchQuery) {
+                similarQueriesChecker.value = newSearchQuery;
 
-        searchedData.value = data!;
+                const { data } = await client.rpc('search_product', {
+                    search_term: newSearchQuery,
+                });
+                searchedData.value = data!;
+
+                if (searchedData.value[0]) {
+                    if (newSearchQuery.length > 2) {
+                        if (allowedUpdatesToDatabase.value) {
+                            await client.rpc('increase_product_search_rank', {
+                                update_term: newSearchQuery,
+                            });
+                            --allowedUpdatesToDatabase.value;
+                        }
+                    }
+                }
+            }
+        } else {
+            searchedData.value = [];
+        }
     },
     { debounce: 700, maxWait: 5000 },
 );

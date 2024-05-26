@@ -123,6 +123,12 @@ export type Database = {
         }
         Returns: unknown
       }
+      increase_product_search_rank: {
+        Args: {
+          update_term: string
+        }
+        Returns: undefined
+      }
       search_product: {
         Args: {
           search_term: string
