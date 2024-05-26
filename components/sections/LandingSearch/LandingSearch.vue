@@ -9,11 +9,13 @@ const searchQuery = ref('');
 const searchedData = ref<SearchedProductResult>([]);
 const similarQueriesChecker = ref('');
 const allowedUpdatesToDatabase = ref(7);
+const isSearchLoading = ref(false);
 watchDebounced(
     searchQuery,
     async (newSearchQuery) => {
         if (newSearchQuery) {
             if (similarQueriesChecker.value !== newSearchQuery) {
+                isSearchLoading.value = true;
                 similarQueriesChecker.value = newSearchQuery;
 
                 const { data } = await client.rpc('search_product', {
@@ -27,10 +29,11 @@ watchDebounced(
                             await client.rpc('increase_product_search_rank', {
                                 update_term: newSearchQuery,
                             });
-                            --allowedUpdatesToDatabase.value;
+                            allowedUpdatesToDatabase.value--;
                         }
                     }
                 }
+                isSearchLoading.value = false;
             }
         } else {
             searchedData.value = [];
@@ -44,7 +47,7 @@ const inputWidth = ref('');
 useResizeObserver(inputElement, (entries) => {
     const entry = entries[0];
     const { width } = entry.contentRect;
-    inputWidth.value = width + 70 + 'px';
+    inputWidth.value = width + 135 + 'px';
 });
 
 const hintsElement = ref();
@@ -63,6 +66,11 @@ watchDebounced(
     },
     { debounce: 1 },
 );
+
+function clickCrossIcon() {
+    searchQuery.value = '';
+    inputElement.value.focus();
+}
 </script>
 
 <template>
@@ -77,6 +85,21 @@ watchDebounced(
             />
 
             <img class="loupe-icon" src="@/assets/images/loupe.svg" />
+
+            <Transition class="icon-transition" name="search-icons">
+                <img
+                    v-if="isSearchLoading"
+                    class="loading-icon"
+                    src="@/assets/images/search-loading.svg"
+                />
+
+                <img
+                    v-else-if="searchQuery"
+                    @click="clickCrossIcon"
+                    class="cross-icon"
+                    src="@/assets/images/search-cross.svg"
+                />
+            </Transition>
 
             <button class="button">искать</button>
         </form>
@@ -94,6 +117,33 @@ watchDebounced(
 </template>
 
 <style scoped lang="scss">
+@mixin absolutely-positioned-search-cross-and-loading {
+    position: absolute;
+    width: 21px;
+    height: 21px;
+    margin-left: 710px;
+
+    @media (max-width: 1230px) {
+        right: 240px;
+        margin-right: 0;
+    }
+
+    @media (max-width: 600px) {
+        right: 50px;
+        margin-bottom: 80px;
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0turn);
+    }
+
+    to {
+        transform: rotate(1turn);
+    }
+}
+
 .landing-search {
     height: 240px;
     width: 100%;
@@ -120,7 +170,7 @@ watchDebounced(
             height: 60px;
             width: 970px;
             flex: 0 1 auto;
-            padding: 0 0 0 65px;
+            padding: 0 65px;
             border: 2px $background solid;
             font-size: 16px;
             font-family: $font-family;
@@ -142,9 +192,9 @@ watchDebounced(
 
         .loupe-icon {
             position: absolute;
-            margin-right: 1085px;
             height: 25px;
             width: auto;
+            margin-right: 1085px;
 
             @media (max-width: 1230px) {
                 left: 50px;
@@ -154,6 +204,18 @@ watchDebounced(
             @media (max-width: 600px) {
                 margin-bottom: 80px;
             }
+        }
+
+        .cross-icon {
+            @include absolutely-positioned-search-cross-and-loading;
+            cursor: pointer;
+        }
+
+        .loading-icon {
+            @include absolutely-positioned-search-cross-and-loading;
+            animation: spin 1200ms;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
         }
 
         .button {
@@ -195,11 +257,15 @@ watchDebounced(
         }
     }
 
+    .search-icons-enter-active,
+    .search-icons-leave-active,
     .hints-enter-active,
     .hints-leave-active {
         transition: opacity 0.3s ease;
     }
 
+    .search-icons-enter-from,
+    .search-icons-leave-to,
     .hints-enter-from,
     .hints-leave-to {
         opacity: 0;
