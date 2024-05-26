@@ -14,7 +14,7 @@
                 <input
                     class="input"
                     type="email"
-                    placeholder="Your E-mail"
+                    placeholder="ваш e-mail"
                     required
                 />
                 <button class="subscribe">подписаться</button>
