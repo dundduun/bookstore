@@ -13,15 +13,17 @@ const isSearchLoading = ref(false);
 watchDebounced(
     searchQuery,
     async (newSearchQuery) => {
-        if (newSearchQuery) {
-            if (similarQueriesChecker.value !== newSearchQuery) {
+        if (similarQueriesChecker.value !== newSearchQuery) {
+            searchedData.value = [];
+            similarQueriesChecker.value = newSearchQuery;
+            if (newSearchQuery) {
                 isSearchLoading.value = true;
-                similarQueriesChecker.value = newSearchQuery;
 
                 const { data } = await client.rpc('search_product', {
                     search_term: newSearchQuery,
                 });
                 searchedData.value = data!;
+                isSearchLoading.value = false;
 
                 if (searchedData.value[0]) {
                     if (newSearchQuery.length > 2) {
@@ -69,6 +71,7 @@ watchDebounced(
 
 function clickCrossIcon() {
     searchQuery.value = '';
+    searchedData.value = [];
     inputElement.value.focus();
 }
 </script>
