@@ -4,23 +4,14 @@ import { serverSupabaseClient } from '#supabase/server';
 export default defineEventHandler(async (event) => {
     const client = await serverSupabaseClient<Database>(event);
 
-    const query = event.context.params!.query;
+    const query = decodeURIComponent(event.context.params!.query);
+
+    if (query.length < 2) return;
 
     await client.rpc('increase_product_search_rank', {
         update_term: query,
     });
 
-    const result = {
-        query: query,
-        ip: event.context.clientAddress, //not working!
-    };
-    return result;
+    const clientIP = event.node.req.headers['x-forwarded-for'];
+    return;
 });
-
-// to update:
-//
-// const query = 'a';
-//
-// const { data: fetchedData } = useFetch(
-//     `/api/updateSearchProductStats/${query}`,
-// );

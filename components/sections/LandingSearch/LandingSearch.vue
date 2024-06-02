@@ -8,7 +8,6 @@ const client = useSupabaseClient<Database>();
 const searchQuery = ref('');
 const searchedData = ref<SearchedProductResult>([]);
 const similarQueriesChecker = ref('');
-const allowedUpdatesToDatabase = ref(7);
 const isSearchLoading = ref(false);
 watchDebounced(
     searchQuery,
@@ -25,15 +24,8 @@ watchDebounced(
                 searchedData.value = data!;
                 isSearchLoading.value = false;
 
-                if (searchedData.value[0]) {
-                    if (newSearchQuery.length > 2) {
-                        if (allowedUpdatesToDatabase.value) {
-                            await client.rpc('increase_product_search_rank', {
-                                update_term: newSearchQuery,
-                            });
-                            allowedUpdatesToDatabase.value--;
-                        }
-                    }
+                if (searchedData.value[0] && newSearchQuery.length > 2) {
+                    await $fetch(`api/updateSearchProductStats/${newSearchQuery}`);
                 }
                 isSearchLoading.value = false;
             }
@@ -237,9 +229,8 @@ function clickCrossIcon() {
             }
 
             @media (hover: hover) {
-                transition:
-                    color 0.3s,
-                    background-color 0.3s;
+                transition: color 0.3s,
+                background-color 0.3s;
 
                 &:hover {
                     color: $background;
@@ -248,9 +239,8 @@ function clickCrossIcon() {
             }
 
             @media (hover: none) {
-                transition:
-                    color 0.1s,
-                    background-color 0.1s;
+                transition: color 0.1s,
+                background-color 0.1s;
 
                 &:active {
                     color: $background;
