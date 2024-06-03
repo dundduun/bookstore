@@ -33,6 +33,21 @@ export type Database = {
         }
         Relationships: []
       }
+      ip_limitations: {
+        Row: {
+          ip: string
+          search_rank_up_queries: number
+        }
+        Insert: {
+          ip: string
+          search_rank_up_queries?: number
+        }
+        Update: {
+          ip?: string
+          search_rank_up_queries?: number
+        }
+        Relationships: []
+      }
       product: {
         Row: {
           category_code: string
@@ -45,7 +60,6 @@ export type Database = {
           price: number
           search_rank: number
           title: string
-          title_description: string | null
         }
         Insert: {
           category_code: string
@@ -123,9 +137,15 @@ export type Database = {
         }
         Returns: unknown
       }
-      increase_product_search_rank: {
+      increment_product_search_rank: {
         Args: {
           update_term: string
+        }
+        Returns: undefined
+      }
+      increment_user_search_up_queries_amount: {
+        Args: {
+          user_ip: string
         }
         Returns: undefined
       }
@@ -162,12 +182,6 @@ export type Database = {
           "": string
         }
         Returns: string[]
-      }
-      title_description: {
-        Args: {
-          "": unknown
-        }
-        Returns: string
       }
     }
     Enums: {
