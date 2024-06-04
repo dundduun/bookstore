@@ -3,28 +3,34 @@ import type { Database } from '@@/database.types';
 
 const client = useSupabaseClient<Database>();
 
-const { data: category } = await client
-    .from('category')
-    .select('*')
-    .eq('code', 'gift-token')
-    .single();
+const { data: giftTokenCategory } = await useAsyncData(async () => {
+    const { data } = await client
+        .from('category')
+        .select('*')
+        .eq('code', 'gift-token')
+        .single();
+    return data;
+});
 
-const { data: giftToken } = await client
-    .from('product')
-    .select('*')
-    .eq('category_id', category!.id)
-    .limit(1)
-    .single();
+const { data: giftToken } = await useAsyncData(async () => {
+    const { data } = await client
+        .from('product')
+        .select('*')
+        .eq('category_id', giftTokenCategory.value!.id)
+        .limit(1)
+        .single();
+    return data;
+});
 
 const { data: giftTokenImage } = client.storage
     .from('product_images')
-    .getPublicUrl(giftToken!.pictures[0]);
+    .getPublicUrl(giftToken.value!.pictures[0]);
 </script>
 
 <template>
     <div class="gift-token">
         <div class="container">
-            <img :src="giftTokenImage.publicUrl" />
+            <img class="img" :src="giftTokenImage.publicUrl" />
 
             <div class="text">
                 <span class="title">
@@ -67,7 +73,7 @@ const { data: giftTokenImage } = client.storage
             margin-left: 20px;
         }
 
-        img {
+        .img {
             width: 62vw;
             height: 46vw;
             max-width: 760px;
@@ -125,7 +131,7 @@ const { data: giftTokenImage } = client.storage
                 .buy-button {
                     padding: 14px 35px;
                     font-size: 14px;
-                    font-family: Gilroy, Arial, sans-serif;
+                    font-family: $font-family;
                     font-weight: 600;
                     border: 1px $primary solid;
                     cursor: pointer;
@@ -160,13 +166,13 @@ const { data: giftTokenImage } = client.storage
                     padding: 0;
                     border: 1px $border-light-gray solid;
                     border-radius: 100%;
+                    cursor: pointer;
                     background-color: white;
 
                     @media (hover: hover) {
                         &:hover {
                             .like-img {
-                                width: 23px;
-                                height: 20px;
+                                transform: scale(1.15);
                             }
                         }
                     }
@@ -174,17 +180,16 @@ const { data: giftTokenImage } = client.storage
                     @media (hover: none) {
                         &:active {
                             .like-img {
-                                width: 23px;
-                                height: 20px;
+                                transform: scale(1.15);
                             }
                         }
                     }
 
                     .like-img {
-                        overflow: visible;
+                        transform: scale(1.01);
                         width: 20px;
                         height: 17px;
-                        transition: 0.1s;
+                        transition: 0.3s;
                     }
                 }
             }

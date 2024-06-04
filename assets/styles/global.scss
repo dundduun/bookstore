@@ -1,3 +1,5 @@
+@use '@/assets/styles/gilroy-font.scss';
+
 * {
     box-sizing: border-box;
 }
@@ -5,7 +7,7 @@
 body {
     margin: 0;
     overflow-x: hidden;
-    font-family: Gilroy, Arial, sans-serif;
+    font-family: $font-family;
     font-weight: normal;
 }
 

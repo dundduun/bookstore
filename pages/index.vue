@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import LandingSearch from '@/components/sections/landing-search/LandingSearch.vue';
-import GiftToken from '@/components/sections/GiftToken.vue';
+import LandingSearch from '@/components/sections/LandingSearch/LandingSearch.vue';
+import RecommendedItem from '@/components/sections/RecommendedItem.vue';
 import MapPreview from '@/components/ui/footer/MapPreview.vue';
 import Contacts from '@/components/ui/footer/Contacts.vue';
 import SocialMedia from '@/components/ui/footer/SocialMedia.vue';
@@ -9,13 +9,13 @@ import SocialMedia from '@/components/ui/footer/SocialMedia.vue';
 <template>
     <LandingSearch />
 
-    <GiftToken />
-    
+    <RecommendedItem />
+
     <div class="store-locations">
         <MapPreview />
         <Contacts />
     </div>
-    
+
     <SocialMedia />
 </template>
 

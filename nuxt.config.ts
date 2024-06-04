@@ -3,7 +3,12 @@ export default defineNuxtConfig({
 
     typescript: { strict: true },
 
-    modules: ['@pinia/nuxt', '@nuxt/test-utils/module', "@nuxtjs/supabase"],
+    modules: [
+        '@pinia/nuxt',
+        '@nuxt/test-utils/module',
+        '@nuxtjs/supabase',
+        '@vueuse/nuxt',
+    ],
 
     app: {
         head: {
@@ -16,7 +21,8 @@ export default defineNuxtConfig({
         css: {
             preprocessorOptions: {
                 scss: {
-                    additionalData: '@use "@/assets/styles/variables.scss" as *;',
+                    additionalData:
+                        '@use "@/assets/styles/variables.scss" as *;',
                 },
             },
         },

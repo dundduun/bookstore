@@ -48,28 +48,20 @@ defineProps<{
     }
 
     .city-name {
-        display: block;
         font-weight: bold;
     }
 
     .city-addresses {
         margin-top: 30px;
+        display: flex;
+        flex-direction: column;
 
         @media (max-width: 900px) {
             margin-top: 20px;
         }
 
         .address-name {
-            display: block;
             font-weight: bold;
-        }
-
-        .full-address {
-            display: block;
-        }
-
-        .working-time {
-            display: block;
         }
     }
 
