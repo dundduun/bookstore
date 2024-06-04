@@ -6,7 +6,14 @@ export default defineEventHandler(async (event) => {
 
     const query = decodeURIComponent(event.context.params!.query);
 
-    if (query.length <= 2) return;
+    if (query.length <= 4) return;
+
+    const { data: preciseSearch } = await client
+        .from('product')
+        .select()
+        .ilike('title', `%${query}%`);
+
+    if (!preciseSearch![0]) return;
 
     const userIp = event.node.req.headers['x-forwarded-for'];
 
@@ -33,4 +40,8 @@ export default defineEventHandler(async (event) => {
     await client.rpc('increment_product_search_rank', {
         update_term: query,
     });
+
+    return {
+        object: 'a',
+    }
 });

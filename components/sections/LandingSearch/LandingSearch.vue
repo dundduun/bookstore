@@ -7,14 +7,14 @@ const client = useSupabaseClient<Database>();
 
 const searchQuery = ref('');
 const searchedData = ref<SearchedProductResult>([]);
-const similarQueriesChecker = ref('');
+const previousQuery = ref('');
 const isSearchLoading = ref(false);
 watchDebounced(
     searchQuery,
     async (newSearchQuery) => {
-        if (similarQueriesChecker.value !== newSearchQuery) {
+        if (previousQuery.value.toLowerCase() !== newSearchQuery.toLowerCase()) {
             searchedData.value = [];
-            similarQueriesChecker.value = newSearchQuery;
+            previousQuery.value = newSearchQuery;
             if (newSearchQuery) {
                 isSearchLoading.value = true;
 
@@ -24,7 +24,7 @@ watchDebounced(
                 searchedData.value = data!;
                 isSearchLoading.value = false;
 
-                if (searchedData.value[0] && newSearchQuery.length > 2) {
+                if (searchedData.value[0] && newSearchQuery.length > 4) {
                     await $fetch(`api/updateSearchProductStats/${newSearchQuery}`);
                 }
                 isSearchLoading.value = false;
