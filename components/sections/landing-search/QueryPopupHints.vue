@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import PopupHint from '@/components/sections/LandingSearch/PopupHint.vue';
+import PopupHint from '@/components/sections/landing-search/PopupHint.vue';
 import type { SearchedProductResult } from '@/types';
 
 defineProps<{

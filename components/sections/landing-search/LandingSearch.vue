@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Database } from '@@/database.types';
 import type { SearchedProductResult } from '@/types';
-import QueryPopupHints from '@/components/sections/LandingSearch/QueryPopupHints.vue';
+import QueryPopupHints from '@/components/sections/landing-search/QueryPopupHints.vue';
 
 const client = useSupabaseClient<Database>();
 
