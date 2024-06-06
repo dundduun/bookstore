@@ -2,7 +2,7 @@
 import PopupHint from '@/components/sections/landing-search/PopupHint.vue';
 import type { SearchedProductResult } from '@/types';
 
-defineProps<{
+const props = defineProps<{
     containerWidth: string;
     searchedData: SearchedProductResult;
 }>();
@@ -19,10 +19,16 @@ watch(isHintsFocused, () => {
 
 <template>
     <div class="landing-query-popup-hints" tabindex="0" ref="hintsElement">
-        <PopupHint
-            v-for="searchedInstance in searchedData"
-            :searched-instance="searchedInstance"
-        />
+        <div v-if="searchedData[0]" class="hints-container">
+            <PopupHint
+                v-for="searchedInstance in searchedData"
+                :searched-instance="searchedInstance"
+            />
+        </div>
+
+        <div v-else class="nothing-founded">
+            Ничего не найдено
+        </div>
     </div>
 </template>
 
@@ -37,6 +43,12 @@ watch(isHintsFocused, () => {
 
     @media (max-width: 600px) {
         margin: 110px 0 0 0;
+    }
+
+    .nothing-founded {
+        margin: 20px;
+        font-size: 20px;
+        font-weight: 300;
     }
 }
 </style>

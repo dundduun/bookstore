@@ -48,7 +48,6 @@ const hintsElement = ref();
 const isHintsVisible = ref(true);
 const isHintsFocused = ref(false);
 const { focused: isInputFocused } = useFocus(inputElement);
-
 function hintsAffected() {
     isHintsFocused.value = !isHintsFocused.value;
 }
@@ -101,7 +100,8 @@ function clickCrossIcon() {
 
         <Transition name="hints" appear>
             <QueryPopupHints
-                v-show="isHintsVisible"
+                v-if="previousQuery && !isSearchLoading"
+                v-show="isHintsVisible && searchQuery"
                 ref="hintsElement"
                 :container-width="inputWidth"
                 :searched-data="searchedData"
