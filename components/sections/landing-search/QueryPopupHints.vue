@@ -2,7 +2,7 @@
 import PopupHint from '@/components/sections/landing-search/PopupHint.vue';
 import type { SearchedProductResult } from '@/types';
 
-const props = defineProps<{
+defineProps<{
     containerWidth: string;
     searchedData: SearchedProductResult;
 }>();
@@ -12,13 +12,18 @@ const emit = defineEmits(['hintsAffected']);
 const hintsElement = ref();
 const { focused: isHintsFocused } = useFocus(hintsElement);
 
-watch(isHintsFocused, () => {
-    emit('hintsAffected');
+watch(isHintsFocused, (isHintsFocused) => {
+    emit('hintsAffected', isHintsFocused);
 });
 </script>
 
 <template>
-    <div class="landing-query-popup-hints" tabindex="0" ref="hintsElement">
+    <div
+        class="landing-query-popup-hints"
+        tabindex="0"
+        ref="hintsElement"
+        @keydown.esc="isHintsFocused = false"
+    >
         <div v-if="searchedData[0]" class="hints-container">
             <PopupHint
                 v-for="searchedInstance in searchedData"
@@ -26,9 +31,7 @@ watch(isHintsFocused, () => {
             />
         </div>
 
-        <div v-else class="nothing-founded">
-            Ничего не найдено
-        </div>
+        <div v-else class="nothing-founded">Ничего не найдено</div>
     </div>
 </template>
 
@@ -41,12 +44,16 @@ watch(isHintsFocused, () => {
     background-color: white;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 
+    &:focus {
+        outline: none;
+    }
+
     @media (max-width: 600px) {
         margin: 110px 0 0 0;
     }
 
     .nothing-founded {
-        margin: 20px;
+        padding: 20px;
         font-size: 20px;
         font-weight: 300;
     }

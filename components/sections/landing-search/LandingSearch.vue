@@ -12,7 +12,9 @@ const isSearchLoading = ref(false);
 watchDebounced(
     searchQuery,
     async (newSearchQuery) => {
-        if (previousQuery.value.toLowerCase() !== newSearchQuery.toLowerCase()) {
+        if (
+            previousQuery.value.toLowerCase() !== newSearchQuery.toLowerCase()
+        ) {
             searchedData.value = [];
             previousQuery.value = newSearchQuery;
             if (newSearchQuery) {
@@ -25,7 +27,9 @@ watchDebounced(
                 isSearchLoading.value = false;
 
                 if (searchedData.value[0] && newSearchQuery.length > 4) {
-                    await $fetch(`api/updateSearchProductStats/${newSearchQuery}`);
+                    await $fetch(
+                        `api/updateSearchProductStats/${newSearchQuery}`,
+                    );
                 }
                 isSearchLoading.value = false;
             }
@@ -48,8 +52,8 @@ const hintsElement = ref();
 const isHintsVisible = ref(true);
 const isHintsFocused = ref(false);
 const { focused: isInputFocused } = useFocus(inputElement);
-function hintsAffected() {
-    isHintsFocused.value = !isHintsFocused.value;
+function hintsAffected(isComponentsHintsFocused: boolean) {
+    isHintsFocused.value = isComponentsHintsFocused;
 }
 
 watchDebounced(
@@ -73,6 +77,7 @@ function clickCrossIcon() {
             <input
                 v-model="searchQuery"
                 ref="inputElement"
+                @keydown.esc="inputElement.blur"
                 class="input"
                 type="text"
                 placeholder="название / описание книги"
@@ -229,8 +234,9 @@ function clickCrossIcon() {
             }
 
             @media (hover: hover) {
-                transition: color 0.3s,
-                background-color 0.3s;
+                transition:
+                    color 0.3s,
+                    background-color 0.3s;
 
                 &:hover {
                     color: $background;
@@ -239,8 +245,9 @@ function clickCrossIcon() {
             }
 
             @media (hover: none) {
-                transition: color 0.1s,
-                background-color 0.1s;
+                transition:
+                    color 0.1s,
+                    background-color 0.1s;
 
                 &:active {
                     color: $background;
