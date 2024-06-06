@@ -40,8 +40,4 @@ export default defineEventHandler(async (event) => {
     await client.rpc('increment_product_search_rank', {
         update_term: query,
     });
-
-    return {
-        object: 'a',
-    }
 });
