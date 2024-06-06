@@ -5,7 +5,7 @@ import 'leaflet/dist/leaflet.css';
 const zoom = ref(5);
 
 const tileUrl =
-    process.env.VERCEL_ENV === 'production'
+    process.env.NODE_ENV === 'production'
         ? 'https://tiles.stadiamaps.com/tiles/stamen_toner_lite/{z}/{x}/{y}{r}.png'
         : 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 </script>
