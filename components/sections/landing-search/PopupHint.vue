@@ -29,7 +29,7 @@ onBeforeUpdate(() => {
 </script>
 
 <template>
-    <div class="popup-hint">
+    <NuxtLink :to="{ name: 'products-id', params: { id: searchedInstance.id }}" class="popup-hint">
         <div class="img-container">
             <img
                 v-if="productImage.publicUrl"
@@ -47,7 +47,7 @@ onBeforeUpdate(() => {
 
             <span class="price"> {{ searchedInstance.price }} р. </span>
         </div>
-    </div>
+    </NuxtLink>
 </template>
 
 <style scoped lang="scss">
@@ -57,6 +57,8 @@ onBeforeUpdate(() => {
     display: flex;
     align-items: center;
     padding: 0 15px;
+    color: inherit;
+    text-decoration: none;
     cursor: pointer;
     transition: 0.2s;
 
