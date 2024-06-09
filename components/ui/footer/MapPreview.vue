@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import { LMap, LTileLayer, LMarker, LPopup } from '@vue-leaflet/vue-leaflet';
 import 'leaflet/dist/leaflet.css';
+const config = useRuntimeConfig();
 
 const zoom = ref(5);
 
 const tileUrl =
-    process.env.NODE_ENV === 'production'
-        ? 'https://tiles.stadiamaps.com/tiles/stamen_toner_lite/{z}/{x}/{y}{r}.png'
-        : 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+        config.public.vercelEnv === 'production'
+            ? 'https://tiles.stadiamaps.com/tiles/stamen_toner_lite/{z}/{x}/{y}{r}.png'
+            : 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 </script>
 
 <template>
