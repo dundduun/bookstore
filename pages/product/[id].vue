@@ -31,7 +31,9 @@ if (productInstance.pictures[0]) {
     productImage.value = data;
 }
 
-const description = '<style>br {display: block; content: \' \'; height: 25px;}</style>' + productInstance.description;
+const description =
+    "<style>br {display: block; content: ' '; height: 25px;}</style>" +
+    productInstance.description;
 </script>
 
 <template>
@@ -48,14 +50,10 @@ const description = '<style>br {display: block; content: \' \'; height: 25px;}</
                     {{ productInstance.title }}
                 </span>
 
-                <span class="price">
-                    {{ productInstance.price }} р.
-                </span>
+                <span class="price"> {{ productInstance.price }} р. </span>
             </div>
 
-            <button class="buy-button" ref="button">
-                Купить
-            </button>
+            <button class="buy-button" ref="button">Купить</button>
 
             <span v-html="description" class="description"></span>
         </div>

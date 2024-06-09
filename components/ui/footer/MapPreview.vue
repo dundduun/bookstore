@@ -6,9 +6,9 @@ const config = useRuntimeConfig();
 const zoom = ref(5);
 
 const tileUrl =
-        config.public.vercelEnv === 'production'
-            ? 'https://tiles.stadiamaps.com/tiles/stamen_toner_lite/{z}/{x}/{y}{r}.png'
-            : 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+    config.public.vercelEnv === 'production'
+        ? 'https://tiles.stadiamaps.com/tiles/stamen_toner_lite/{z}/{x}/{y}{r}.png'
+        : 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 </script>
 
 <template>
