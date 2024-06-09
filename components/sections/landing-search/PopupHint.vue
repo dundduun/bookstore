@@ -29,7 +29,10 @@ onBeforeUpdate(() => {
 </script>
 
 <template>
-    <NuxtLink :to="{ name: 'products-id', params: { id: searchedInstance.id }}" class="popup-hint">
+    <NuxtLink
+        :to="{ name: 'product-id', params: { id: searchedInstance.id } }"
+        class="popup-hint"
+    >
         <div class="img-container">
             <img
                 v-if="productImage.publicUrl"
