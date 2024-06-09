@@ -1,4 +1,10 @@
 export default defineNuxtConfig({
+    runtimeConfig: {
+      public: {
+          vercelEnv: process.env.VERCEL_ENV,
+      }
+    },
+
     devtools: { enabled: true },
 
     typescript: { strict: true },
