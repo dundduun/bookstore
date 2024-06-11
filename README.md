@@ -2,4 +2,6 @@
 
 ### Для генерации тайпингов введите в терминал:
 
-`supabase gen types typescript --project-id <project-id-name> > database.types.ts`
+```shell
+$ supabase gen types typescript --project-id <project-id-name> > database.types.ts
+```
