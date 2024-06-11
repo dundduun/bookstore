@@ -31,7 +31,7 @@ watch(isHintsFocused, (isHintsFocused) => {
             />
         </div>
 
-        <div v-else class="nothing-founded">Ничего не найдено</div>
+        <div v-else class="nothing-found">Ничего не найдено</div>
     </div>
 </template>
 
@@ -52,7 +52,7 @@ watch(isHintsFocused, (isHintsFocused) => {
         margin: 110px 0 0 0;
     }
 
-    .nothing-founded {
+    .nothing-found {
         padding: 20px;
         font-size: 20px;
         font-weight: 300;
