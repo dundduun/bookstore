@@ -10,10 +10,11 @@ export default defineEventHandler(async (event) => {
 
     const { data: preciseSearch } = await client
         .from('product')
-        .select()
-        .ilike('title', `%${query}%`);
+        .select('id')
+        .ilike('title', `%${query}%`)
+        .single();
 
-    if (!preciseSearch![0]) return;
+    if (!preciseSearch) return;
 
     const userIp = event.node.req.headers['x-forwarded-for'];
 
