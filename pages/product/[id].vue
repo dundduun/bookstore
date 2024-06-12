@@ -1,13 +1,14 @@
 <script setup lang="ts">
+import VueMarkdown from 'vue-markdown-render';
 import type { Database } from '@@/database.types';
-
-definePageMeta({
-    layout: false,
-});
 
 const client = useSupabaseClient<Database>();
 const route = useRoute();
 const router = useRouter();
+
+definePageMeta({
+    layout: false,
+});
 
 const { data: productInstance, error } = await client
     .from('product')
@@ -31,9 +32,7 @@ if (productInstance.pictures[0]) {
     productImage.value = data;
 }
 
-const description =
-    "<style>br {display: block; content: ' '; height: 25px;}</style>" +
-    productInstance.description;
+const descriptionMd = productInstance.description;
 </script>
 
 <template>
@@ -60,7 +59,7 @@ const description =
 
             <button class="buy-button" ref="button">Купить</button>
 
-            <span v-html="description" class="description"></span>
+            <VueMarkdown :source="productInstance.description" class="description" />
         </div>
     </div>
 </template>
@@ -131,24 +130,25 @@ const description =
             margin-top: 25px;
             padding: 12px 30px;
             font-size: 16px;
-            border: 2px $primary solid;
+            border: 2px $background solid;
             border-radius: 0;
             font-family: $font-family;
-            color: $primary;
-            background-color: white;
+            color: white;
+            background-color: $background;
             transition: 0.3s;
             cursor: pointer;
 
             &:hover {
-                color: white;
-                background-color: $background;
+                color: $background;
+                border: 2px $background solid;
+                background-color: white;
             }
         }
 
         .description {
-            margin-top: 30px;
+            margin-top: 15px;
             font-size: 14px;
-            line-height: 1.5;
+            line-height: 1.54;
             font-weight: 300;
         }
     }
