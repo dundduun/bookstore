@@ -39,11 +39,16 @@ const description =
 <template>
     <div class="product-page">
         <div class="exit-buttons">
-            <a @click="router.go(-1)">Назад</a>
+            <a class="return" @click="router.back">Назад</a>
         </div>
 
         <div class="product-data">
-            <img :src="productImage.publicUrl" class="picture" />
+            <div v-if="productImage.publicUrl" class="picture-container">
+                <img :src="productImage.publicUrl" class="picture" />
+            </div>
+            <div v-else class="without-picture">
+                <span>Без изображения</span>
+            </div>
 
             <div class="main-information">
                 <span class="title">
@@ -70,6 +75,14 @@ const description =
     padding-bottom: 100px;
     background-color: $product-page-background;
 
+    .exit-buttons {
+        margin-top: 25px;
+
+        .return {
+            cursor: pointer;
+        }
+    }
+
     .product-data {
         max-width: 700px;
         display: flex;
@@ -77,9 +90,24 @@ const description =
         align-items: flex-start;
         margin-top: 100px;
 
-        .picture {
-            width: 88%;
-            height: auto;
+        .picture-container {
+            min-height: 369px;
+            min-width: 400px;
+
+            .picture {
+                width: 88%;
+                height: auto;
+            }
+        }
+
+        .without-picture {
+            height: 400px;
+            width: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 17px;
+            background-color: white;
         }
 
         .main-information {
