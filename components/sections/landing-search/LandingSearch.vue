@@ -96,7 +96,7 @@ function clickCrossIcon() {
                     v-else-if="searchQuery"
                     @click="clickCrossIcon"
                     class="cross-icon"
-                    src="@/assets/images/search-cross.svg"
+                    src="@/assets/images/cross-icon.svg"
                 />
             </Transition>
 
