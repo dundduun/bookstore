@@ -42,7 +42,7 @@ watch(isHintsFocused, (isHintsFocused) => {
     width: v-bind(containerWidth);
     margin: 150px 190px 0 0;
     background-color: white;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px $shadow;
 
     &:focus {
         outline: none;
