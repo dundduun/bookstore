@@ -84,7 +84,7 @@
     width: 100%;
     height: 80px;
     align-items: center;
-    margin-top: calc(100vh - 80px);
+    bottom: 0;
     padding: 0 20px;
     border-radius: 5px;
     background-color: white;
