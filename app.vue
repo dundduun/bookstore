@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import '@/assets/styles/global.scss';
+import SCSSVariables from 'assets/styles/variables.module.scss';
 
 useHead({
     title: 'Masters Bookstore - книжный магазин',
@@ -13,9 +14,12 @@ useHead({
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
 });
+
+const { primary } = SCSSVariables;
 </script>
 
 <template>
+    <NuxtLoadingIndicator :color="primary" />
     <NuxtLayout>
         <NuxtPage />
     </NuxtLayout>
