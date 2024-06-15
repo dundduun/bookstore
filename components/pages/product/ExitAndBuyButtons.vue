@@ -1,21 +1,14 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
     <div class="exit-buttons">
         <NuxtLink to="/" class="text-home-link">← На главную</NuxtLink>
 
         <NuxtLink to="/" class="mobile-home-link">
-            <img src="../../../assets/images/left-arrow.svg" />
+            <img src="@/assets/images/left-arrow.svg" alt="На главную" />
         </NuxtLink>
 
-        <!-- set cross icon to catalogue whet it's done (or to previous page) -->
+        <!-- set cross icon to catalogue when it's done (or to previous page) -->
         <NuxtLink to="/" class="catalogue-link">
-            <img
-                src="../../../assets/images/cross-icon.svg"
-                class="cross-icon"
-            />
+            <img src="@/assets/images/cross-icon.svg" class="cross-icon" alt="На главную" />
         </NuxtLink>
     </div>
 
@@ -60,7 +53,6 @@
 
     .mobile-home-link {
         display: none;
-        width: 100%;
 
         @media (max-width: 560px) {
             display: block;
