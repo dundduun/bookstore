@@ -4,7 +4,6 @@ import type { Database } from '~/database.types';
 
 const client = useSupabaseClient<Database>();
 const route = useRoute();
-
 const { data: productInstance, error } = await client
     .from('product')
     .select()
@@ -19,19 +18,32 @@ if (error) {
 }
 
 const productImage = ref({ publicUrl: '' });
-
 if (productInstance.pictures[0]) {
     const { data } = client.storage
         .from('product_images')
         .getPublicUrl(productInstance.pictures[0]);
     productImage.value = data;
 }
+
+const { $gsap } = useNuxtApp();
+const tl = $gsap.timeline({});
+onMounted(() => {
+    tl.to('.product-data', { y: 0, opacity: 1, duration: 0.3 });
+});
+onBeforeRouteLeave(() => {
+    tl.to('.product-data', { y: 50, opacity: 0.1, duration: 0.3 });
+    tl.to('.product-data', { y: 1000, opacity: 0, duration: 30 });
+});
 </script>
 
 <template>
     <div class="product-data">
         <div v-if="productImage.publicUrl" class="picture-container">
-            <img :src="productImage.publicUrl" class="picture" />
+            <img
+                :src="productImage.publicUrl"
+                class="picture"
+                alt="Изображение товара"
+            />
         </div>
         <div v-else class="without-picture">
             <span>Без изображения</span>
@@ -63,6 +75,8 @@ if (productInstance.pictures[0]) {
     flex-direction: column;
     align-items: flex-start;
     margin-top: 100px;
+    transform: translateY(50px);
+    opacity: 0;
 
     @media (max-width: 850px) {
         max-width: 82vw;
@@ -73,6 +87,9 @@ if (productInstance.pictures[0]) {
     }
 
     .picture-container {
+        min-height: 369px;
+        min-width: 400px;
+
         @media (max-width: 660px) {
             width: 100%;
             max-width: 100%;
