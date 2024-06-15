@@ -17,6 +17,10 @@ if (error) {
     });
 }
 
+useHead({
+    title: productInstance.title,
+});
+
 const productImage = ref({ publicUrl: '' });
 if (productInstance.pictures[0]) {
     const { data } = client.storage

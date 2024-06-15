@@ -3,7 +3,10 @@ import '@/assets/styles/global.scss';
 import SCSSVariables from 'assets/styles/variables.module.scss';
 
 useHead({
-    title: 'Masters Bookstore - книжный магазин',
+    titleTemplate: (titleChunk) => {
+        return titleChunk? `Masters Bookstore | ${titleChunk}` : 'Masters Bookstore - книжный магазин';
+    },
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     meta: [
         { name: 'author', content: 'dundduun' },
         {
@@ -12,7 +15,6 @@ useHead({
                 'Книжный магазин редких и эксклюзивных изданий по истории искусства, архитектуре, дизайну, моде и фотографии.',
         },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
 });
 
 const { primary } = SCSSVariables;
