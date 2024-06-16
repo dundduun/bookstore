@@ -31,6 +31,16 @@ const formalizedDescription = props.searchedInstance.description.replaceAll(
     '\\',
     '',
 );
+
+const searchQuery = inject('searchQuery') as Ref<string>;
+
+const searchRegexp = '';
+
+if (props.searchedInstance.title.search(searchQuery.value) !== -1) {
+    console.log(`${props.searchedInstance.title}` + ' - TITLE');
+} else if (props.searchedInstance.title.search(searchQuery.value) !== -1) {
+    console.log(`${props.searchedInstance.title}` + ' - DESCRIPTION')
+}
 </script>
 
 <template>

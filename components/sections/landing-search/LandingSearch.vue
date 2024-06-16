@@ -33,12 +33,11 @@ watchDebounced(
                 }
                 isSearchLoading.value = false;
             }
-        } else {
-            searchedData.value = [];
         }
     },
     { debounce: 700, maxWait: 5000 },
 );
+provide('searchQuery', searchQuery);
 
 const inputElement = ref();
 const inputWidth = ref('');
