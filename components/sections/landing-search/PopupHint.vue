@@ -26,6 +26,11 @@ onBeforeUpdate(() => {
     productImage.value = { publicUrl: '' };
     fetchImage();
 });
+
+const formalizedDescription = props.searchedInstance.description.replaceAll(
+    '\\',
+    '',
+);
 </script>
 
 <template>
@@ -46,7 +51,9 @@ onBeforeUpdate(() => {
                 {{ searchedInstance.title }}
             </span>
 
-            <span class="description" v-html="searchedInstance.description" />
+            <span class="description">
+                {{ formalizedDescription }}
+            </span>
 
             <span class="price"> {{ searchedInstance.price }} р. </span>
         </div>
