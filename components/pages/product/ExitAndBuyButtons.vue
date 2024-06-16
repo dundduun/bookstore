@@ -37,9 +37,9 @@
 
     @media (max-width: 560px) {
         position: fixed;
-        height: 50px;
+        height: 56px;
         margin-top: 0;
-        padding: 0 0 0 10px;
+        padding: 0;
         background-color: $product-page-background;
         border-bottom: 1px $shadow solid;
     }
@@ -57,9 +57,13 @@
 
     .mobile-home-link {
         display: none;
+        height: 56px;
+        width: 56px;
 
         @media (max-width: 560px) {
-            display: block;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     }
 
