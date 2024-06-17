@@ -33,13 +33,73 @@ const formalizedDescription = props.searchedInstance.description.replaceAll(
 );
 
 const searchQuery = inject('searchQuery') as Ref<string>;
+const searchRegexp = new RegExp(searchQuery.value, 'i');
+const titleSearchQueryMatchNumber =
+    props.searchedInstance.title.search(searchRegexp);
 
-const searchRegexp = '';
+const startOfHintText = ref('');
+const searchQueryAtHint = ref('');
+const endOfHintText = ref('');
 
-if (props.searchedInstance.title.search(searchQuery.value) !== -1) {
-    console.log(`${props.searchedInstance.title}` + ' - TITLE');
-} else if (props.searchedInstance.title.search(searchQuery.value) !== -1) {
-    console.log(`${props.searchedInstance.title}` + ' - DESCRIPTION')
+const isSearchQueryAtTitle = ref(false);
+const isSearchQueryAtDescription = ref(false);
+
+// SHOULD TO CLIP ONLY BY WORDS
+
+function getDividedChunks(
+    fullText: string,
+    firstLetterMatch: number,
+    phrase: string,
+) {
+    let startOfText = '';
+    if (firstLetterMatch > 20) { // 40
+        // wrong, because it is not goes to the last word, and just takes 40 symbols.
+        // I can just discard last first word and put all others, but
+        // startOfText = fullText.slice(firstLetterMatch - 40, firstLetterMatch)
+        //     .split(' ', '').splice(-3).join(' ');
+        startOfText = fullText.slice(20, firstLetterMatch);
+    } else {
+        startOfText = fullText.slice(0, firstLetterMatch);
+    }
+    const soughtPhrase = fullText.slice(
+        firstLetterMatch,
+        firstLetterMatch + phrase.length,
+    );
+    const endOfPhrase = fullText.slice(firstLetterMatch + phrase.length);
+
+    return {
+        startOfText: startOfText,
+        soughtPhrase: soughtPhrase,
+        endOfPhrase: endOfPhrase,
+    };
+}
+
+if (titleSearchQueryMatchNumber !== -1) {
+    isSearchQueryAtTitle.value = true;
+    ({
+        startOfText: startOfHintText.value,
+        soughtPhrase: searchQueryAtHint.value,
+        endOfPhrase: endOfHintText.value,
+    } = getDividedChunks(
+        props.searchedInstance.title,
+        titleSearchQueryMatchNumber,
+        searchQuery.value,
+    ));
+} else {
+    const descriptionSearchQueryMatchNumber =
+        formalizedDescription.search(searchRegexp);
+    if (descriptionSearchQueryMatchNumber !== 1) {
+        isSearchQueryAtDescription.value = true;
+        ({
+            startOfText: startOfHintText.value,
+            soughtPhrase: searchQueryAtHint.value,
+            endOfPhrase: endOfHintText.value,
+        } = getDividedChunks(
+            formalizedDescription,
+            descriptionSearchQueryMatchNumber,
+            searchQuery.value,
+        ));
+    }
 }
 </script>
 
@@ -57,11 +117,25 @@ if (props.searchedInstance.title.search(searchQuery.value) !== -1) {
         </div>
 
         <div class="text">
-            <span class="title">
+            <span v-if="!isSearchQueryAtTitle" class="title">
                 {{ searchedInstance.title }}
             </span>
 
-            <span class="description">
+            <span
+                v-if="isSearchQueryAtTitle || isSearchQueryAtDescription"
+                :class="{
+                    title: isSearchQueryAtTitle,
+                    description: isSearchQueryAtDescription,
+                }"
+            >
+                {{ startOfHintText
+                }}<span class="search-query-at-text">{{
+                    searchQueryAtHint
+                }}</span
+                >{{ endOfHintText }}
+            </span>
+
+            <span v-if="!isSearchQueryAtDescription" class="description">
                 {{ formalizedDescription }}
             </span>
 
@@ -118,6 +192,10 @@ if (props.searchedInstance.title.search(searchQuery.value) !== -1) {
         align-items: flex-start;
         margin-left: 15px;
         font-size: 16px;
+
+        .search-query-at-text {
+            color: $primary;
+        }
 
         .title {
             max-width: 100%;
