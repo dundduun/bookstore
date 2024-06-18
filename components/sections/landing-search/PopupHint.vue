@@ -40,11 +40,16 @@ const titleSearchQueryMatchNumber =
 const startOfHintText = ref('');
 const searchQueryAtHint = ref('');
 const endOfHintText = ref('');
-
 const isSearchQueryAtTitle = ref(false);
 const isSearchQueryAtDescription = ref(false);
 
-// SHOULD TO CLIP ONLY BY WORDS
+const { width } = useWindowSize();
+const maxSymbolsCountBeforePhrase = ref(60);
+if (width.value > 600 && width.value < 1200) {
+    maxSymbolsCountBeforePhrase.value = (width.value - 385) / 20;
+} else if (width.value < 600) {
+    maxSymbolsCountBeforePhrase.value = (width.value - 200) / 20;
+}
 
 function getDividedChunks(
     fullText: string,
@@ -52,12 +57,16 @@ function getDividedChunks(
     phrase: string,
 ) {
     let startOfText = '';
-    if (firstLetterMatch > 20) { // 40
-        // wrong, because it is not goes to the last word, and just takes 40 symbols.
-        // I can just discard last first word and put all others, but
-        // startOfText = fullText.slice(firstLetterMatch - 40, firstLetterMatch)
-        //     .split(' ', '').splice(-3).join(' ');
-        startOfText = fullText.slice(20, firstLetterMatch);
+    if (firstLetterMatch > maxSymbolsCountBeforePhrase.value) {
+        const startOfTextWords = fullText
+            .slice(
+                firstLetterMatch - maxSymbolsCountBeforePhrase.value,
+                firstLetterMatch,
+            )
+            .split(' ');
+        startOfText = startOfTextWords
+            .splice(-(startOfTextWords.length - 1))
+            .join(' ');
     } else {
         startOfText = fullText.slice(0, firstLetterMatch);
     }
