@@ -34,33 +34,33 @@ const formalizedDescription = props.searchedInstance.description.replaceAll(
 
 const searchQuery = inject('searchQuery') as Ref<string>;
 const searchRegexp = new RegExp(searchQuery.value, 'i');
-const titleSearchQueryMatchNumber =
+const titleSqMatchNumber =
     props.searchedInstance.title.search(searchRegexp);
 
-const startOfHintText = ref('');
-const searchQueryAtHint = ref('');
-const endOfHintText = ref('');
-const isSearchQueryAtTitle = ref(false);
-const isSearchQueryAtDescription = ref(false);
+const startOfHint = ref('');
+const sqAtHint = ref('');
+const endOfHint = ref('');
+const isSqAtTitle = ref(false);
+const isSqAtDescription = ref(false);
 
 const { width } = useWindowSize();
-const maxSymbolsCountBeforePhrase = ref(60);
+let maxStartCharsCount = 60;
 if (width.value > 600 && width.value < 1200) {
-    maxSymbolsCountBeforePhrase.value = (width.value - 385) / 20;
+    maxStartCharsCount = (width.value - 385) / 20;
 } else if (width.value < 600) {
-    maxSymbolsCountBeforePhrase.value = (width.value - 200) / 20;
+    maxStartCharsCount = (width.value - 200) / 20;
 }
 
-function getDividedChunks(
+function splitTextToTernary(
     fullText: string,
     firstLetterMatch: number,
     phrase: string,
 ) {
     let startOfText = '';
-    if (firstLetterMatch > maxSymbolsCountBeforePhrase.value) {
+    if (firstLetterMatch > maxStartCharsCount) {
         const startOfTextWords = fullText
             .slice(
-                firstLetterMatch - maxSymbolsCountBeforePhrase.value,
+                firstLetterMatch - maxStartCharsCount,
                 firstLetterMatch,
             )
             .split(' ');
@@ -79,31 +79,31 @@ function getDividedChunks(
     return {
         startOfText: startOfText,
         soughtPhrase: soughtPhrase,
-        endOfPhrase: endOfPhrase,
+        endOfText: endOfPhrase,
     };
 }
 
-if (titleSearchQueryMatchNumber !== -1) {
-    isSearchQueryAtTitle.value = true;
+if (titleSqMatchNumber !== -1) {
+    isSqAtTitle.value = true;
     ({
-        startOfText: startOfHintText.value,
-        soughtPhrase: searchQueryAtHint.value,
-        endOfPhrase: endOfHintText.value,
-    } = getDividedChunks(
+        startOfText: startOfHint.value,
+        soughtPhrase: sqAtHint.value,
+        endOfText: endOfHint.value,
+    } = splitTextToTernary(
         props.searchedInstance.title,
-        titleSearchQueryMatchNumber,
+        titleSqMatchNumber,
         searchQuery.value,
     ));
 } else {
     const descriptionSearchQueryMatchNumber =
         formalizedDescription.search(searchRegexp);
     if (descriptionSearchQueryMatchNumber !== 1) {
-        isSearchQueryAtDescription.value = true;
+        isSqAtDescription.value = true;
         ({
-            startOfText: startOfHintText.value,
-            soughtPhrase: searchQueryAtHint.value,
-            endOfPhrase: endOfHintText.value,
-        } = getDividedChunks(
+            startOfText: startOfHint.value,
+            soughtPhrase: sqAtHint.value,
+            endOfText: endOfHint.value,
+        } = splitTextToTernary(
             formalizedDescription,
             descriptionSearchQueryMatchNumber,
             searchQuery.value,
@@ -126,25 +126,25 @@ if (titleSearchQueryMatchNumber !== -1) {
         </div>
 
         <div class="text">
-            <span v-if="!isSearchQueryAtTitle" class="title">
+            <span v-if="!isSqAtTitle" class="title">
                 {{ searchedInstance.title }}
             </span>
 
             <span
-                v-if="isSearchQueryAtTitle || isSearchQueryAtDescription"
+                v-if="isSqAtTitle || isSqAtDescription"
                 :class="{
-                    title: isSearchQueryAtTitle,
-                    description: isSearchQueryAtDescription,
+                    title: isSqAtTitle,
+                    description: isSqAtDescription,
                 }"
             >
-                {{ startOfHintText
+                {{ startOfHint
                 }}<span class="search-query-at-text">{{
-                    searchQueryAtHint
+                    sqAtHint
                 }}</span
-                >{{ endOfHintText }}
+                >{{ endOfHint }}
             </span>
 
-            <span v-if="!isSearchQueryAtDescription" class="description">
+            <span v-if="!isSqAtDescription" class="description">
                 {{ formalizedDescription }}
             </span>
 
