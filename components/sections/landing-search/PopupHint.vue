@@ -64,7 +64,7 @@ function getDividedChunks(
                 firstLetterMatch,
             )
             .split(' ');
-        startOfText = startOfTextWords
+        startOfText = '...' + startOfTextWords
             .splice(-(startOfTextWords.length - 1))
             .join(' ');
     } else {
