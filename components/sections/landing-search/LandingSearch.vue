@@ -99,7 +99,7 @@ function clickCrossIcon() {
                 />
             </Transition>
 
-            <button class="button">искать</button>
+            <button class="search-button">искать</button>
         </form>
 
         <Transition name="hints" appear>
@@ -116,6 +116,8 @@ function clickCrossIcon() {
 </template>
 
 <style scoped lang="scss">
+@import '@/assets/styles/mixins.scss';
+
 @mixin absolutely-positioned-search-cross-and-loading {
     position: absolute;
     width: 21px;
@@ -146,9 +148,11 @@ function clickCrossIcon() {
 .landing-search {
     height: 240px;
     width: 100%;
+    max-width: 5000px;
     display: flex;
     justify-content: center;
-    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
     background-color: $primary;
 
     .form {
@@ -217,41 +221,15 @@ function clickCrossIcon() {
             animation-iteration-count: infinite;
         }
 
-        .button {
+        .search-button {
             height: 60px;
             width: 170px;
             flex: 0 0 auto;
             font-size: 16px;
-            border: 2px $background solid;
-            cursor: pointer;
-            font-family: $font-family;
-            color: white;
-            background-color: $background;
+            @include hover-button($background, white, $primary);
 
             @media (max-width: 600px) {
                 width: 100%;
-            }
-
-            @media (hover: hover) {
-                transition:
-                    color 0.3s,
-                    background-color 0.3s;
-
-                &:hover {
-                    color: $background;
-                    background-color: $primary;
-                }
-            }
-
-            @media (hover: none) {
-                transition:
-                    color 0.1s,
-                    background-color 0.1s;
-
-                &:active {
-                    color: $background;
-                    background-color: $primary;
-                }
             }
         }
     }
