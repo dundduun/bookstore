@@ -17,11 +17,13 @@
     </div>
 
     <div class="mobile-buy-button-container">
-        <button class="mobile-buy-button">Купить</button>
+        <button class="mobile-buy-button">купить</button>
     </div>
 </template>
 
 <style scoped lang="scss">
+@import '@/assets/styles/mixins.scss';
+
 .exit-buttons {
     position: fixed;
     width: 100%;
@@ -95,32 +97,11 @@
     }
 
     .mobile-buy-button {
+        @include hover-button(white, $background);
         width: 100%;
         padding: 12px 0;
-        font-size: 14px;
+        font-size: 18px;
         border: 2px $background solid;
-        border-radius: 0;
-        font-family: $font-family;
-        color: $background;
-        background-color: white;
-        transition:
-            color 0.3s,
-            background-color 0.3s;
-        cursor: pointer;
-
-        @media (hover: hover) {
-            &:hover {
-                color: white;
-                background-color: $background;
-            }
-        }
-
-        @media (hover: none) {
-            &:active {
-                color: white;
-                background-color: $background;
-            }
-        }
     }
 }
 </style>
