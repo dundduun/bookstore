@@ -34,8 +34,7 @@ const formalizedDescription = props.searchedInstance.description.replaceAll(
 
 const searchQuery = inject('searchQuery') as Ref<string>;
 const searchRegexp = new RegExp(searchQuery.value, 'i');
-const titleSqMatchNumber =
-    props.searchedInstance.title.search(searchRegexp);
+const titleSqMatchNumber = props.searchedInstance.title.search(searchRegexp);
 
 const startOfHint = ref('');
 const sqAtHint = ref('');
@@ -59,14 +58,11 @@ function splitTextToTernary(
     let startOfText = '';
     if (firstLetterMatch > maxStartCharsCount) {
         const startOfTextWords = fullText
-            .slice(
-                firstLetterMatch - maxStartCharsCount,
-                firstLetterMatch,
-            )
+            .slice(firstLetterMatch - maxStartCharsCount, firstLetterMatch)
             .split(' ');
-        startOfText = '...' + startOfTextWords
-            .splice(-(startOfTextWords.length - 1))
-            .join(' ');
+        startOfText =
+            '...' +
+            startOfTextWords.splice(-(startOfTextWords.length - 1)).join(' ');
     } else {
         startOfText = fullText.slice(0, firstLetterMatch);
     }
@@ -138,9 +134,7 @@ if (titleSqMatchNumber !== -1) {
                 }"
             >
                 {{ startOfHint
-                }}<span class="search-query-at-text">{{
-                    sqAtHint
-                }}</span
+                }}<span class="search-query-at-text">{{ sqAtHint }}</span
                 >{{ endOfHint }}
             </span>
 
