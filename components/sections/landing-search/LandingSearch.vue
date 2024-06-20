@@ -226,6 +226,7 @@ function clickCrossIcon() {
             width: 170px;
             flex: 0 0 auto;
             font-size: 16px;
+            font-weight: 500;
             @include hover-button($background, white, $primary);
 
             @media (max-width: 600px) {
