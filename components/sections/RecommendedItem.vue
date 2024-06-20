@@ -40,7 +40,7 @@ const { data: giftTokenImage } = client.storage
                 <span class="price"> от {{ giftToken!.price }} р. </span>
 
                 <div class="buttons">
-                    <button class="buy-button">Купить</button>
+                    <button class="buy-button">купить</button>
                     <button class="like-button">
                         <img class="like-img" src="@/assets/images/like.svg" />
                     </button>
@@ -123,7 +123,7 @@ const { data: giftTokenImage } = client.storage
             }
 
             .buttons {
-                width: 170px;
+                width: 180px;
                 display: flex;
                 flex-direction: row;
                 justify-content: space-between;
@@ -132,7 +132,7 @@ const { data: giftTokenImage } = client.storage
 
                 .buy-button {
                     padding: 14px 35px;
-                    font-size: 14px;
+                    font-size: 16px;
                     font-weight: 600;
                     @include hover-button($primary, white);
                 }
