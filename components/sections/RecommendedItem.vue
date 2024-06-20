@@ -55,6 +55,8 @@ const { data: giftTokenImage } = client.storage
 </template>
 
 <style scoped lang="scss">
+@import '@/assets/styles/mixins.scss';
+
 .gift-token {
     display: flex;
     justify-content: center;
@@ -131,30 +133,8 @@ const { data: giftTokenImage } = client.storage
                 .buy-button {
                     padding: 14px 35px;
                     font-size: 14px;
-                    font-family: $font-family;
                     font-weight: 600;
-                    border: 1px $primary solid;
-                    cursor: pointer;
-                    background-color: $primary;
-                    color: white;
-
-                    @media (hover: hover) {
-                        transition: 0.3s;
-
-                        &:hover {
-                            color: $primary;
-                            background-color: white;
-                        }
-                    }
-
-                    @media (hover: none) {
-                        transition: 0.1s;
-
-                        &:active {
-                            color: $primary;
-                            background-color: white;
-                        }
-                    }
+                    @include hover-button($primary, white);
                 }
 
                 .like-button {

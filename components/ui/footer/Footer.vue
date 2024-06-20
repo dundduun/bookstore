@@ -17,13 +17,15 @@
                     placeholder="ваш e-mail"
                     required
                 />
-                <button class="subscribe">подписаться</button>
+                <button class="subscribe-button">подписаться</button>
             </form>
         </div>
     </footer>
 </template>
 
 <style scoped lang="scss">
+@import '@/assets/styles/mixins.scss';
+
 footer {
     width: 100%;
     display: flex;
@@ -117,19 +119,12 @@ footer {
                 }
             }
 
-            .subscribe {
+            .subscribe-button {
                 height: 60px;
                 grid-area: button;
                 margin-left: 20px;
                 font-size: 16px;
-                font-family: $font-family;
-                color: white;
-                background-color: black;
-                border: none;
-
-                &:hover {
-                    cursor: pointer;
-                }
+                @include hover-button(black, white);
 
                 @media (max-width: 820px) {
                     margin: 10px 0 0 0;

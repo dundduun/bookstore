@@ -73,6 +73,8 @@ onBeforeRouteLeave(() => {
 </template>
 
 <style scoped lang="scss">
+@import '@/assets/styles/mixins.scss';
+
 .product-data {
     max-width: 700px;
     display: flex;
@@ -178,34 +180,10 @@ onBeforeRouteLeave(() => {
             margin-top: 25px;
             padding: 12px 30px;
             font-size: 16px;
-            border: 2px $background solid;
-            border-radius: 0;
-            font-family: $font-family;
-            color: white;
-            background-color: $background;
-            transition:
-                color 0.3s,
-                background-color 0.3s;
-            cursor: pointer;
+            @include hover-button($background, white);
 
             @media (max-width: 560px) {
                 display: none;
-            }
-
-            @media (hover: hover) {
-                &:hover {
-                    color: $background;
-                    border: 2px $background solid;
-                    background-color: white;
-                }
-            }
-
-            @media (hover: none) {
-                &:active {
-                    color: $background;
-                    border: 2px $background solid;
-                    background-color: white;
-                }
             }
         }
 
