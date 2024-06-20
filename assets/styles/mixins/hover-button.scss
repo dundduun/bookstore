@@ -1,0 +1,29 @@
+@mixin hover-button(
+    $primary-button-color,
+    $hover-button-color,
+    $hover-background-color: $hover-button-color
+) {
+    border: 2px $primary-button-color solid;
+    border-radius: 0;
+    font-family: $font-family;
+    background-color: $primary-button-color;
+    color: $hover-button-color;
+    transition:
+        color 0.3s,
+        background-color 0.3s;
+    cursor: pointer;
+
+    @media (hover: hover) {
+        &:hover {
+            color: $primary-button-color;
+            background-color: $hover-background-color;
+        }
+    }
+
+    @media (hover: none) {
+        &:active {
+            color: $primary-button-color;
+            background-color: $hover-background-color;
+        }
+    }
+}
