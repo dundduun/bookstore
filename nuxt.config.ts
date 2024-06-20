@@ -9,12 +9,7 @@ export default defineNuxtConfig({
 
     typescript: { strict: true },
 
-    modules: [
-        '@pinia/nuxt',
-        '@nuxt/test-utils/module',
-        '@nuxtjs/supabase',
-        '@vueuse/nuxt',
-    ],
+    modules: ['@pinia/nuxt', '@nuxtjs/supabase', '@vueuse/nuxt', 'nuxt-swiper'],
 
     app: {
         head: {

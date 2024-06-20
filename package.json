@@ -15,6 +15,7 @@
         "@vueuse/core": "^10.9.0",
         "@vueuse/nuxt": "^10.9.0",
         "gsap": "^3.12.5",
+        "nuxt-swiper": "^1.2.2",
         "pinia": "^2.1.7",
         "sass": "^1.75.0",
         "vue": "^3.4.21",
@@ -22,16 +23,11 @@
         "vue-router": "^4.3.0"
     },
     "devDependencies": {
-        "@nuxt/test-utils": "^3.12.1",
         "@nuxtjs/supabase": "^1.2.1",
         "@vue-leaflet/vue-leaflet": "^0.10.1",
-        "@vue/test-utils": "^2.4.5",
-        "happy-dom": "^14.7.1",
         "leaflet": "^1.9.4",
         "nuxt": "^3.11.2",
-        "playwright-core": "^1.43.1",
         "prettier": "3.2.5",
-        "supabase": "^1.163.6",
-        "vitest": "^1.5.0"
+        "supabase": "^1.163.6"
     }
 }
