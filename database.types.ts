@@ -33,6 +33,38 @@ export type Database = {
         }
         Relationships: []
       }
+      event: {
+        Row: {
+          created_at: string
+          id: string
+          picture: string
+          product_id: string
+          title: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          picture?: string
+          product_id?: string
+          title?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          picture?: string
+          product_id?: string
+          title?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "events_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: true
+            referencedRelation: "product"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       ip_limitations: {
         Row: {
           ip: string
