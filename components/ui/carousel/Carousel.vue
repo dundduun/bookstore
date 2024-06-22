@@ -1,7 +1,23 @@
 <script setup lang="ts">
-import { Navigation } from 'swiper/modules';
+import type { Database } from '@/database.types';
 
-const modules = [Navigation];
+const client = useSupabaseClient<Database>();
+
+const { data: events } = await client
+    .from('event')
+    .select()
+    .order('created_at',  { ascending: true });
+
+// ADD ERROR HANDLER
+// v-if="!error" to <div class="landing-carousel">
+// v-else --- reload
+// to throw error pass to select nonexistent column
+
+console.log(events);
+
+// import { Navigation } from 'swiper/modules';
+//
+// const modules = [Navigation];
 </script>
 
 <template>
@@ -10,30 +26,28 @@ const modules = [Navigation];
             class="carousel"
             :spaceBetween="30"
             :loop="true"
-            :navigation="true"
-            :modules="modules"
         >
-            <SwiperSlide class="carousel-item">
-                <img
-                    class="image"
-                    src="@/assets/images/carousel-flowers.jpeg"
-                    alt="Картина Маши Даниловской с выставки в Питербуржском магазине masters bookstore"
-                />
+<!--            :modules="modules"-->
+            <SwiperSlide class="carousel-item" v-for="event in events">
+                {{ event.title }}
+<!--                <img-->
+<!--                    class="image"-->
+<!--                    src="@/assets/images/carousel-flowers.jpeg"-->
+<!--                    alt="Картина Маши Даниловской с выставки в Питербуржском магазине masters bookstore"-->
+<!--                />-->
 
-                <div class="text">
-                    <div class="container">
-                        <div class="description">
-                            Выставка Маши Даниловской
-                            <br />
-                            в masters bookstore в Петебурге
-                        </div>
+<!--                <div class="text">-->
+<!--                    <div class="container">-->
+<!--                        <div class="description">-->
+<!--                            {{ events![0].title }}-->
+<!--                        </div>-->
 
-                        <button class="buy-button">купить</button>
-                    </div>
-                </div>
+<!--                        <button class="buy-button">купить</button>-->
+<!--                    </div>-->
+<!--                </div>-->
             </SwiperSlide>
-            <SwiperSlide class="carousel-item">Slide 2</SwiperSlide>
-            <SwiperSlide class="carousel-item">Slide 3</SwiperSlide>
+<!--            <SwiperSlide class="carousel-item">Slide 2</SwiperSlide>-->
+<!--            <SwiperSlide class="carousel-item">Slide 3</SwiperSlide>-->
         </Swiper>
     </div>
 </template>
