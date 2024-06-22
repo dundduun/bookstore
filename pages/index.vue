@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Carousel from '@/components/ui/Carousel.vue';
+import Carousel from '@/components/ui/carousel/Carousel.vue';
 import LandingSearch from '@/components/sections/landing-search/LandingSearch.vue';
 import RecommendedItem from '@/components/sections/RecommendedItem.vue';
 import MapPreview from '@/components/ui/footer/MapPreview.vue';
