@@ -35,7 +35,7 @@ onBeforeRouteLeave(() => {
     </div>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .product-page {
     width: 100%;
     background-color: white;
