@@ -131,10 +131,10 @@ const { data: giftTokenImage } = client.storage
                 margin-top: 25px;
 
                 .buy-button {
+                    @include hover-button($primary, white);
                     padding: 14px 35px;
                     font-size: 16px;
                     font-weight: 600;
-                    @include hover-button($primary, white);
                 }
 
                 .like-button {

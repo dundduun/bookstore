@@ -120,11 +120,11 @@ footer {
             }
 
             .subscribe-button {
+                @include hover-button(black, white);
                 height: 60px;
                 grid-area: button;
                 margin-left: 20px;
                 font-size: 16px;
-                @include hover-button(black, white);
 
                 @media (max-width: 820px) {
                     margin: 10px 0 0 0;

@@ -177,11 +177,11 @@ onBeforeRouteLeave(() => {
         }
 
         .buy-button {
+            @include hover-button($background, white);
             margin-top: 25px;
             padding: 12px 30px;
             font-size: 16px;
             font-weight: 500;
-            @include hover-button($background, white);
 
             @media (max-width: 560px) {
                 display: none;
