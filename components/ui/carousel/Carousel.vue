@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import CarouselItem from '@/components/ui/carousel/CarouselItem.vue';
-import type { Database } from '~/database.types';
+import type { Database } from '@/database.types';
+import type { Swiper } from 'swiper/types';
 
 const client = useSupabaseClient<Database>();
 
@@ -9,16 +10,11 @@ const { data: events } = await client
     .select()
     .order('created_at', { ascending: true });
 
-// const swiper = ref(null);
+const swiper = ref<Swiper>();
 
-// function getRef(swiperInstance: any) {
-//     swiper.value = swiperInstance;
-//     console.log(swiperInstance);
-// }
-
-// function nextSlide() {
-//     swiper!.value!.slideNext();
-// }
+const onSwiperInit = (swiperInstance: Swiper) => {
+    swiper.value = swiperInstance;
+};
 
 // ADD ERROR HANDLER
 // v-if="!error" to <div class="landing-carousel">
@@ -32,8 +28,8 @@ const { data: events } = await client
             class="carousel"
             :spaceBetween="30"
             :loop="true"
+            @swiper="onSwiperInit"
         >
-        <!-- @swiper="getRef" -->
             <SwiperSlide class="carousel-item" v-for="event in events">
                 <CarouselItem :event="event" />
             </SwiperSlide>
@@ -43,12 +39,13 @@ const { data: events } = await client
                 class="slide-ruler slide-ruler-left"
                 src="@/assets/images/surrounded-right-arrow.svg"
                 alt="prev"
+                @click="swiper!.slidePrev()"
             />
-                <!-- @click="nextSlide" -->
             <img
                 class="slide-ruler"
                 src="@/assets/images/surrounded-right-arrow.svg"
                 alt="next"
+                @click="swiper!.slideNext()"
             />
         </div>
     </div>
@@ -68,14 +65,15 @@ const { data: events } = await client
     .slide-rulers {
         position: absolute;
         z-index: 1;
-        top: 510px;
-        left: 55%;
+        top: 520px;
+        left: calc(50% - 47px);
         display: flex;
         gap: 15px;
 
         .slide-ruler {
             width: 40px;
             height: 40px;
+            cursor: pointer;
         }
 
         .slide-ruler-left {
