@@ -28,15 +28,12 @@ if (props.event.picture) {
         <img class="picture" :src="eventPicture.publicUrl" />
 
         <div class="text">
-            <div class="container">
+            <div class="text-container">
                 <div class="title">
                     {{ event.title }}
                 </div>
 
-                <NuxtLink
-                    class="product-link"
-                    :to="`/product/${event.product_id}`"
-                >
+                <NuxtLink class="product-link" :to="`/product/${event.product_id}`">
                     к товару
                 </NuxtLink>
             </div>
@@ -56,33 +53,69 @@ if (props.event.picture) {
         height: 500px;
         width: 100%;
         object-fit: cover;
+
+        @media (max-width: 1000px) {
+            height: 300px;
+        }
     }
 
     .text {
-        height: 200px;
         display: flex;
         justify-content: center;
-        background: white;
+        align-items: center;
 
-        .container {
+        @media (max-width: 800px) {
+            justify-content: flex-start;
+        }
+
+        .text-container {
+            height: 200px;
             width: 95%;
             max-width: 1160px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 50px;
+            padding: 25px;
+
+            @media (max-width: 1000px) {
+                height: unset;
+            }
+
+            @media (max-width: 800px) {
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                gap: 15px;
+            }
 
             .title {
                 max-width: 550px;
                 font-size: 30px;
                 color: $background;
+
+                @media (max-width: 1000px) {
+                    font-size: 26px;
+                }
+
+                @media (max-width: 800px) {
+                    max-width: unset;
+                }
             }
 
             .product-link {
                 @include kill-link-decoration;
                 @include hover-button($background, white);
+                min-width: 140px;
+                max-width: 100%;
                 padding: 14px 35px;
                 font-size: 16px;
                 font-weight: 600;
+
+                @media (max-width: 800px) {
+                    width: 210px;
+                    text-align: center;
+                }
             }
         }
     }

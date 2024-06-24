@@ -56,7 +56,6 @@ const onSwiperInit = (swiperInstance: Swiper) => {
     position: relative;
 
     .carousel {
-        height: 700px;
         max-width: 5000px;
         margin-left: auto;
         margin-right: auto;
@@ -65,10 +64,18 @@ const onSwiperInit = (swiperInstance: Swiper) => {
     .slide-rulers {
         position: absolute;
         z-index: 1;
-        top: 520px;
+        top: 450px;
         left: calc(50% - 47px);
         display: flex;
         gap: 15px;
+
+        @media (max-width: 1000px) {
+            top: 250px;
+        }
+
+        @media (max-width: 550px) {
+            display: none;
+        }
 
         .slide-ruler {
             width: 40px;
