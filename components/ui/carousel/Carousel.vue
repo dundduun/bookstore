@@ -15,28 +15,37 @@ const swiper = ref<Swiper>();
 const onSwiperInit = (swiperInstance: Swiper) => {
     swiper.value = swiperInstance;
 };
-
-// ADD ERROR HANDLER
-// v-if="!error" to <div class="landing-carousel">
-// v-else --- reload
-// to throw error pass to select nonexistent column
 </script>
 
 <template>
-    <div class="landing-carousel">
-        <Swiper class="carousel" :spaceBetween="30" :loop="true" @swiper="onSwiperInit">
+    <div class="landing-carousel" v-if="events">
+        <Swiper
+            class="carousel"
+            :spaceBetween="30"
+            :loop="true"
+            @swiper="onSwiperInit"
+        >
             <SwiperSlide class="carousel-item" v-for="event in events">
                 <CarouselItem :event="event" />
             </SwiperSlide>
         </Swiper>
         <div class="slide-rulers">
-            <img class="slide-ruler slide-ruler-left" src="@/assets/images/surrounded-right-arrow.svg" alt="prev"
-                @click="swiper!.slidePrev()" />
-            <img class="slide-ruler slide-ruler-right" src="@/assets/images/surrounded-right-arrow.svg" alt="next"
-                @click="swiper!.slideNext()" />
+            <img
+                class="slide-ruler slide-ruler-left"
+                src="@/assets/images/surrounded-right-arrow.svg"
+                alt="prev"
+                @click="swiper!.slidePrev()"
+            />
+            <img
+                class="slide-ruler slide-ruler-right"
+                src="@/assets/images/surrounded-right-arrow.svg"
+                alt="next"
+                @click="swiper!.slideNext()"
+            />
         </div>
     </div>
 </template>
+
 <style scoped lang="scss">
 .landing-carousel {
     margin-top: 25px;
