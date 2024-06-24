@@ -8,7 +8,7 @@ const client = useSupabaseClient<Database>();
 const { data: events } = await client
     .from('event')
     .select()
-    .order('created_at', { ascending: true });
+    .order('created_at', { ascending: false });
 
 const swiper = ref<Swiper>();
 
