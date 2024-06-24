@@ -64,6 +64,7 @@ if (props.event.picture) {
 
     .text {
         display: flex;
+        justify-content: center;
         align-items: center;
 
         @media (max-width: 800px) {
