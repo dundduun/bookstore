@@ -33,7 +33,10 @@ if (props.event.picture) {
                     {{ event.title }}
                 </div>
 
-                <NuxtLink class="product-link" :to="`/product/${event.product_id}`">
+                <NuxtLink
+                    class="product-link"
+                    :to="`/product/${event.product_id}`"
+                >
                     к товару
                 </NuxtLink>
             </div>
@@ -61,7 +64,6 @@ if (props.event.picture) {
 
     .text {
         display: flex;
-        justify-content: center;
         align-items: center;
 
         @media (max-width: 800px) {
@@ -84,9 +86,17 @@ if (props.event.picture) {
 
             @media (max-width: 800px) {
                 flex-direction: column;
-                justify-content: center;
+                justify-content: space-between;
                 align-items: flex-start;
                 gap: 15px;
+            }
+
+            @media (max-width: 550px) {
+                height: 250px;
+            }
+
+            @media (max-width: 370px) {
+                height: 300px;
             }
 
             .title {
@@ -95,7 +105,7 @@ if (props.event.picture) {
                 color: $background;
 
                 @media (max-width: 1000px) {
-                    font-size: 26px;
+                    font-size: 24px;
                 }
 
                 @media (max-width: 800px) {
