@@ -72,8 +72,8 @@ if (props.event.picture) {
         }
 
         .text-container {
-            height: 200px;
             width: 95%;
+            min-height: 200px;
             max-width: 1160px;
             display: flex;
             justify-content: space-between;
@@ -93,11 +93,11 @@ if (props.event.picture) {
             }
 
             @media (max-width: 550px) {
-                height: 250px;
+                min-height: 250px;
             }
 
             @media (max-width: 370px) {
-                height: 300px;
+                min-height: 300px;
             }
 
             .title {
