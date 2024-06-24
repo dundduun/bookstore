@@ -24,29 +24,16 @@ const onSwiperInit = (swiperInstance: Swiper) => {
 
 <template>
     <div class="landing-carousel">
-        <Swiper
-            class="carousel"
-            :spaceBetween="30"
-            :loop="true"
-            @swiper="onSwiperInit"
-        >
+        <Swiper class="carousel" :spaceBetween="30" :loop="true" @swiper="onSwiperInit">
             <SwiperSlide class="carousel-item" v-for="event in events">
                 <CarouselItem :event="event" />
             </SwiperSlide>
         </Swiper>
         <div class="slide-rulers">
-            <img
-                class="slide-ruler slide-ruler-left"
-                src="@/assets/images/surrounded-right-arrow.svg"
-                alt="prev"
-                @click="swiper!.slidePrev()"
-            />
-            <img
-                class="slide-ruler"
-                src="@/assets/images/surrounded-right-arrow.svg"
-                alt="next"
-                @click="swiper!.slideNext()"
-            />
+            <img class="slide-ruler slide-ruler-left" src="@/assets/images/surrounded-right-arrow.svg" alt="prev"
+                @click="swiper!.slidePrev()" />
+            <img class="slide-ruler slide-ruler-right" src="@/assets/images/surrounded-right-arrow.svg" alt="next"
+                @click="swiper!.slideNext()" />
         </div>
     </div>
 </template>
@@ -74,17 +61,33 @@ const onSwiperInit = (swiperInstance: Swiper) => {
         }
 
         @media (max-width: 550px) {
-            display: none;
+            position: static;
         }
-
+        
         .slide-ruler {
             width: 40px;
             height: 40px;
+            z-index: 1;
             cursor: pointer;
+
+            @media (max-width: 550px) {
+                position: absolute;
+                top: 250px;
+            }
         }
 
         .slide-ruler-left {
             transform: rotate(180deg);
+
+            @media (max-width: 550px) {
+                left: 10px;
+            }
+        }
+
+        .slide-ruler-right {
+            @media (max-width: 550px) {
+                right: 10px;
+            }
         }
     }
 }
