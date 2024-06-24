@@ -63,7 +63,7 @@ const onSwiperInit = (swiperInstance: Swiper) => {
         @media (max-width: 550px) {
             position: static;
         }
-        
+
         .slide-ruler {
             width: 40px;
             height: 40px;
@@ -72,7 +72,9 @@ const onSwiperInit = (swiperInstance: Swiper) => {
 
             @media (max-width: 550px) {
                 position: absolute;
-                top: 250px;
+                top: 240px;
+                width: 50px;
+                height: 50px;
             }
         }
 
@@ -80,13 +82,13 @@ const onSwiperInit = (swiperInstance: Swiper) => {
             transform: rotate(180deg);
 
             @media (max-width: 550px) {
-                left: 10px;
+                left: 12px;
             }
         }
 
         .slide-ruler-right {
             @media (max-width: 550px) {
-                right: 10px;
+                right: 12px;
             }
         }
     }
