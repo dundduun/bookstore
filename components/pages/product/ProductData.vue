@@ -93,25 +93,25 @@ onBeforeRouteLeave(() => {
     }
 
     .picture-container {
-        min-height: 369px;
-        min-width: 400px;
+        width: 100%;
+        height: 616px;
 
-        @media (max-width: 660px) {
-            width: 100%;
-            max-width: 100%;
+        @media (max-width: 850px) {
+            height: 82vw;
         }
 
         @media (max-width: 560px) {
-            min-height: unset;
-            min-width: unset;
+            height: 100vw;
         }
 
         .picture {
-            width: 88%;
-            height: auto;
+            width: 616px;
+            height: 100%;
+            object-fit: cover;
 
             @media (max-width: 850px) {
                 width: 100%;
+                height: 100%;
             }
         }
     }
