@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import CarouselItem from '@/components/ui/carousel/CarouselItem.vue';
+import CarouselItem from '@/components/ui/header/carousel/CarouselItem.vue';
 import type { Database } from '@/database.types';
 import type { Swiper } from 'swiper/types';
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import VueMarkdown from 'vue-markdown-render';
-import type { Database } from '~/database.types';
+import type { Database } from '@/database.types';
 
 const client = useSupabaseClient<Database>();
 const route = useRoute();

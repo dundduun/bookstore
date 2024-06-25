@@ -45,7 +45,7 @@ if (props.event.picture) {
 </template>
 
 <style scoped lang="scss">
-@import 'assets/styles/mixins';
+@import '@/assets/styles/mixins';
 
 .carousel-item {
     display: flex;

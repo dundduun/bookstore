@@ -1,4 +1,4 @@
-import type { Database } from '~/database.types';
+import type { Database } from '@/database.types';
 
 export type SearchedProductResult =
     Database['public']['Functions']['search_product']['Returns'];

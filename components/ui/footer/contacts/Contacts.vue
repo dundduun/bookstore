@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Address from '@/components/ui/Address.vue';
+import Address from '@/components/ui/footer/contacts/Address.vue';
 
 const addressData = [
     {

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import Carousel from '@/components/ui/carousel/Carousel.vue';
+import Carousel from '@/components/ui/header/carousel/Carousel.vue';
 import LandingSearch from '@/components/sections/landing-search/LandingSearch.vue';
 import RecommendedItem from '@/components/sections/RecommendedItem.vue';
 import MapPreview from '@/components/ui/footer/MapPreview.vue';
-import Contacts from '@/components/ui/footer/Contacts.vue';
+import Contacts from '@/components/ui/footer/contacts/Contacts.vue';
 import SocialMedia from '@/components/ui/footer/SocialMedia.vue';
 </script>
 
