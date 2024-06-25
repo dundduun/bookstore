@@ -42,15 +42,17 @@ onBeforeRouteLeave(() => {
 
 <template>
     <div class="product-data">
-        <div v-if="productImage.publicUrl" class="picture-container">
+        <div class="picture-container">
             <img
+                v-if="productImage.publicUrl"
                 :src="productImage.publicUrl"
                 class="picture"
                 alt="Изображение товара"
             />
-        </div>
-        <div v-else class="without-picture">
-            <span>Без изображения</span>
+
+            <div v-else class="without-picture">
+                <span>Без изображения</span>
+            </div>
         </div>
 
         <div class="text">
@@ -76,7 +78,7 @@ onBeforeRouteLeave(() => {
 @import '@/assets/styles/mixins.scss';
 
 .product-data {
-    max-width: 700px;
+    width: 700px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -85,11 +87,11 @@ onBeforeRouteLeave(() => {
     opacity: 0;
 
     @media (max-width: 850px) {
-        max-width: 82vw;
+        width: 82vw;
     }
 
     @media (max-width: 560px) {
-        max-width: 100%;
+        width: 100%;
     }
 
     .picture-container {
@@ -114,35 +116,28 @@ onBeforeRouteLeave(() => {
                 height: 100%;
             }
         }
-    }
 
-    .without-picture {
-        height: 400px;
-        width: 500px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 17px;
-        background-color: white;
+        .without-picture {
+            width: 616px;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            background-color: white;
 
-        @media (max-width: 850px) {
-            width: 500px;
-            height: 400px;
-            max-width: 82vw;
-        }
+            @media (max-width: 850px) {
+                width: 100%;
+                height: 100%;
+            }
 
-        @media (max-width: 560px) {
-            width: 100vw;
-            height: 80vw;
-            max-width: unset;
-        }
+            @media (max-width: 400px) {
+                font-size: 14px;
+            }
 
-        @media (max-width: 400px) {
-            font-size: 14px;
-        }
-
-        @media (max-width: 200px) {
-            font-size: 10px;
+            @media (max-width: 200px) {
+                font-size: 10px;
+            }
         }
     }
 
