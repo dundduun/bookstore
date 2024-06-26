@@ -3,7 +3,7 @@
         <div class="container">
             <NuxtLink class="site-title" to="/">masters bookstore</NuxtLink>
             <nav class="nav">
-                <NuxtLink class="nuxt-link">книги</NuxtLink>
+                <NuxtLink class="nuxt-link" to="/books">книги</NuxtLink>
                 <NuxtLink class="nuxt-link">искусство</NuxtLink>
                 <NuxtLink class="nuxt-link">аксессуары</NuxtLink>
                 <NuxtLink class="nuxt-link">контакты</NuxtLink>
@@ -67,7 +67,9 @@ header {
             }
 
             .nuxt-link {
+                @include kill-link-decoration;
                 color: $font-color;
+                cursor: pointer;
             }
         }
     }
