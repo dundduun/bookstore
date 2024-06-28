@@ -8,7 +8,7 @@ const { data: categories } = await client
     .order('title');
 const allCategory = {
     title: 'Все',
-}
+};
 
 const activeCategory = ref(-1);
 function clickCategory(category: { title: string }, index: number) {
@@ -44,22 +44,25 @@ function clickCategory(category: { title: string }, index: number) {
     flex-direction: column;
     gap: 10px;
     border-right: 1px $background solid;
-    margin-top: 50px;
-    padding-left: 40px;
     color: $font-color;
 
     .category {
         width: auto;
         height: 20px;
-        transition: color 0.1s;
+        transition: color 0.2s;
+        cursor: pointer;
 
         &:hover {
-            cursor: pointer;
+            color: black;
         }
     }
 
     .active-category {
         color: $background;
+
+        &:hover {
+            color: $background;
+        }
     }
 }
 </style>
