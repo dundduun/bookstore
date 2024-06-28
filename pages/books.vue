@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import CategoriesSidebar from '@/components/pages/books/CategoriesSidebar.vue';
-import CatalogSearch from '@/components/ui/CatalogSearch.vue';
+import CatalogFilter from '@/components/ui/CatalogFilter.vue';
 import type { Database } from '@/database.types';
 
 const client = useSupabaseClient<Database>();
@@ -10,8 +10,8 @@ const client = useSupabaseClient<Database>();
     <div class="books-page">
         <CategoriesSidebar />
 
-        <div class="search-and-goods">
-            <CatalogSearch />
+        <div class="filter-and-goods">
+            <CatalogFilter />
         </div>
     </div>
 </template>
