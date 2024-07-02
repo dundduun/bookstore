@@ -3,17 +3,13 @@
         <div class="search-input-button-container">
             <input class="search-input" placeholder="Поиск" type="text" />
             <button class="search-button">
-                <img
-                    src="@/assets/images/loupe.svg"
-                    alt="Искать"
-                    class="loupe-icon"
-                />
+                <img src="@/assets/images/loupe.svg" alt="Искать" class="loupe-icon" />
             </button>
         </div>
 
-        <select>
-            <option>По возрастанию</option>
-            <option>По убыванию</option>
+        <select class="select-filter">
+            <option class="option">По возрастанию</option>
+            <option class="option">По убыванию</option>
         </select>
     </div>
 </template>
@@ -56,7 +52,7 @@
             &:hover {
 
                 .loupe-icon {
-                    filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(174deg) brightness(95%) contrast(102%);;
+                    filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(174deg) brightness(95%) contrast(102%);
                 }
             }
 
@@ -68,7 +64,20 @@
             }
         }
     }
+
+    .select-filter {
+        width: 230px;
+        padding-left: 10px;
+        border: 1px solid $catalog-filter-border;
+        border-radius: 3px;
+        font-size: 16px;
+        font-family: $font-family;
+        font-weight: 300;
+        background-color: $catalog-filter;
+
+        &:focus {
+            outline: none;
+        }
+    }
 }
 </style>
-<script setup lang="ts">
-</script>
