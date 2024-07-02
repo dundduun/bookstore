@@ -9,7 +9,14 @@ export default defineNuxtConfig({
 
     typescript: { strict: true },
 
-    modules: ['@pinia/nuxt', '@nuxtjs/supabase', '@vueuse/nuxt', 'nuxt-swiper'],
+    modules: [
+        '@pinia/nuxt',
+        '@nuxtjs/supabase',
+        '@vueuse/nuxt',
+        'nuxt-swiper',
+        "@nuxtjs/tailwindcss",
+        "shadcn-nuxt"
+    ],
 
     app: {
         head: {
