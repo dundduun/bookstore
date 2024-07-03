@@ -1,3 +1,14 @@
+<script setup lang="ts">
+import {
+    Select,
+    SelectContent,
+    SelectGroup,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from '@/components/ui/select';
+</script>
+
 <template>
     <div class="catalog-filter">
         <div class="search-input-button-container">
@@ -7,10 +18,35 @@
             </button>
         </div>
 
-        <select class="select-filter">
-            <option class="option">По возрастанию</option>
-            <option class="option">По убыванию</option>
-        </select>
+        <Select
+            class="select-filter"
+        >
+            <SelectTrigger class="select-filter">
+                <SelectValue placeholder="Порядок" />
+            </SelectTrigger>
+            <SelectContent>
+                <SelectGroup>
+                    <SelectItem value="new-first">
+                        Дата: сперва новые
+                    </SelectItem>
+                    <SelectItem value="old-first">
+                        Дата: сперва старые
+                    </SelectItem>
+                    <SelectItem value="alphabetical-order">
+                        Название: А-Я
+                    </SelectItem>
+                    <SelectItem value="alphabetical-reversed-order">
+                        Название: Я-А
+                    </SelectItem>
+                    <SelectItem value="descending">
+                        Цена: по убыванию
+                    </SelectItem>
+                    <SelectItem value="ascending">
+                        Цена: по возрастанию
+                    </SelectItem>
+                </SelectGroup>
+            </SelectContent>
+        </Select>
     </div>
 </template>
 
@@ -41,7 +77,9 @@
         }
 
         .search-button {
+            width: 30px;
             display: flex;
+            justify-content: center;
             align-items: center;
             background-color: $catalog-filter;
             border: 1px solid $catalog-filter-border;
@@ -66,7 +104,8 @@
     }
 
     .select-filter {
-        width: 230px;
+        width: 260px;
+        height: 30px;
         padding-left: 10px;
         border: 1px solid $catalog-filter-border;
         border-radius: 3px;
@@ -74,10 +113,6 @@
         font-family: $font-family;
         font-weight: 300;
         background-color: $catalog-filter;
-
-        &:focus {
-            outline: none;
-        }
     }
 }
 </style>
