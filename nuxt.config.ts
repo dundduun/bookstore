@@ -14,8 +14,8 @@ export default defineNuxtConfig({
         '@nuxtjs/supabase',
         '@vueuse/nuxt',
         'nuxt-swiper',
-        "@nuxtjs/tailwindcss",
-        "shadcn-nuxt"
+        '@nuxtjs/tailwindcss',
+        'shadcn-nuxt',
     ],
 
     app: {
