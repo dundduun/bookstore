@@ -7,6 +7,21 @@ import {
     SelectTrigger,
     SelectValue,
 } from '@/components/ui/select';
+
+const selectItems = [
+    { value: 'new-first', text: 'Дата: сперва новые', },
+    { value: 'old-first', text: 'Дата: сперва старые', },
+    { value: 'alphabetical-order', text: 'Название: А-Я', },
+    { value: 'alphabetical-reversed-order', text: 'Название: Я-А', },
+    { value: 'descending', text: 'Цена: по убыванию', },
+    { value: 'ascending', text: 'Цена: по возрастанию' },
+];
+
+const model = ref();
+
+onMounted(() => {
+    model.value = 'new-first';
+});
 </script>
 
 <template>
@@ -14,35 +29,27 @@ import {
         <div class="search-input-button-container">
             <input class="search-input" placeholder="Поиск" type="text" />
             <button class="search-button">
-                <img src="@/assets/images/loupe.svg" alt="Искать" class="loupe-icon" />
+                <img
+                    src="@/assets/images/loupe.svg"
+                    alt="Искать"
+                    class="loupe-icon"
+                />
             </button>
         </div>
 
-        <Select
-            class="select-filter"
-        >
+        <Select class="select-filter" v-model="model">
             <SelectTrigger class="select-filter">
-                <SelectValue placeholder="Порядок" />
+                <SelectValue :placeholder="selectItems[0].text" />
             </SelectTrigger>
             <SelectContent>
                 <SelectGroup>
-                    <SelectItem value="new-first">
-                        Дата: сперва новые
-                    </SelectItem>
-                    <SelectItem value="old-first">
-                        Дата: сперва старые
-                    </SelectItem>
-                    <SelectItem value="alphabetical-order">
-                        Название: А-Я
-                    </SelectItem>
-                    <SelectItem value="alphabetical-reversed-order">
-                        Название: Я-А
-                    </SelectItem>
-                    <SelectItem value="descending">
-                        Цена: по убыванию
-                    </SelectItem>
-                    <SelectItem value="ascending">
-                        Цена: по возрастанию
+                    <SelectItem
+                        class="select-item"
+                        v-for="(item, index) in selectItems"
+                        :value="item.value"
+                        :key="index"
+                    >
+                        {{ item.text }}
                     </SelectItem>
                 </SelectGroup>
             </SelectContent>
@@ -88,16 +95,17 @@ import {
             transition: 0.2s;
 
             &:hover {
-
                 .loupe-icon {
-                    filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(174deg) brightness(95%) contrast(102%);
+                    filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(174deg)
+                        brightness(95%) contrast(102%);
                 }
             }
 
             .loupe-icon {
                 height: 20px;
                 width: 20px;
-                filter: invert(48%) sepia(0%) saturate(0%) hue-rotate(220deg) brightness(94%) contrast(93%);
+                filter: invert(48%) sepia(0%) saturate(0%) hue-rotate(220deg)
+                    brightness(94%) contrast(93%);
                 transition: 0.2s;
             }
         }
