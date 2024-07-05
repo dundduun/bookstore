@@ -38,6 +38,8 @@ onBeforeRouteLeave(() => {
 <style scoped lang="scss">
 .product-page {
     width: 100%;
+    display: flex;
+    justify-content: center;
     background-color: white;
 
     .container {
