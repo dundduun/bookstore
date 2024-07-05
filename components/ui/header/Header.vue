@@ -1,5 +1,5 @@
 <template>
-    <header>
+    <header class="header">
         <div class="container">
             <NuxtLink class="site-title" to="/">masters bookstore</NuxtLink>
             <nav class="nav">
@@ -15,7 +15,7 @@
 <style scoped lang="scss">
 @import '@/assets/styles/mixins.scss';
 
-header {
+.header {
     width: 100%;
     display: flex;
     justify-content: center;
