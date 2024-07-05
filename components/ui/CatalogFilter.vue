@@ -9,11 +9,11 @@ import {
 } from '@/components/ui/select';
 
 const selectItems = [
-    { value: 'new-first', text: 'Дата: сперва новые', },
-    { value: 'old-first', text: 'Дата: сперва старые', },
-    { value: 'alphabetical-order', text: 'Название: А-Я', },
-    { value: 'alphabetical-reversed-order', text: 'Название: Я-А', },
-    { value: 'descending', text: 'Цена: по убыванию', },
+    { value: 'new-first', text: 'Дата: сперва новые' },
+    { value: 'old-first', text: 'Дата: сперва старые' },
+    { value: 'alphabetical-order', text: 'Название: А-Я' },
+    { value: 'alphabetical-reversed-order', text: 'Название: Я-А' },
+    { value: 'descending', text: 'Цена: по убыванию' },
     { value: 'ascending', text: 'Цена: по возрастанию' },
 ];
 
