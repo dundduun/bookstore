@@ -14,20 +14,38 @@ const { data: products } = await client
 
 <template>
     <div class="books-page">
-        <CategoriesSidebar />
+        <div class="books-page-container">
+            <CategoriesSidebar />
 
-        <div class="filter-and-products-list">
-            <CatalogFilter />
-            <ProductsList :products />
+            <div class="filter-and-products-list">
+                <CatalogFilter />
+                <ProductsList class="products-list" :products />
+            </div>
         </div>
     </div>
 </template>
 
 <style scoped lang="scss">
 .books-page {
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     margin-top: 50px;
-    padding: 0 50px;
+
+    .books-page-container {
+        height: 100%;
+        width: 100%;
+        max-width: 2000px;
+        display: flex;
+        justify-content: center;
+        padding: 0 20px 0 50px;
+
+        .filter-and-products-list {
+
+            .products-list {
+                margin: 50px 0 0 30px;
+            }
+        }
+    }
 }
 </style>

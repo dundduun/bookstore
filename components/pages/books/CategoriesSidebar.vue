@@ -39,10 +39,11 @@ function clickCategory(category: { title: string }, index: number) {
 
 <style scoped lang="scss">
 .categories-sidebar {
-    min-width: 280px;
+    min-width: 260px;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin-top: 50px;
     border-right: 1px $background solid;
     color: $font-color;
 

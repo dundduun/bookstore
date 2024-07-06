@@ -19,8 +19,7 @@ defineProps<{
 
 <style scoped lang="scss">
 .products-list {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }
 </style>

@@ -61,6 +61,7 @@ onMounted(() => {
 .catalog-filter {
     height: 30px;
     display: flex;
+    justify-content: flex-end;
     gap: 20px;
 
     .search-input-button-container {

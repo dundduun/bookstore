@@ -31,10 +31,10 @@ const { data: picture } = client.storage
     </NuxtLink>
 
     <div class="buttons">
-        <button class="more-details-button">
+        <button class="more-details-button button">
             Подробнее
         </button>
-        <button class="buy-button">
+        <button class="buy-button button">
             Купить
         </button>
     </div>
@@ -45,8 +45,11 @@ const { data: picture } = client.storage
 @import '@/assets/styles/mixins.scss';
 
 .product-card {
-    width: 33%;
+    width: 100%;
     max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     padding: 10px 20px;
     color: $product-page-font-color;
 
@@ -72,10 +75,17 @@ const { data: picture } = client.storage
     }
 
     .buttons {
+        display: flex;
+        justify-content: flex-end;
+        gap: 6px;
+        margin-top: 20px;
+
+        .button {
+            padding: 10px 15px;
+        }
 
         .more-details-button {
             @include hover-button($primary, white);
-
         }
 
         .buy-button {
