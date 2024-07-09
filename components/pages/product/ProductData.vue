@@ -61,7 +61,7 @@ onBeforeRouteLeave(() => {
                     {{ productInstance.title }}
                 </span>
 
-                <span class="price"> {{ productInstance.price }} р. </span>
+                <span class="price"> {{ productInstance.price.toLocaleString() }} р. </span>
             </div>
 
             <button class="buy-button" ref="button">купить</button>

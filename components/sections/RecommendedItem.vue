@@ -37,7 +37,7 @@ const { data: giftTokenImage } = client.storage
                     {{ giftToken!.title }}
                 </span>
 
-                <span class="price"> от {{ giftToken!.price }} р. </span>
+                <span class="price"> от {{ giftToken!.price.toLocaleString() }} р. </span>
 
                 <div class="buttons">
                     <button class="buy-button">купить</button>
