@@ -14,31 +14,24 @@ const { data: picture } = client.storage
 </script>
 
 <template>
-<div class="product-card">
-    <NuxtLink class="picture-title-link" :to="`/product/${product.id}`">
+    <div class="product-card">
+        <NuxtLink class="picture-title-link" :to="`/product/${product.id}`">
+            <div class="picture-container">
+                <img class="picture" :src="picture.publicUrl" />
+            </div>
 
-        <div class="picture-container">
-            <img class="picture" :src="picture.publicUrl" />
+            <span class="title">
+                {{ product.title }}
+            </span>
+
+            <span class="price"> {{ product.price.toLocaleString() }}р. </span>
+        </NuxtLink>
+
+        <div class="buttons">
+            <button class="more-details-button button">Подробнее</button>
+            <button class="buy-button button">Купить</button>
         </div>
-
-        <span class="title">
-            {{ product.title }}
-        </span>
-
-        <span class="price">
-            {{ product.price }}
-        </span>
-    </NuxtLink>
-
-    <div class="buttons">
-        <button class="more-details-button button">
-            Подробнее
-        </button>
-        <button class="buy-button button">
-            Купить
-        </button>
     </div>
-</div>
 </template>
 
 <style scoped lang="scss">
@@ -50,17 +43,14 @@ const { data: picture } = client.storage
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 10px 20px;
+    padding: 20px;
     color: $product-page-font-color;
-
-    border: 1px black solid;
 
     .picture-title-link {
         display: flex;
         flex-direction: column;
 
         .picture-container {
-
             .picture {
                 width: 100%;
                 aspect-ratio: 1 / 1;
@@ -69,14 +59,19 @@ const { data: picture } = client.storage
         }
 
         .title {
+            margin-top: 10px;
             font-size: 20px;
             font-weight: 500;
+        }
+
+        .price {
+            margin-top: 10px;
+            font-size: 16px;
         }
     }
 
     .buttons {
         display: flex;
-        justify-content: flex-end;
         gap: 6px;
         margin-top: 20px;
 
@@ -85,11 +80,44 @@ const { data: picture } = client.storage
         }
 
         .more-details-button {
-            @include hover-button($primary, white);
+            @include hover-button(white, $primary);
+            border-color: $primary;
+
+            @media (hover: hover) {
+                &:hover {
+                    color: white;
+                    background-color: $background;
+                    border-color: $background;
+                }
+            }
+
+            @media (hover: none) {
+                &:active {
+                    color: white;
+                    background-color: $background;
+                    border-color: $background;
+                }
+            }
         }
 
         .buy-button {
-            @include hover-button($background, white);
+            @include hover-button($primary, white);
+
+            @media (hover: hover) {
+                &:hover {
+                    color: white;
+                    background-color: $background;
+                    border-color: $background;
+                }
+            }
+
+            @media (hover: none) {
+                &:active {
+                    color: white;
+                    background-color: $background;
+                    border-color: $background;
+                }
+            }
         }
     }
 }
