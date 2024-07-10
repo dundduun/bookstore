@@ -58,16 +58,18 @@ onBeforeRouteLeave(() => {
         <div class="text">
             <div class="main-information">
                 <span class="title">
-                    {{ productInstance.title }}
+                    {{ productInstance!.title }}
                 </span>
 
-                <span class="price"> {{ productInstance.price.toLocaleString() }} р. </span>
+                <span class="price">
+                    {{ productInstance!.price.toLocaleString() }} р.
+                </span>
             </div>
 
             <button class="buy-button" ref="button">купить</button>
 
             <VueMarkdown
-                :source="productInstance.description"
+                :source="productInstance!.description"
                 class="description"
             />
         </div>

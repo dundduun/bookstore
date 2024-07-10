@@ -41,7 +41,6 @@ const { data: products } = await client
         padding: 0 20px 0 50px;
 
         .filter-and-products-list {
-
             .products-list {
                 margin: 50px 0 0 30px;
             }
