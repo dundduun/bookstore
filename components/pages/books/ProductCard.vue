@@ -8,16 +8,28 @@ const props = defineProps<{
     product: selectedProduct;
 }>();
 
-const { data: picture } = client.storage
-    .from('product_images')
-    .getPublicUrl(props.product.pictures[0]);
+const picture = ref({ publicUrl: ''});
+if (props.product.pictures[0]) {
+    const { data } = client.storage
+        .from('product_images')
+        .getPublicUrl(props.product.pictures[0]);
+    picture.value = data;
+}
 </script>
 
 <template>
     <div class="product-card">
         <NuxtLink class="picture-title-link" :to="`/product/${product.id}`">
-            <div class="picture-container">
-                <img class="picture" :src="picture.publicUrl" />
+            <div class="picture-container ">
+                <img 
+                    v-if="picture.publicUrl"
+                    class="picture picture-container-child" 
+                    :src="picture.publicUrl" 
+                />
+
+                <div v-else class="without-picture picture-container-child">
+                    Без изображения
+                </div>
             </div>
 
             <span class="title">
@@ -51,10 +63,20 @@ const { data: picture } = client.storage
         flex-direction: column;
 
         .picture-container {
-            .picture {
+
+            .picture-container-child {
                 width: 100%;
                 aspect-ratio: 1 / 1;
+            }
+            
+            .picture {
                 object-fit: cover;
+            }
+
+            .without-picture {
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
         }
 
