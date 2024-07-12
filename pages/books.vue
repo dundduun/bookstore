@@ -35,7 +35,7 @@ const { data: products } = await client
     .books-page-container {
         height: 100%;
         width: 100%;
-        max-width: 2000px;
+        max-width: 1440px;
         display: flex;
         justify-content: center;
         padding: 0 20px 0 50px;
