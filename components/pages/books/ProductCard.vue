@@ -8,7 +8,7 @@ const props = defineProps<{
     product: selectedProduct;
 }>();
 
-const picture = ref({ publicUrl: ''});
+const picture = ref({ publicUrl: '' });
 if (props.product.pictures[0]) {
     const { data } = client.storage
         .from('product_images')
@@ -20,11 +20,11 @@ if (props.product.pictures[0]) {
 <template>
     <div class="product-card">
         <NuxtLink class="picture-title-link" :to="`/product/${product.id}`">
-            <div class="picture-container ">
-                <img 
+            <div class="picture-container">
+                <img
                     v-if="picture.publicUrl"
-                    class="picture picture-container-child" 
-                    :src="picture.publicUrl" 
+                    class="picture picture-container-child"
+                    :src="picture.publicUrl"
                 />
 
                 <div v-else class="without-picture picture-container-child">
@@ -35,13 +35,24 @@ if (props.product.pictures[0]) {
             <span class="title">
                 {{ product.title }}
             </span>
-
-            <span class="price"> {{ product.price.toLocaleString() }}р. </span>
         </NuxtLink>
 
-        <div class="buttons">
-            <button class="more-details-button button">Подробнее</button>
-            <button class="buy-button button">Купить</button>
+        <div class="buttons-and-price">
+            <NuxtLink class="price-link" :to="`/product/${product.id}`">
+                <span class="price">
+                    {{ product.price.toLocaleString() }}р.
+                </span>
+            </NuxtLink>
+
+            <div class="buttons">
+                <NuxtLink
+                    class="more-details-button button"
+                    :to="`/product/${product.id}`"
+                >
+                    Подробнее
+                </NuxtLink>
+                <button class="buy-button button">Купить</button>
+            </div>
         </div>
     </div>
 </template>
@@ -51,7 +62,6 @@ if (props.product.pictures[0]) {
 
 .product-card {
     width: 100%;
-    max-width: 420px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -63,12 +73,11 @@ if (props.product.pictures[0]) {
         flex-direction: column;
 
         .picture-container {
-
             .picture-container-child {
                 width: 100%;
                 aspect-ratio: 1 / 1;
             }
-            
+
             .picture {
                 object-fit: cover;
             }
@@ -85,59 +94,66 @@ if (props.product.pictures[0]) {
             font-size: 20px;
             font-weight: 500;
         }
-
-        .price {
-            margin-top: 10px;
-            font-size: 16px;
-        }
     }
 
-    .buttons {
-        display: flex;
-        gap: 6px;
-        margin-top: 20px;
+    .buttons-and-price {
+        .price-link {
+            display: flex;
+            flex-direction: column;
 
-        .button {
-            padding: 10px 15px;
-        }
-
-        .more-details-button {
-            @include hover-button(white, $primary);
-            border-color: $primary;
-
-            @media (hover: hover) {
-                &:hover {
-                    color: white;
-                    background-color: $background;
-                    border-color: $background;
-                }
-            }
-
-            @media (hover: none) {
-                &:active {
-                    color: white;
-                    background-color: $background;
-                    border-color: $background;
-                }
+            .price {
+                margin-top: 10px;
+                font-size: 16px;
             }
         }
 
-        .buy-button {
-            @include hover-button($primary, white);
+        .buttons {
+            display: flex;
+            gap: 6px;
+            margin-top: 20px;
 
-            @media (hover: hover) {
-                &:hover {
-                    color: white;
-                    background-color: $background;
-                    border-color: $background;
+            .button {
+                padding: 10px 15px;
+            }
+
+            .more-details-button {
+                @include hover-button(white, $primary);
+                border-color: $primary;
+
+                @media (hover: hover) {
+                    &:hover {
+                        color: white;
+                        background-color: $background;
+                        border-color: $background;
+                    }
+                }
+
+                @media (hover: none) {
+                    &:active {
+                        color: white;
+                        background-color: $background;
+                        border-color: $background;
+                    }
                 }
             }
 
-            @media (hover: none) {
-                &:active {
-                    color: white;
-                    background-color: $background;
-                    border-color: $background;
+            .buy-button {
+                @include hover-button($primary, white);
+
+                @media (hover: hover) {
+                    &:hover {
+                        color: white;
+                        background-color: $background;
+                        border-color: $background;
+                    }
+                }
+
+                @media (hover: none) {
+                    &:active {
+                        color: white;
+                        background-color: $background;
+                        border-color: $background;
+                    }
                 }
             }
         }
