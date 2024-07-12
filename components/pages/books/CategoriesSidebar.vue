@@ -43,7 +43,7 @@ function clickCategory(category: { title: string }, index: number) {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-top: 50px;
+    margin-top: 80px;
     border-right: 1px $background solid;
     color: $font-color;
 
