@@ -49,9 +49,9 @@ if (props.product.pictures[0]) {
                     class="more-details-button button"
                     :to="`/product/${product.id}`"
                 >
-                    Подробнее
+                    подробнее
                 </NuxtLink>
-                <button class="buy-button button">Купить</button>
+                <button class="buy-button button">купить</button>
             </div>
         </div>
     </div>
@@ -86,6 +86,14 @@ if (props.product.pictures[0]) {
                 display: flex;
                 justify-content: center;
                 align-items: center;
+
+                @media (max-width: 1250px) {
+                    font-size: 14px;
+                } 
+
+                @media (max-width: 1100px) {
+                    font-size: 12px;
+                }
             }
         }
 
@@ -93,6 +101,19 @@ if (props.product.pictures[0]) {
             margin-top: 10px;
             font-size: 20px;
             font-weight: 500;
+
+            @media (max-width: 1400px) and (min-width: 980px) {
+                margin-top: 3px;
+                font-size: 18px;
+            }
+
+            @media (max-width: 1100px) and (min-width: 980px) {
+                font-size: 16px;
+            }
+
+            @media (max-width: 770px) {
+                font-size: 16px;
+            }
         }
     }
 
@@ -104,6 +125,10 @@ if (props.product.pictures[0]) {
             .price {
                 margin-top: 10px;
                 font-size: 16px;
+
+                @media (max-width: 770px) {
+                    font-size: 14px;
+                }
             }
         }
 
@@ -112,8 +137,22 @@ if (props.product.pictures[0]) {
             gap: 6px;
             margin-top: 20px;
 
+            @media (max-width: 980px) and (min-width: 750px) {
+                gap: 10px;
+            }
+
             .button {
                 padding: 10px 15px;
+
+                @media (max-width: 1250px) {
+                    padding: 8px 10px;
+                    font-size: 12px;
+                }
+
+                @media (max-width: 980px) and (min-width: 770px) {
+                    padding: 10px 15px;
+                    font-size: 16px;
+                }
             }
 
             .more-details-button {
