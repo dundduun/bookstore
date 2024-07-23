@@ -76,6 +76,8 @@ footer {
             }
 
             .description {
+                display: block;
+                line-height: normal;
                 font-size: 12px;
                 color: white;
             }
