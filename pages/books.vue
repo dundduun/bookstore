@@ -9,8 +9,7 @@ const client = useSupabaseClient<Database>();
 const { data: products } = await client
     .from('product')
     .select('*')
-    .order('created_at', { ascending: false })
-    .limit(9);
+    .order('created_at', { ascending: false });
 </script>
 
 <template>
@@ -29,7 +28,6 @@ const { data: products } = await client
 <style scoped lang="scss">
 .books-page {
     width: 100%;
-    // min-height: 100vh;
     display: flex;
     justify-content: center;
     margin-top: 50px;
@@ -45,6 +43,10 @@ const { data: products } = await client
         @media (max-width: 980px) {
             flex-direction: column;
             padding: 0 22px;
+        }
+
+        @media (max-width: 430px) {
+            padding: 0;
         }
 
         .filter-and-products-list {
