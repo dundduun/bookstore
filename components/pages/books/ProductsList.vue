@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ProductCard from '@/components/pages/books/ProductCard.vue';
+import LazyProductCard from '@/components/pages/books/ProductCard.vue';
 import type { selectedProduct } from '@/types';
 
 defineProps<{
@@ -9,7 +9,7 @@ defineProps<{
 
 <template>
     <div class="products-list">
-        <ProductCard
+        <LazyProductCard
             v-for="(product, index) in products"
             :product="product"
             :key="index"
@@ -22,8 +22,12 @@ defineProps<{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 
-    @media (max-width: 980px) {
+    @media (max-width: 900px) {
         grid-template-columns: 1fr 1fr;
+    }
+
+    @media (max-width: 330px) {
+        grid-template-columns: 1fr;
     }
 }
 </style>
