@@ -51,7 +51,7 @@ const { data: products } = await client
 
         .filter-and-products-list {
             @media (max-width: 980px) {
-                margin-top: 100px;
+                margin-top: 130px;
             }
 
             .products-list {
