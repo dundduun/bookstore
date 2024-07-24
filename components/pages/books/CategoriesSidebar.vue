@@ -13,7 +13,7 @@ const allCategory = {
 const activeCategory = ref(-1);
 function clickCategory(category: { title: string }, index: number) {
     activeCategory.value = index;
-    // to emit category to books
+    // emit category to books
 }
 </script>
 
@@ -47,11 +47,24 @@ function clickCategory(category: { title: string }, index: number) {
     border-right: 1px $background solid;
     color: $font-color;
 
+    @media (max-width: 980px) {
+        min-width: unset;
+        flex-flow: row wrap;
+        justify-content: center;
+        padding: 0 20px;
+        text-align: center;
+        border: none;
+    }
+
     .category {
         width: auto;
         height: 20px;
         transition: color 0.2s;
         cursor: pointer;
+
+        @media (max-width: 980px) {
+            height: unset;
+        }
 
         &:hover {
             color: black;
