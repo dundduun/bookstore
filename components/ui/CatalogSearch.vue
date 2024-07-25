@@ -1,9 +1,3 @@
-<script setup lang="ts">
-// defineProps<{
-//     inputWidth: string,
-// }>();
-</script>
-
 <template>
     <div class="search-input-button-container">
         <input class="search-input" placeholder="Поиск" type="text" />
