@@ -76,6 +76,7 @@ onMounted(() => {
         height: unset;
         width: 100%;
         display: block;
+        padding: 0 20px;
     }
 
     .catalog-search {
