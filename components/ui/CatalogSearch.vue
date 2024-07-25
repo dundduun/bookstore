@@ -8,7 +8,11 @@
     <div class="search-input-button-container">
         <input class="search-input" placeholder="Поиск" type="text" />
         <button class="search-button">
-            <img src="@/assets/images/loupe.svg" alt="Искать" class="loupe-icon" />
+            <img
+                src="@/assets/images/loupe.svg"
+                alt="Искать"
+                class="loupe-icon"
+            />
         </button>
     </div>
 </template>
@@ -47,14 +51,16 @@
 
         &:hover {
             .loupe-icon {
-                filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(174deg) brightness(95%) contrast(102%);
+                filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(174deg)
+                    brightness(95%) contrast(102%);
             }
         }
 
         .loupe-icon {
             height: 20px;
             width: 20px;
-            filter: invert(48%) sepia(0%) saturate(0%) hue-rotate(220deg) brightness(94%) contrast(93%);
+            filter: invert(48%) sepia(0%) saturate(0%) hue-rotate(220deg)
+                brightness(94%) contrast(93%);
             transition: 0.2s;
         }
     }
