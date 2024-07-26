@@ -51,7 +51,9 @@ function clickCategory(category: { title: string }, index: number) {
         min-width: unset;
         flex-flow: row wrap;
         justify-content: center;
+        gap: 18px;
         padding: 0 20px;
+        font-size: 18px;
         text-align: center;
         border: none;
     }
