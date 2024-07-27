@@ -67,18 +67,10 @@ function clickCategory(category: { title: string }, index: number) {
         @media (max-width: 980px) {
             height: unset;
         }
-
-        &:hover {
-            color: black;
-        }
     }
 
     .active-category {
         color: $background;
-
-        &:hover {
-            color: $background;
-        }
     }
 }
 </style>
