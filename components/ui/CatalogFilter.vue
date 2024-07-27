@@ -23,6 +23,17 @@ const model = ref();
 onMounted(() => {
     model.value = 'new-first';
 });
+
+const activeFilter = ref('');
+function activateFilter(clickedFilter: string) {
+    if (!activeFilter.value) {
+        activeFilter.value = clickedFilter;
+    } else if (activeFilter.value !== clickedFilter) {
+        activeFilter.value = clickedFilter;
+    } else {
+        activeFilter.value = '';
+    }
+}
 </script>
 
 <template>
@@ -49,7 +60,13 @@ onMounted(() => {
 
         <div class="mob-filters">
             <div class="buttons">
-                <button class="filters">
+                <button
+                    class="filters"
+                    :class="{
+                        'active-filter': activeFilter === 'filtersButton',
+                    }"
+                    @click="activateFilter('filtersButton')"
+                >
                     <img
                         src="@/assets/images/settings.svg"
                         class="settings-icon"
@@ -57,7 +74,13 @@ onMounted(() => {
                     <span>Фильтры</span>
                 </button>
 
-                <button class="search">
+                <button
+                    class="search"
+                    :class="{
+                        'active-filter': activeFilter === 'searchButton',
+                    }"
+                    @click="activateFilter('searchButton')"
+                >
                     <img src="@/assets/images/loupe.svg" class="loupe-icon" />
                 </button>
             </div>
@@ -118,6 +141,7 @@ onMounted(() => {
                 display: flex;
                 align-items: center;
                 gap: 10px;
+                transition: 0.2s;
 
                 .settings-icon {
                     height: 25px;
@@ -126,6 +150,7 @@ onMounted(() => {
 
             .search {
                 padding: 10px 0 10px 10px;
+                transition: 0.2s;
 
                 .loupe-icon {
                     width: 25px;
@@ -133,6 +158,11 @@ onMounted(() => {
                     filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(174deg)
                         brightness(95%) contrast(102%);
                 }
+            }
+
+            .active-filter {
+                filter: invert(60%) sepia(0%) saturate(55%) hue-rotate(157deg)
+                    brightness(106%) contrast(92%);
             }
         }
     }
