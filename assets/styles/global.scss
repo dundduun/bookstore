@@ -6,7 +6,6 @@
 
 * {
     box-sizing: border-box;
-    margin: 0;
     line-height: normal;
 }
 
@@ -15,12 +14,6 @@ body {
     overflow-x: hidden;
     font-family: $font-family;
     font-weight: normal;
-}
-
-section,
-div {
-    overflow: hidden;
-    overflow-wrap: normal;
 }
 
 .leaflet-control-attribution {
