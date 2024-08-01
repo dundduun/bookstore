@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import PriceRegulator from '@/components/ui/header/catalog/PriceRegulator.vue';
 import type { Database } from '@/database.types';
 const client = useSupabaseClient<Database>();
 
@@ -10,6 +11,20 @@ const allCategory = {
     title: 'Все',
 };
 
+const { data: mostExpensiveProduct } = await client
+    .from('product')
+    .select('price')
+    .order('price', { ascending: true })
+    .limit(1)
+    .single();
+
+const { data: mostCheapProduct } = await client
+    .from('product')
+    .select('price')
+    .order('price', { ascending: false })
+    .limit(1)
+    .single();
+
 const activeCategory = ref(-1);
 function clickCategory(category: { title: string }, index: number) {
     activeCategory.value = index;
@@ -19,21 +34,27 @@ function clickCategory(category: { title: string }, index: number) {
 
 <template>
     <div class="categories-sidebar">
-        <span
-            class="category"
-            :class="{ 'active-category': activeCategory === -1 }"
-            @click="clickCategory(allCategory, -1)"
-        >
-            {{ allCategory.title }}
-        </span>
-        <span
-            class="category"
-            v-for="(category, index) in categories"
-            :class="{ 'active-category': activeCategory === index }"
-            @click="clickCategory(category, index)"
-        >
-            {{ category.title }}
-        </span>
+        <div class="categories">
+            <span
+                class="category"
+                :class="{ 'active-category': activeCategory === -1 }"
+                @click="clickCategory(allCategory, -1)"
+            >
+                {{ allCategory.title }}
+            </span>
+            <span
+                class="category"
+                v-for="(category, index) in categories"
+                :class="{ 'active-category': activeCategory === index }"
+                @click="clickCategory(category, index)"
+            >
+                {{ category.title }}
+            </span>
+        </div>
+
+        <div class="price-regulator">
+            <PriceRegulator :min-price="mostExpensiveProduct!.price" :max-price="mostCheapProduct!.price" />
+        </div>
     </div>
 </template>
 
@@ -42,35 +63,49 @@ function clickCategory(category: { title: string }, index: number) {
     min-width: 260px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
     margin-top: 80px;
     border-right: 1px $background solid;
     color: $font-color;
 
     @media (max-width: 980px) {
         min-width: unset;
-        flex-flow: row wrap;
-        justify-content: center;
-        gap: 18px;
         padding: 0 20px;
         font-size: 18px;
         text-align: center;
         border: none;
     }
 
-    .category {
-        width: auto;
-        height: 20px;
-        transition: color 0.2s;
-        cursor: pointer;
+    .categories {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding-right: 35px;
 
         @media (max-width: 980px) {
-            height: unset;
+            flex-flow: row wrap;
+            justify-content: center;
+            gap: 18px;
+        }
+
+        .category {
+            width: auto;
+            min-height: 20px;
+            transition: color 0.2s;
+            cursor: pointer;
+
+            @media (max-width: 980px) {
+                height: unset;
+            }
+        }
+
+        .active-category {
+            color: $background;
         }
     }
 
-    .active-category {
-        color: $background;
+    .price-regulator {
+        margin-top: 25px;
     }
 }
 </style>

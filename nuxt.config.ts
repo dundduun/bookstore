@@ -16,6 +16,7 @@ export default defineNuxtConfig({
         'nuxt-swiper',
         '@nuxtjs/tailwindcss',
         'shadcn-nuxt',
+        '@element-plus/nuxt',
     ],
 
     app: {
