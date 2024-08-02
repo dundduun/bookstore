@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import PriceRegulator from '@/components/ui/header/catalog/PriceRegulator.vue';
+import PriceRegulator from '@/components/ui/catalog/PriceRegulator.vue';
 import type { Database } from '@/database.types';
 const client = useSupabaseClient<Database>();
 
@@ -30,6 +30,8 @@ function clickCategory(category: { title: string }, index: number) {
     activeCategory.value = index;
     // emit category to books
 }
+
+const isAvailabilityChecked = ref(false);
 </script>
 
 <template>
@@ -52,8 +54,16 @@ function clickCategory(category: { title: string }, index: number) {
             </span>
         </div>
 
-        <div class="price-regulator">
-            <PriceRegulator :min-price="mostExpensiveProduct!.price" :max-price="mostCheapProduct!.price" />
+        <div class="price-regulator-container">
+            <PriceRegulator
+                :min-price="mostExpensiveProduct!.price"
+                :max-price="mostCheapProduct!.price"
+            />
+        </div>
+
+        <div class="availability">
+            <span class="title">наличие</span>
+            <ElCheckbox v-model="isAvailabilityChecked" class="checkbox">только товары в наличии</ElCheckbox>
         </div>
     </div>
 </template>
@@ -104,8 +114,30 @@ function clickCategory(category: { title: string }, index: number) {
         }
     }
 
-    .price-regulator {
-        margin-top: 25px;
+    .price-regulator-container {
+        margin-top: 50px;
+
+        @media (max-width: 980px) {
+            display: none;
+        }
+    }
+
+    .availability {
+        display: flex;
+        flex-direction: column;
+        margin-top: 50px;
+
+        @media (max-width: 980px) {
+            display: none;
+        }
+
+        .title {
+            font-size: 18px;
+        }
+
+        .checkbox {
+            margin-top: 10px;
+        }
     }
 }
 </style>
