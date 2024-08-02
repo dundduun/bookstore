@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import CategoriesSidebar from '@/components/pages/books/CategoriesSidebar.vue';
-import CatalogFilter from '@/components/ui/header/catalog/CatalogFilter.vue';
+import CatalogFilter from '@/components/ui/catalog/CatalogFilter.vue';
 import ProductsList from '@/components/pages/books/ProductsList.vue';
 import type { Database } from '@/database.types';
 

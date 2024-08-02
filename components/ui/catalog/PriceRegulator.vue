@@ -9,22 +9,39 @@ const priceRegulator = ref([props.minPrice, props.maxPrice]);
 
 <template>
     <div class="price-regulator">
-        <span class="price">цена</span>
+        <span class="title">цена</span>
 
         <div class="price-slider">
-            <ElSlider v-model="priceRegulator" range :show-tooltip="false" :min="props.minPrice" :max="props.maxPrice" />
+            <ElSlider
+                v-model="priceRegulator"
+                range
+                :show-tooltip="false"
+                :min="props.minPrice"
+                :max="props.maxPrice"
+            />
         </div>
 
         <div class="control-inputs">
-            <input class="min-price control-input" type="number" v-model="priceRegulator[0]" />
+            <input
+                class="min-price control-input"
+                type="number"
+                v-model="priceRegulator[0]"
+            />
             <span> - </span>
-            <input class="max-price control-input" type="number" v-model="priceRegulator[1]" />
+            <input
+                class="max-price control-input"
+                type="number"
+                v-model="priceRegulator[1]"
+            />
         </div>
     </div>
 </template>
 
 <style scoped lang="scss">
 .price-regulator {
+    .title {
+        font-size: 18px;
+    }
 
     .price-slider {
         margin-top: 10px;
@@ -51,13 +68,13 @@ const priceRegulator = ref([props.minPrice, props.maxPrice]);
             }
         }
 
-        in.control-inputput::-webkit-outer-spin-button,
+        .control-input::-webkit-outer-spin-button,
         .control-input::-webkit-inner-spin-button {
             -webkit-appearance: none;
             margin: 0;
         }
 
-        .control-input[type=number] {
+        .control-input[type='number'] {
             -moz-appearance: textfield;
         }
     }

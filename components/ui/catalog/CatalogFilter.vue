@@ -7,7 +7,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from '@/components/ui/select';
-import CatalogSearch from '@/components/ui/header/catalog/CatalogSearch.vue';
+import CatalogSearch from '@/components/ui/catalog/CatalogSearch.vue';
 
 const selectItems = [
     { value: 'new-first', text: 'Дата: сперва новые' },
