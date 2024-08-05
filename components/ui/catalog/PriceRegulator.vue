@@ -73,10 +73,6 @@ const priceRegulator = ref([props.minPrice, props.maxPrice]);
             -webkit-appearance: none;
             margin: 0;
         }
-
-        .control-input[type='number'] {
-            -moz-appearance: textfield;
-        }
     }
 }
 </style>
