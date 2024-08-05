@@ -63,7 +63,9 @@ const isAvailabilityChecked = ref(false);
 
         <div class="availability">
             <span class="title">наличие</span>
-            <ElCheckbox v-model="isAvailabilityChecked" class="checkbox">только товары в наличии</ElCheckbox>
+            <ElCheckbox v-model="isAvailabilityChecked" class="checkbox"
+                >только товары в наличии</ElCheckbox
+            >
         </div>
     </div>
 </template>
