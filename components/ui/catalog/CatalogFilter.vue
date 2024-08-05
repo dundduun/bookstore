@@ -10,12 +10,12 @@ import {
 import CatalogSearch from '@/components/ui/catalog/CatalogSearch.vue';
 
 const selectItems = [
-    { value: 'new-first', text: 'Дата: сперва новые' },
-    { value: 'old-first', text: 'Дата: сперва старые' },
-    { value: 'alphabetical-order', text: 'Название: А-Я' },
-    { value: 'alphabetical-reversed-order', text: 'Название: Я-А' },
-    { value: 'descending', text: 'Цена: по убыванию' },
-    { value: 'ascending', text: 'Цена: по возрастанию' },
+    { value: 'new-first', text: 'дата: сперва новые' },
+    { value: 'old-first', text: 'дата: сперва старые' },
+    { value: 'alphabetical-order', text: 'название: А-Я' },
+    { value: 'alphabetical-reversed-order', text: 'название: Я-А' },
+    { value: 'descending', text: 'цена: по убыванию' },
+    { value: 'ascending', text: 'цена: по возрастанию' },
 ];
 
 const model = ref();
@@ -71,7 +71,7 @@ function activateFilter(clickedFilter: string) {
                         src="@/assets/images/settings.svg"
                         class="settings-icon"
                     />
-                    <span>Фильтры</span>
+                    <span>фильтры</span>
                 </button>
 
                 <button
@@ -83,6 +83,27 @@ function activateFilter(clickedFilter: string) {
                 >
                     <img src="@/assets/images/loupe.svg" class="loupe-icon" />
                 </button>
+            </div>
+
+            <div class="fickle-filters">
+                <CatalogSearch v-show="activeFilter === 'searchButton'" class="m-catalog-search" />
+
+                <div v-show="activeFilter === 'filtersButton'" class="sort-price-availability">
+                    <button class="sort filter">
+                        <span>сортировка</span>
+                        <img class="chevron-icon" src="@/assets/images/left-chevron.png" />
+                    </button>
+
+                    <button class="price filter">
+                        <span>цена</span>
+                        <img class="chevron-icon" src="@/assets/images/left-chevron.png" />
+                    </button>
+
+                    <button class="availability filter">
+                       <span>наличие</span>
+                       <img class="chevron-icon" src="@/assets/images/left-chevron.png" />
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -149,7 +170,7 @@ function activateFilter(clickedFilter: string) {
             }
 
             .search {
-                padding: 10px 0 10px 10px;
+                padding: 10px 0;
                 transition: 0.2s;
 
                 .loupe-icon {
@@ -163,6 +184,45 @@ function activateFilter(clickedFilter: string) {
             .active-filter {
                 filter: invert(60%) sepia(0%) saturate(55%) hue-rotate(157deg)
                     brightness(106%) contrast(92%);
+            }
+        }
+
+        .fickle-filters {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+
+            .m-catalog-search {
+                width: 100%;
+                height: 40px;
+                margin-top: 20px;
+            }
+
+            .sort-price-availability {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                margin-top: 20px;
+                border: 1px solid $m-filters-border;
+                border-width: 1px 0px;
+
+                .filter {
+                    height: 40px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    font-size: 15px;
+
+                    &.price {
+                        border: 1px solid $m-filters-border;
+                        border-width: 1px 0;
+                    }
+
+                    .chevron-icon {
+                        height: 15px;
+                        transform: rotate(180deg);
+                    }
+                }
             }
         }
     }
