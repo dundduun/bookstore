@@ -1,6 +1,6 @@
 <template>
     <div class="search-input-button-container">
-        <input class="search-input" placeholder="Поиск" type="text" />
+        <input class="search-input" placeholder="поиск" type="text" />
         <button class="search-button">
             <img
                 src="@/assets/images/loupe.svg"
@@ -33,7 +33,7 @@
     }
 
     .search-button {
-        width: 30px;
+        aspect-ratio: 1 / 1;
         display: flex;
         justify-content: center;
         align-items: center;
