@@ -6,7 +6,6 @@ export default defineNuxtConfig({
     },
 
     devtools: { enabled: true },
-
     typescript: { strict: true },
 
     modules: [
@@ -44,4 +43,6 @@ export default defineNuxtConfig({
     supabase: {
         redirect: false,
     },
+
+    compatibilityDate: '2024-08-11',
 });
