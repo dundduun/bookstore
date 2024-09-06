@@ -8,7 +8,7 @@ import {
     SelectValue,
 } from '@/components/ui/select';
 import CatalogSearch from '@/components/ui/catalog/CatalogSearch.vue';
-import MobileFilters from '@/components/ui/catalog/MobileFilters.vue';
+import MobFilters from '@/components/ui/catalog/MobFilters.vue';
 
 const selectItems = [
     { value: 'new-first', text: 'дата: сперва новые' },
@@ -48,7 +48,7 @@ onMounted(() => {
             </SelectContent>
         </Select>
 
-        <MobileFilters />
+        <MobFilters />
     </div>
 </template>
 
