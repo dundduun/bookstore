@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import PriceRegulator from '@/components/ui/catalog/PriceRegulator.vue';
+import AvailCheckbox from '@/components/ui/catalog/MobSubfilters/AvailCheckbox.vue';
 import type { Database } from '@/database.types';
 const client = useSupabaseClient<Database>();
 
@@ -30,8 +31,6 @@ function clickCategory(category: { title: string }, index: number) {
     activeCategory.value = index;
     // emit category to books
 }
-
-const isAvailabilityChecked = ref(false);
 </script>
 
 <template>
@@ -63,9 +62,7 @@ const isAvailabilityChecked = ref(false);
 
         <div class="availability">
             <span class="title">наличие</span>
-            <ElCheckbox v-model="isAvailabilityChecked" class="checkbox"
-                >только товары в наличии</ElCheckbox
-            >
+            <AvailCheckbox class="checkbox" />
         </div>
     </div>
 </template>
