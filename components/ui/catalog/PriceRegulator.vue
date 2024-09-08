@@ -27,12 +27,18 @@ const priceRegulator = ref([props.minPrice, props.maxPrice]);
                 type="number"
                 v-model="priceRegulator[0]"
             />
+
             <span> - </span>
+
             <input
                 class="max-price control-input"
                 type="number"
                 v-model="priceRegulator[1]"
             />
+
+            <button class="ok-button">
+                OK
+            </button>
         </div>
     </div>
 </template>
@@ -41,11 +47,19 @@ const priceRegulator = ref([props.minPrice, props.maxPrice]);
 .price-regulator {
     .title {
         font-size: 18px;
+
+        @media (max-width: 980px) {
+            display: none;
+        }
     }
 
     .price-slider {
         margin-top: 10px;
         padding: 0 30px 0 10px;
+
+        @media (max-width: 980px) {
+            display: none;
+        }
     }
 
     .control-inputs {
@@ -53,6 +67,11 @@ const priceRegulator = ref([props.minPrice, props.maxPrice]);
         flex-direction: row;
         justify-content: space-between;
         padding: 0 30px 0 10px;
+
+        @media (max-width: 980px) {
+            align-items: center;
+            padding: 5px 30px 0 10px;
+        }
 
         .control-input {
             width: 100px;
@@ -63,8 +82,32 @@ const priceRegulator = ref([props.minPrice, props.maxPrice]);
             font-weight: 300;
             background-color: $catalog-filter;
 
+            @media (max-width: 980px) {
+                width: 27vw;
+                height: 30px;
+            }
+
             &:focus {
                 outline: none;
+            }
+        }
+
+        .ok-button {
+            display: none;
+            transition: 0.2s;
+            height: 30px;
+            padding: 0 15px;
+            border: 1px solid $catalog-filter-border;
+            border-radius: 3px;
+            font-weight: 300;
+            background-color: $catalog-filter;
+
+            &:active {
+                background-color: $active-ok-button;
+            }
+
+            @media (max-width: 980px) {
+                display: block;
             }
         }
 

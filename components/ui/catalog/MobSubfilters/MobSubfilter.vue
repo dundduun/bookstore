@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import AvailCheckbox from '@/components/ui/catalog/MobSubfilters/AvailCheckbox.vue';
-import PriceRegulator from '@/components/ui/catalog/MobSubfilters/PriceRegulator.vue';
+import PriceRegulator from '@/components/ui/catalog/PriceRegulator.vue';
 // import sort component
 
 defineProps<{
@@ -63,9 +63,6 @@ const isActive = ref(false); // will disappear when pinia come
     }
 
     .content {
-        // display: flex;
-        // flex-direction: column;
-        // justify-content: center;
         width: 100%;
         height: 58px;
     }
