@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import AvailCheckbox from '@/components/ui/catalog/MobSubfilters/AvailCheckbox.vue';
-import PriceRegulator from '@/components/ui/catalog/PriceRegulator.vue';
-// import sort component
+// import AvailCheckbox from '@/components/ui/catalog/MobSubfilters/AvailCheckbox.vue';
+// import PriceRegulator from '@/components/ui/catalog/PriceRegulator.vue';
 
 defineProps<{
     componentName: string;
     localName: string;
+    maxHeight: string;
 }>();
 
-const components: object = {
-    AvailCheckbox,
-    PriceRegulator,
-    // sort component
-}
+// const components: object = {
+//     AvailCheckbox,
+//     PriceRegulator,
+//     // sort component
+// }
 
 const isActive = ref(false); // will disappear when pinia come
 </script>
@@ -27,7 +27,8 @@ const isActive = ref(false); // will disappear when pinia come
 
         <Transition name="expand">
             <div class="content" v-if="isActive">
-                <component :is="components[componentName as keyof object]"></component>
+                <!-- <component :is="components[componentName as keyof object]"></component> -->
+                <slot></slot>
             </div>
         </Transition>
     </div>
@@ -64,18 +65,18 @@ const isActive = ref(false); // will disappear when pinia come
 
     .content {
         width: 100%;
-        height: 58px;
+        max-height: v-bind(maxHeight);
     }
 
     .expand-enter-active,
     .expand-leave-active {
-        transition: height 0.2s ease;
+        transition: max-height 0.5s ease;
         overflow: hidden;
     }
 
     .expand-enter-from,
     .expand-leave-to {
-        height: 0;
+        max-height: 0;
     }
 }
 </style>
