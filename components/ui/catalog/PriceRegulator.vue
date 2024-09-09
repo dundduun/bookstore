@@ -36,9 +36,7 @@ const priceRegulator = ref([props.minPrice, props.maxPrice]);
                 v-model="priceRegulator[1]"
             />
 
-            <button class="ok-button">
-                OK
-            </button>
+            <button class="ok-button">OK</button>
         </div>
     </div>
 </template>
@@ -70,7 +68,7 @@ const priceRegulator = ref([props.minPrice, props.maxPrice]);
 
         @media (max-width: 980px) {
             align-items: center;
-            padding: 5px 30px 0 10px;
+            margin: 10px 0 28px 0;
         }
 
         .control-input {
