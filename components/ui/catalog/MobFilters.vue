@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import CatalogSearch from '@/components/ui/catalog/CatalogSearch.vue';
 import MobSubfilter from '@/components/ui/catalog/MobSubfilters/MobSubfilter.vue';
+import Sort from '@/components/ui/catalog/MobSubfilters/Sort.vue';
+import PriceRegulator from '@/components/ui/catalog/PriceRegulator.vue';
+import AvailCheckbox from '@/components/ui/catalog/MobSubfilters/AvailCheckbox.vue';
 
 const activeFilter = ref('');
 function toggleFilter(clickedFilter: string) {
@@ -11,17 +14,17 @@ function toggleFilter(clickedFilter: string) {
     }
 }
 
-const activeSecondaryFilter = ref('');
-function toggleSecondaryFilter(clickedFilter: string) {
-    if (
-        !activeSecondaryFilter.value ||
-        activeSecondaryFilter.value !== clickedFilter
-    ) {
-        activeSecondaryFilter.value = clickedFilter;
-    } else {
-        activeSecondaryFilter.value = '';
-    }
-}
+// const activeSecondaryFilter = ref('');
+// function toggleSecondaryFilter(clickedFilter: string) {
+//     if (
+//         !activeSecondaryFilter.value ||
+//         activeSecondaryFilter.value !== clickedFilter
+//     ) {
+//         activeSecondaryFilter.value = clickedFilter;
+//     } else {
+//         activeSecondaryFilter.value = '';
+//     }
+// }
 </script>
 
 <template>
@@ -55,44 +58,33 @@ function toggleSecondaryFilter(clickedFilter: string) {
                 class="m-catalog-search"
             />
 
-            <div
-                v-show="activeFilter === 'filtersButton'"
-                class="subfilters"
-            >
-                <div class="sort filter" @click="toggleSecondaryFilter('sort')">
-                    <div
-                        class="filter-inner"
-                        :class="{
-                            'active-secondary-filter':
-                                activeSecondaryFilter === 'sort',
-                        }"
-                    >
-                        <div class="title">
-                            <span>сортировка</span>
+            <div v-show="activeFilter === 'filtersButton'" class="subfilters">
+                <MobSubfilter
+                    :component-name="'AvailCheckbox'"
+                    :local-name="'сортировка'"
+                    :max-height="'250px'"
+                    class="mob-subfilter"
+                >
+                    <Sort />
+                </MobSubfilter>
 
-                            <img
-                                src="@/assets/images/left-chevron.png"
-                                class="chevron-icon"
-                                :class="{
-                                    'rotate-270':
-                                        activeSecondaryFilter === 'sort',
-                                }"
-                            />
-                        </div>
-                    </div>
-                </div>
-
-                <MobSubfilter 
+                <MobSubfilter
                     :component-name="'PriceRegulator'"
-                    :local-name="'цена'" 
-                    class="border-top-bottom"
-                />
+                    :local-name="'цена'"
+                    :max-height="'75px'"
+                    class="mob-subfilter"
+                >
+                    <PriceRegulator :min-price="1" :max-price="100" />
+                </MobSubfilter>
 
-                <MobSubfilter 
+                <MobSubfilter
                     :component-name="'AvailCheckbox'"
                     :local-name="'наличие'"
-                />
-
+                    :max-height="'70px'"
+                    class="mob-subfilter"
+                >
+                    <AvailCheckbox />
+                </MobSubfilter>
             </div>
         </div>
     </div>
@@ -153,61 +145,9 @@ function toggleSecondaryFilter(clickedFilter: string) {
             border: solid $m-filters-border;
             border-width: 1px 0;
 
-            .border-top-bottom {
+            .mob-subfilter:nth-child(even) {
                 border: solid $m-filters-border;
                 border-width: 1px 0;
-            }
-
-            .filter {
-                min-height: 45px;
-                font-size: 15px;
-                cursor: pointer;
-
-                &.price {
-                    border: solid $m-filters-border;
-                    border-width: 1px 0;
-                }
-
-                .filter-inner {
-                    width: 100%;
-                    height: 100%;
-                    display: flex;
-
-                    .title {
-                        width: 100%;
-                        height: 100%;
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        transition: 0.2s;
-
-                        .chevron-icon {
-                            height: 15px;
-                            transform: rotate(180deg);
-                            transition: 0.2s;
-                        }
-                    }
-
-                    .content {
-                        display: none;
-                    }
-
-                    &.active-secondary-filter {
-                        .title {
-                            filter: invert(60%) sepia(0%) saturate(55%)
-                                hue-rotate(157deg) brightness(106%)
-                                contrast(92%);
-
-                            .chevron-icon {
-                                transform: rotate(270deg);
-                            }
-                        }
-
-                        .content {
-                            display: block;
-                        }
-                    }
-                }
             }
         }
     }
