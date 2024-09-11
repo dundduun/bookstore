@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import PriceRegulator from '@/components/ui/catalog/PriceRegulator.vue';
-import AvailCheckbox from '@/components/ui/catalog/AvailCheckbox.vue';
+import InStockCheckbox from '@/components/ui/catalog/InStockCheckbox.vue';
 import type { Database } from '@/database.types';
 const client = useSupabaseClient<Database>();
 
@@ -62,7 +62,7 @@ function clickCategory(category: { title: string }, index: number) {
 
         <div class="availability">
             <span class="title">наличие</span>
-            <AvailCheckbox class="checkbox" />
+            <InStockCheckbox class="checkbox" />
         </div>
     </div>
 </template>

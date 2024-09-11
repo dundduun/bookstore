@@ -1,9 +1,9 @@
 <script setup lang="ts">
-const isAvailabilityChecked = ref(true);
+const showInStockOnly = ref(true);
 </script>
 
 <template>
-    <ElCheckbox v-model="isAvailabilityChecked" size="large" class="checkbox">
+    <ElCheckbox v-model="showInStockOnly" size="large" class="checkbox">
         только товары в наличии
     </ElCheckbox>
 </template>
