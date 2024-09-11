@@ -4,7 +4,7 @@ export const useStockStore = defineStore(
     'stock',
     () => {
         const showInStockOnly = ref(true);
-        return { showInStockOnly }
+        return { showInStockOnly };
     },
     {
         persist: true,
