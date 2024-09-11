@@ -10,6 +10,7 @@ export default defineNuxtConfig({
 
     modules: [
         '@pinia/nuxt',
+        '@pinia-plugin-persistedstate/nuxt',
         '@nuxtjs/supabase',
         '@vueuse/nuxt',
         'nuxt-swiper',
