@@ -1,18 +1,8 @@
 <script setup lang="ts">
-// import AvailCheckbox from '@/components/ui/catalog/MobSubfilters/AvailCheckbox.vue';
-// import PriceRegulator from '@/components/ui/catalog/PriceRegulator.vue';
-
 defineProps<{
-    componentName: string;
     localName: string;
     maxHeight: string;
 }>();
-
-// const components: object = {
-//     AvailCheckbox,
-//     PriceRegulator,
-//     // sort component
-// }
 
 const isActive = ref(false); // will disappear when pinia come
 </script>
@@ -27,7 +17,6 @@ const isActive = ref(false); // will disappear when pinia come
 
         <Transition name="expand">
             <div class="content" v-if="isActive">
-                <!-- <component :is="components[componentName as keyof object]"></component> -->
                 <slot></slot>
             </div>
         </Transition>

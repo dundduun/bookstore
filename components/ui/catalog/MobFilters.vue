@@ -3,7 +3,7 @@ import CatalogSearch from '@/components/ui/catalog/CatalogSearch.vue';
 import MobSubfilter from '@/components/ui/catalog/MobSubfilters/MobSubfilter.vue';
 import Sort from '@/components/ui/catalog/MobSubfilters/Sort.vue';
 import PriceRegulator from '@/components/ui/catalog/PriceRegulator.vue';
-import AvailCheckbox from '@/components/ui/catalog/AvailCheckbox.vue';
+import InStockCheckbox from '@/components/ui/catalog/InStockCheckbox.vue';
 
 const activeFilter = ref('');
 function toggleFilter(clickedFilter: string) {
@@ -60,7 +60,6 @@ function toggleFilter(clickedFilter: string) {
 
             <div v-show="activeFilter === 'filtersButton'" class="subfilters">
                 <MobSubfilter
-                    :component-name="'AvailCheckbox'"
                     :local-name="'сортировка'"
                     :max-height="'250px'"
                     class="mob-subfilter"
@@ -69,7 +68,6 @@ function toggleFilter(clickedFilter: string) {
                 </MobSubfilter>
 
                 <MobSubfilter
-                    :component-name="'PriceRegulator'"
                     :local-name="'цена'"
                     :max-height="'75px'"
                     class="mob-subfilter"
@@ -78,12 +76,11 @@ function toggleFilter(clickedFilter: string) {
                 </MobSubfilter>
 
                 <MobSubfilter
-                    :component-name="'AvailCheckbox'"
                     :local-name="'наличие'"
                     :max-height="'70px'"
                     class="mob-subfilter"
                 >
-                    <AvailCheckbox />
+                    <InStockCheckbox />
                 </MobSubfilter>
             </div>
         </div>
