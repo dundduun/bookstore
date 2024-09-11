@@ -1,9 +1,9 @@
 <script setup lang="ts">
-const showInStockOnly = ref(true);
+const stock = useStockStore();
 </script>
 
 <template>
-    <ElCheckbox v-model="showInStockOnly" size="large" class="checkbox">
+    <ElCheckbox v-model="stock.showInStockOnly" size="large" class="checkbox">
         только товары в наличии
     </ElCheckbox>
 </template>
