@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import PriceRegulator from '@/components/ui/catalog/PriceRegulator.vue';
-import AvailCheckbox from '@/components/ui/catalog/MobSubfilters/AvailCheckbox.vue';
+import AvailCheckbox from '@/components/ui/catalog/AvailCheckbox.vue';
 import type { Database } from '@/database.types';
 const client = useSupabaseClient<Database>();
 

@@ -3,7 +3,7 @@ import CatalogSearch from '@/components/ui/catalog/CatalogSearch.vue';
 import MobSubfilter from '@/components/ui/catalog/MobSubfilters/MobSubfilter.vue';
 import Sort from '@/components/ui/catalog/MobSubfilters/Sort.vue';
 import PriceRegulator from '@/components/ui/catalog/PriceRegulator.vue';
-import AvailCheckbox from '@/components/ui/catalog/MobSubfilters/AvailCheckbox.vue';
+import AvailCheckbox from '@/components/ui/catalog/AvailCheckbox.vue';
 
 const activeFilter = ref('');
 function toggleFilter(clickedFilter: string) {
