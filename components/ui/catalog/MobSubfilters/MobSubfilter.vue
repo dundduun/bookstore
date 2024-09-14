@@ -1,16 +1,15 @@
 <script setup lang="ts">
 defineProps<{
-    localName: string;
+    name: string;
     maxHeight: string;
+    isActive: boolean;
 }>();
-
-const isActive = ref(false); // will disappear when pinia come
 </script>
 
 <template>
     <div class="subfilter" :class="{ active: isActive }">
-        <div class="title" @click="isActive = !isActive">
-            <span>{{ localName }}</span>
+         <div class="title" @click="$emit('toggleSubfilter', name)">
+            <span>{{ name }}</span>
 
             <img class="chevron-icon" src="@/assets/images/left-chevron.png" />
         </div>

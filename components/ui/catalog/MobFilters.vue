@@ -7,24 +7,39 @@ import InStockCheckbox from '@/components/ui/catalog/InStockCheckbox.vue';
 
 const activeFilter = ref('');
 function toggleFilter(clickedFilter: string) {
-    if (!activeFilter.value || activeFilter.value !== clickedFilter) {
+    if (activeFilter.value !== clickedFilter) {
         activeFilter.value = clickedFilter;
     } else {
         activeFilter.value = '';
     }
 }
 
-// const activeSecondaryFilter = ref('');
-// function toggleSecondaryFilter(clickedFilter: string) {
-//     if (
-//         !activeSecondaryFilter.value ||
-//         activeSecondaryFilter.value !== clickedFilter
-//     ) {
-//         activeSecondaryFilter.value = clickedFilter;
-//     } else {
-//         activeSecondaryFilter.value = '';
-//     }
-// }
+const activeSubfilter = ref('');
+function toggleSubfilter(clickedFilter: string) {
+    if (activeSubfilter.value !== clickedFilter) {
+        activeSubfilter.value = clickedFilter;
+    } else {
+        activeSubfilter.value = '';
+    }
+}
+
+const subfilters = [
+    {
+        name: 'сортировка',
+        maxHeight: '250px',
+        component: Sort,
+    },
+    {
+        name: 'цена',
+        maxHeight: '75px',
+        component: PriceRegulator,
+    },
+    {
+        name: 'наличие',
+        maxHeight: '70px',
+        component: InStockCheckbox,
+    },
+]
 </script>
 
 <template>
@@ -55,32 +70,20 @@ function toggleFilter(clickedFilter: string) {
         <div class="fickle-filters">
             <CatalogSearch
                 v-show="activeFilter === 'searchButton'"
-                class="m-catalog-search"
+                class="catalog-search"
             />
 
             <div v-show="activeFilter === 'filtersButton'" class="subfilters">
                 <MobSubfilter
-                    :local-name="'сортировка'"
-                    :max-height="'250px'"
-                    class="mob-subfilter"
+                    v-for="(subfilter, index) in subfilters"
+                    :key="index"
+                    :name="subfilter.name"
+                    :max-height="subfilter.maxHeight"
+                    :is-active="subfilter.name === activeSubfilter"
+                    @toggle-subfilter="toggleSubfilter"
+                    class="subfilter"
                 >
-                    <Sort />
-                </MobSubfilter>
-
-                <MobSubfilter
-                    :local-name="'цена'"
-                    :max-height="'75px'"
-                    class="mob-subfilter"
-                >
-                    <PriceRegulator :min-price="1" :max-price="100" />
-                </MobSubfilter>
-
-                <MobSubfilter
-                    :local-name="'наличие'"
-                    :max-height="'70px'"
-                    class="mob-subfilter"
-                >
-                    <InStockCheckbox />
+                    <component :is="subfilter.component"></component>
                 </MobSubfilter>
             </div>
         </div>
@@ -128,7 +131,7 @@ function toggleFilter(clickedFilter: string) {
         display: flex;
         justify-content: center;
 
-        .m-catalog-search {
+        .catalog-search {
             width: 100%;
             height: 40px;
             margin-top: 20px;
@@ -142,7 +145,7 @@ function toggleFilter(clickedFilter: string) {
             border: solid $m-filters-border;
             border-width: 1px 0;
 
-            .mob-subfilter:nth-child(even) {
+            .subfilter:nth-child(even) {
                 border: solid $m-filters-border;
                 border-width: 1px 0;
             }
