@@ -67,6 +67,7 @@ const { data: giftTokenImage } = client.storage
     .container {
         display: flex;
         justify-content: center;
+        width: fit-content;
 
         @media (max-width: 1000px) {
             flex-direction: column;
