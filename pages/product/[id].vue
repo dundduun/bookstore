@@ -9,7 +9,7 @@ definePageMeta({
 const router = useRouter();
 const { escape } = useMagicKeys();
 watch(escape, (v) => {
-    if (v) router.push('/');
+    if (v) router.back();
 });
 
 const { $gsap } = useNuxtApp();

@@ -1,6 +1,13 @@
+<script setup lang="ts">
+const router = useRouter();
+function goBack() {
+    router.back();
+}
+</script>
+
 <template>
     <div class="exit-buttons">
-        <NuxtLink to="/" class="text-home-link">← На главную</NuxtLink>
+        <button @click="goBack" class="text-home-link">← Назад</button>
 
         <NuxtLink to="/" class="mobile-home-link">
             <img src="@/assets/images/left-arrow.svg" alt="На главную" />
