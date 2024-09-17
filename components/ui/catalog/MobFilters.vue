@@ -39,7 +39,7 @@ const subfilters = [
         maxHeight: '70px',
         component: InStockCheckbox,
     },
-]
+];
 </script>
 
 <template>
@@ -52,7 +52,11 @@ const subfilters = [
                 }"
                 @click="toggleFilter('filtersButton')"
             >
-                <img src="@/assets/images/settings.svg" class="settings-icon" />
+                <img
+                    src="@/assets/images/settings.svg"
+                    class="settings-icon"
+                    alt="filters"
+                />
                 <span>фильтры</span>
             </button>
 
@@ -63,7 +67,11 @@ const subfilters = [
                 }"
                 @click="toggleFilter('searchButton')"
             >
-                <img src="@/assets/images/loupe.svg" class="loupe-icon" />
+                <img
+                    src="@/assets/images/loupe.svg"
+                    class="loupe-icon"
+                    alt="search"
+                />
             </button>
         </div>
 

@@ -8,10 +8,14 @@ defineProps<{
 
 <template>
     <div class="subfilter" :class="{ active: isActive }">
-         <div class="title" @click="$emit('toggleSubfilter', name)">
+        <div class="title" @click="$emit('toggleSubfilter', name)">
             <span>{{ name }}</span>
 
-            <img class="chevron-icon" src="@/assets/images/left-chevron.png" />
+            <img
+                class="chevron-icon"
+                src="@/assets/images/left-chevron.png"
+                alt="expand"
+            />
         </div>
 
         <Transition name="expand">
