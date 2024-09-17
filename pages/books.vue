@@ -10,6 +10,24 @@ const { data: products } = await client
     .from('product')
     .select('*')
     .order('created_at', { ascending: false });
+
+const { data: mostCheapProduct } = await client
+    .from('product')
+    .select('price')
+    .order('price', { ascending: true })
+    .limit(1)
+    .single();
+
+const { data: mostExpensiveProduct } = await client
+    .from('product')
+    .select('price')
+    .order('price', { ascending: false })
+    .limit(1)
+    .single();
+
+const filtersData = useFiltersStore();
+filtersData.minPrice = mostCheapProduct!.price;
+filtersData.maxPrice = mostExpensiveProduct!.price;
 </script>
 
 <template>

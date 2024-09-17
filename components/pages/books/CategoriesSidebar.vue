@@ -12,20 +12,6 @@ const allCategory = {
     title: 'Все',
 };
 
-const { data: mostExpensiveProduct } = await client
-    .from('product')
-    .select('price')
-    .order('price', { ascending: true })
-    .limit(1)
-    .single();
-
-const { data: mostCheapProduct } = await client
-    .from('product')
-    .select('price')
-    .order('price', { ascending: false })
-    .limit(1)
-    .single();
-
 const activeCategory = ref(-1);
 function clickCategory(category: { title: string }, index: number) {
     activeCategory.value = index;
@@ -54,10 +40,7 @@ function clickCategory(category: { title: string }, index: number) {
         </div>
 
         <div class="price-regulator-container">
-            <PriceRegulator
-                :min-price="mostExpensiveProduct!.price"
-                :max-price="mostCheapProduct!.price"
-            />
+            <PriceRegulator />
         </div>
 
         <div class="availability">

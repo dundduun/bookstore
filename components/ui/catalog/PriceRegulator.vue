@@ -1,10 +1,6 @@
 <script setup lang="ts">
-const props = defineProps<{
-    minPrice: number;
-    maxPrice: number;
-}>();
-
-const priceRegulator = ref([props.minPrice, props.maxPrice]);
+const filtersStore = useFiltersStore();
+const priceRegulator = ref([filtersStore.minPrice, filtersStore.maxPrice]);
 </script>
 
 <template>
@@ -16,8 +12,8 @@ const priceRegulator = ref([props.minPrice, props.maxPrice]);
                 v-model="priceRegulator"
                 range
                 :show-tooltip="false"
-                :min="props.minPrice"
-                :max="props.maxPrice"
+                :min="filtersStore.minPrice"
+                :max="filtersStore.maxPrice"
             />
         </div>
 
