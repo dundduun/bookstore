@@ -1,9 +1,9 @@
 <script setup lang="ts">
-const stock = useStockStore();
+const filtersData = useFiltersStore();
 </script>
 
 <template>
-    <ElCheckbox v-model="stock.showInStockOnly" size="large" class="checkbox">
+    <ElCheckbox v-model="filtersData.showInStockOnly" size="large" class="checkbox">
         только товары в наличии
     </ElCheckbox>
 </template>
