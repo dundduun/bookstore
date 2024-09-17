@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const filtersStore = useFiltersStore();
 const priceRegulator = ref([filtersStore.minPrice, filtersStore.maxPrice]);
+// ADD DEBOUNCED WATCHER, CHANGING PINIA STATE
 </script>
 
 <template>
