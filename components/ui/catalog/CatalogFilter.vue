@@ -2,14 +2,14 @@
 import CatalogSearch from '@/components/ui/catalog/CatalogSearch.vue';
 import MobFilters from '@/components/ui/catalog/MobFilters.vue';
 
-const selectItems = [
-    { value: 'by-date-new-first', text: 'дата: сперва новые' },
-    { value: 'by-date-old-first', text: 'дата: сперва старые' },
-    { value: 'by-name-alphabetical', text: 'название: А-Я' },
-    { value: 'by-name-alphabetical-reversed', text: 'название: Я-А' },
-    { value: 'by-price-descending', text: 'цена: по убыванию' },
-    { value: 'by-price-ascending', text: 'цена: по возрастанию' },
-];
+// const sortItems = [
+//     { value: 'by-date-new-first', text: 'дата: сперва новые' },
+//     { value: 'by-date-old-first', text: 'дата: сперва старые' },
+//     { value: 'by-name-alphabetical', text: 'название: А-Я' },
+//     { value: 'by-name-alphabetical-reversed', text: 'название: Я-А' },
+//     { value: 'by-price-descending', text: 'цена: по убыванию' },
+//     { value: 'by-price-ascending', text: 'цена: по возрастанию' },
+// ];
 </script>
 
 <template>
@@ -17,7 +17,7 @@ const selectItems = [
         <CatalogSearch class="catalog-search" />
 
         <div
-            class="select-filter"
+            class="sort"
             tabindex="0"
         >
             <img
@@ -53,7 +53,7 @@ const selectItems = [
         }
     }
 
-    .select-filter {
+    .sort {
         display: flex;
         justify-content: end;
         align-items: center;
