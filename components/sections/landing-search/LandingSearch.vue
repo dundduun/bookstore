@@ -88,7 +88,7 @@ function clickCrossIcon() {
                 alt="Поиск"
             />
 
-            <Transition class="icon-transition" name="search-icons">
+            <Transition class="icon-transition" name="fade">
                 <img
                     v-if="isSearchLoading"
                     class="loading-icon"
@@ -108,7 +108,7 @@ function clickCrossIcon() {
             <button class="search-button">искать</button>
         </form>
 
-        <Transition name="hints" appear>
+        <Transition name="fade" appear>
             <QueryPopupHints
                 v-if="previousQuery && !isSearchLoading"
                 v-show="isHintsVisible && searchQuery"
@@ -241,17 +241,13 @@ function clickCrossIcon() {
         }
     }
 
-    .search-icons-enter-active,
-    .search-icons-leave-active,
-    .hints-enter-active,
-    .hints-leave-active {
+    .fade-enter-active,
+    .fade-leave-active {
         transition: opacity 0.3s ease;
     }
 
-    .search-icons-enter-from,
-    .search-icons-leave-to,
-    .hints-enter-from,
-    .hints-leave-to {
+    .fade-enter-from,
+    .fade-leave-to {
         opacity: 0;
     }
 }
