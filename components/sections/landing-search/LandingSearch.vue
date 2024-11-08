@@ -82,13 +82,18 @@ function clickCrossIcon() {
                 placeholder="название / описание книги"
             />
 
-            <img class="loupe-icon" src="@/assets/images/loupe.svg" />
+            <img
+                class="loupe-icon"
+                src="@/assets/images/loupe.svg"
+                alt="Поиск"
+            />
 
             <Transition class="icon-transition" name="search-icons">
                 <img
                     v-if="isSearchLoading"
                     class="loading-icon"
                     src="@/assets/images/search-loading.svg"
+                    alt="Загрузка..."
                 />
 
                 <img
@@ -96,6 +101,7 @@ function clickCrossIcon() {
                     @click="clickCrossIcon"
                     class="cross-icon"
                     src="@/assets/images/cross-icon.svg"
+                    alt="Стереть"
                 />
             </Transition>
 
