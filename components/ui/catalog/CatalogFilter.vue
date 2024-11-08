@@ -10,6 +10,9 @@ import MobFilters from '@/components/ui/catalog/MobFilters.vue';
 //     { value: 'by-price-descending', text: 'цена: по убыванию' },
 //     { value: 'by-price-ascending', text: 'цена: по возрастанию' },
 // ];
+const sort = ref();
+const { focused: isSortFocused } = useFocus(sort);
+
 </script>
 
 <template>
@@ -18,13 +21,29 @@ import MobFilters from '@/components/ui/catalog/MobFilters.vue';
 
         <div
             class="sort"
-            tabindex="0"
         >
-            <img
-                class="opening-chevron"
-                src="@/assets/images/left-chevron.png"
-                alt="expand"
-            />
+            <div
+                class="placeholder"
+                ref="sort"
+                tabindex="0"
+            >
+                <span>сортировка</span>
+                <img
+                    class="opening-chevron"
+                    src="@/assets/images/left-chevron.png"
+                    alt="expand"
+                />
+            </div>
+
+
+            <Transition name="fade">
+                <div
+                    v-if="isSortFocused"
+                    class="sort-options"
+                >
+                    as
+                </div>
+            </Transition>
         </div>
 
         <MobFilters />
@@ -54,32 +73,42 @@ import MobFilters from '@/components/ui/catalog/MobFilters.vue';
     }
 
     .sort {
-        display: flex;
-        justify-content: end;
-        align-items: center;
         border: 1px solid $catalog-filter-border;
         border-radius: 3px;
         width: 260px;
         height: 30px;
-        padding: 0 10px;
-        cursor: pointer;
         font-size: 16px;
         font-family: $font-family;
         font-weight: 300;
         background-color: $catalog-filter;
 
-        //&:focus {
-        //   background-color: green;
-        //}
-
         @media (max-width: 980px) {
             display: none;
         }
 
-        .opening-chevron {
-            transform: rotate(270deg);
-            width: 16px;
-            height: 16px;
+        .placeholder {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            padding: 0 10px;
+            cursor: pointer;
+
+            .opening-chevron {
+                transform: rotate(270deg);
+                width: 16px;
+                height: 16px;
+            }
+        }
+
+        .sort-options {
+            position: absolute;
+            margin: 4px 0 0 -1px;
+            border: 1px solid $catalog-filter-border;
+            border-radius: 3px;
+            width: 260px;
+            padding: 0 10px;
         }
     }
 }
