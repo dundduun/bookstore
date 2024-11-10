@@ -2,17 +2,17 @@
 import CatalogSearch from '@/components/ui/catalog/CatalogSearch.vue';
 import MobFilters from '@/components/ui/catalog/MobFilters.vue';
 
-// const sortItems = [
-//     { value: 'by-date-new-first', text: 'дата: сперва новые' },
-//     { value: 'by-date-old-first', text: 'дата: сперва старые' },
-//     { value: 'by-name-alphabetical', text: 'название: А-Я' },
-//     { value: 'by-name-alphabetical-reversed', text: 'название: Я-А' },
-//     { value: 'by-price-descending', text: 'цена: по убыванию' },
-//     { value: 'by-price-ascending', text: 'цена: по возрастанию' },
-// ];
+const sortOptions = [
+    { value: 'by-date-new-first', text: 'дата: сперва новые' },
+    { value: 'by-date-old-first', text: 'дата: сперва старые' },
+    { value: 'by-name-alphabetical', text: 'название: А-Я' },
+    { value: 'by-name-alphabetical-reversed', text: 'название: Я-А' },
+    { value: 'by-price-descending', text: 'цена: по убыванию' },
+    { value: 'by-price-ascending', text: 'цена: по возрастанию' },
+];
 const sort = ref();
 const { focused: isSortFocused } = useFocus(sort);
-
+// идея: на клик по плейсхолдеру фокусить опшнс
 </script>
 
 <template>
@@ -36,12 +36,14 @@ const { focused: isSortFocused } = useFocus(sort);
             </div>
 
 
-            <Transition name="fade">
+            <Transition name="fade-in">
                 <div
                     v-if="isSortFocused"
                     class="sort-options"
                 >
-                    as
+                    <div v-for="option in sortOptions" class="option">
+                        {{ option.text }}
+                    </div>
                 </div>
             </Transition>
         </div>
@@ -108,8 +110,35 @@ const { focused: isSortFocused } = useFocus(sort);
             border: 1px solid $catalog-filter-border;
             border-radius: 3px;
             width: 260px;
-            padding: 0 10px;
+
+            .option {
+                display: flex;
+                align-items: center;
+                transition: 0.2s;
+                border-radius: 3px;
+                height: 31px;
+                padding: 0 10px;
+                background: white;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: $catalog-filter;
+                }
+            }
         }
+    }
+
+    .fade-in-enter-active {
+        transition: opacity 0.3s ease;
+    }
+
+    fade-in-leave-active {
+        transition: opacity 0.1s ease;
+    }
+
+    .fade-in-enter-from,
+    .fade-in-leave-to {
+        opacity: 0;
     }
 }
 </style>
