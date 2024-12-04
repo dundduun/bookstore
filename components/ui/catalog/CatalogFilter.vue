@@ -12,7 +12,22 @@ const sortOptions = [
 ];
 const sort = ref();
 const { focused: isSortFocused } = useFocus(sort);
-// идея: на клик по плейсхолдеру фокусить опшнс
+
+const isPlaceholderClicked = ref(false);
+function blurOnSecondClick() {
+    if (isPlaceholderClicked.value && isSortFocused.value) {
+        isSortFocused.value = false;
+        isPlaceholderClicked.value = false;
+    } else {
+        isPlaceholderClicked.value = true;
+    }
+}
+
+watch(isSortFocused, () => {
+    if (isPlaceholderClicked.value && !isSortFocused.value) {
+        isPlaceholderClicked.value = false;
+    }
+});
 </script>
 
 <template>
@@ -23,15 +38,16 @@ const { focused: isSortFocused } = useFocus(sort);
             class="sort"
         >
             <div
-                class="placeholder"
-                ref="sort"
                 tabindex="0"
+                ref="sort"
+                @click="blurOnSecondClick()"
+                class="placeholder"
             >
                 <span>сортировка</span>
                 <img
                     class="opening-chevron"
                     src="@/assets/images/left-chevron.png"
-                    alt="expand"
+                    alt="Раскрыть"
                 />
             </div>
 
