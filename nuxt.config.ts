@@ -6,9 +6,7 @@ export default defineNuxtConfig({
     },
 
     devtools: { enabled: true },
-
     typescript: { strict: true },
-
     modules: ['@pinia/nuxt', '@nuxtjs/supabase', '@vueuse/nuxt', 'nuxt-swiper'],
 
     app: {
@@ -36,4 +34,6 @@ export default defineNuxtConfig({
     supabase: {
         redirect: false,
     },
+
+    compatibilityDate: '2025-01-16',
 });
