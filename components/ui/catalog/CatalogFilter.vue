@@ -14,6 +14,7 @@ const sort = ref();
 const { focused: isSortFocused } = useFocus(sort);
 
 const isPlaceholderClicked = ref(false);
+
 function blurOnSecondClick() {
     if (isPlaceholderClicked.value && isSortFocused.value) {
         isSortFocused.value = false;
@@ -28,6 +29,11 @@ watch(isSortFocused, () => {
         isPlaceholderClicked.value = false;
     }
 });
+
+const placeholderText = ref('сортировка');
+function editPlaceholderText(newText: string) {
+    placeholderText.value = newText;
+}
 </script>
 
 <template>
@@ -36,14 +42,14 @@ watch(isSortFocused, () => {
 
         <div
             class="sort"
+            tabindex="0"
+            ref="sort"
+            @click="blurOnSecondClick()"
         >
             <div
-                tabindex="0"
-                ref="sort"
-                @click="blurOnSecondClick()"
                 class="placeholder"
             >
-                <span>сортировка</span>
+                <span>{{ placeholderText }}</span>
                 <img
                     class="opening-chevron"
                     src="@/assets/images/left-chevron.png"
@@ -51,13 +57,15 @@ watch(isSortFocused, () => {
                 />
             </div>
 
-
             <Transition name="fade-in">
                 <div
                     v-if="isSortFocused"
-                    class="sort-options"
-                >
-                    <div v-for="option in sortOptions" class="option">
+                    class="sort-options">
+                    <div
+                        v-for="option in sortOptions"
+                        @click="editPlaceholderText(option.text)"
+                        class="option"
+                    >
                         {{ option.text }}
                     </div>
                 </div>
@@ -148,7 +156,7 @@ watch(isSortFocused, () => {
         transition: opacity 0.3s ease;
     }
 
-    fade-in-leave-active {
+    .fade-in-leave-active {
         transition: opacity 0.1s ease;
     }
 
