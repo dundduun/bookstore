@@ -78,6 +78,7 @@ function clickCategory(category: { title: string }, index: number) {
             flex-flow: row wrap;
             justify-content: center;
             gap: 18px;
+            padding: 0;
         }
 
         .category {
