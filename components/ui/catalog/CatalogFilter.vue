@@ -3,12 +3,12 @@ import CatalogSearch from '@/components/ui/catalog/CatalogSearch.vue';
 import MobFilters from '@/components/ui/catalog/MobFilters.vue';
 
 const sortOptions = [
-    { value: 'by-date-new-first', text: 'дата: сперва новые' },
-    { value: 'by-date-old-first', text: 'дата: сперва старые' },
-    { value: 'by-name-alphabetical', text: 'название: А-Я' },
-    { value: 'by-name-alphabetical-reversed', text: 'название: Я-А' },
-    { value: 'by-price-descending', text: 'цена: по убыванию' },
-    { value: 'by-price-ascending', text: 'цена: по возрастанию' },
+    { text: 'дата: сперва новые' },
+    { text: 'дата: сперва старые' },
+    { text: 'название: А-Я' },
+    { text: 'название: Я-А' },
+    { text: 'цена: по убыванию' },
+    { text: 'цена: по возрастанию' },
 ];
 const sort = ref();
 const { focused: isSortFocused } = useFocus(sort);
@@ -31,9 +31,12 @@ watch(isSortFocused, () => {
 });
 
 const placeholderText = ref('сортировка');
+const activeSort = ref('');
 function editPlaceholderText(newText: string) {
     placeholderText.value = newText;
+    activeSort.value = newText;
 }
+
 </script>
 
 <template>
@@ -64,7 +67,7 @@ function editPlaceholderText(newText: string) {
                     <div
                         v-for="option in sortOptions"
                         @click="editPlaceholderText(option.text)"
-                        class="option"
+                        :class="['option', { active: activeSort === option.text }]"
                     >
                         {{ option.text }}
                     </div>
@@ -147,6 +150,10 @@ function editPlaceholderText(newText: string) {
 
                 &:hover {
                     background-color: $catalog-filter;
+                }
+
+                &.active {
+                    background: $active-ok-button;
                 }
             }
         }
