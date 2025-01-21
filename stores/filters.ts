@@ -11,6 +11,6 @@ export const useFiltersStore = defineStore(
         };
     },
     {
-        persist: true,
+        persist: false,
     },
 );
