@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const sortItems = [
+const sortOptions = [
     { text: 'дата: сперва новые' },
     { text: 'дата: сперва старые' },
     { text: 'название: А-Я' },
@@ -14,12 +14,12 @@ const activeSort = ref('');
 <template>
     <div class="sort-filter">
         <div
-            v-for="(item, index) in sortItems"
+            v-for="(option, index) in sortOptions"
             :key="index"
-            @click="activeSort = item.text"
-            :class="['sort-item', { active: activeSort === item.text }]"
+            @click="activeSort = option.text"
+            :class="['option', { active: activeSort === option.text }]"
         >
-            {{ item.text }}
+            {{ option.text }}
         </div>
     </div>
 </template>
@@ -30,7 +30,7 @@ const activeSort = ref('');
     flex-direction: column;
     margin-bottom: 18px;
 
-    .sort-item {
+    .option {
         transition: 0.2s;
         width: 100%;
         padding: 10px 0 10px 10px;
