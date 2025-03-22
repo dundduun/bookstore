@@ -4,9 +4,9 @@
             <NuxtLink class="site-title" to="/">masters bookstore</NuxtLink>
             <nav class="nav">
                 <NuxtLink class="nuxt-link" to="/books">книги</NuxtLink>
-                <NuxtLink class="nuxt-link">искусство</NuxtLink>
-                <NuxtLink class="nuxt-link">аксессуары</NuxtLink>
-                <NuxtLink class="nuxt-link">контакты</NuxtLink>
+                <NuxtLink class="nuxt-link" to="/registration">регистрация</NuxtLink>
+                <NuxtLink class="nuxt-link" to="auth" >авторизация</NuxtLink>
+                <NuxtLink class="nuxt-link">корзина</NuxtLink>
             </nav>
         </div>
     </header>

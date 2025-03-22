@@ -22,12 +22,12 @@ export default defineEventHandler(async (event) => {
 
     if (!preciseSearch) return;
 
-    const userIp = event.node.req.headers['x-forwarded-for'];
+    const userIp: string = event.node.req.headers['x-forwarded-for'];
 
     const { data: user } = await client
         .from('ip_limitations')
         .select()
-        .eq('ip', userIp!)
+        .eq('ip', userIp)
         .single();
 
     if (user) {
