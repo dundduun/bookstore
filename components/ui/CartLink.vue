@@ -17,8 +17,6 @@ watch(
         });
     },
 );
-
-cartStore.clearCart();
 </script>
 
 <template>

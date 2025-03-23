@@ -62,24 +62,26 @@ async function register() {
 
 <template>
     <div class="page-template">
-        <h2>регистрация</h2>
+        <div class="page-container">
+            <h2>регистрация</h2>
 
-        <form class="basic-form" @submit.prevent="register">
-            <input v-model="email" class="basic-input" placeholder="email" type="email" />
-            <div v-if="errors.email.length > 0">
-                <div v-for="error in errors.email">
-                    <FieldError :message="error" />
+            <form class="basic-form" @submit.prevent="register">
+                <input v-model="email" class="basic-input" placeholder="email" type="email" />
+                <div v-if="errors.email.length > 0">
+                    <div v-for="error in errors.email">
+                        <FieldError :message="error" />
+                    </div>
                 </div>
-            </div>
 
-            <input v-model="password" class="basic-input" placeholder="пароль" type="password" />
-            <div v-if="errors.password.length > 0">
-                <div v-for="error in errors.password">
-                    <FieldError :message="error" />
+                <input v-model="password" class="basic-input" placeholder="пароль" type="password" />
+                <div v-if="errors.password.length > 0">
+                    <div v-for="error in errors.password">
+                        <FieldError :message="error" />
+                    </div>
                 </div>
-            </div>
 
-            <button class="basic-button">зарегистрироваться</button>
-        </form>
+                <button class="basic-button">зарегистрироваться</button>
+            </form>
+        </div>
     </div>
 </template>

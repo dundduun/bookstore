@@ -1,8 +1,10 @@
 import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
 
-export const useCartStore = defineStore('cart', () => {
-        const cart = ref<{ id: string, amount: number }[]>([]);
+export const useCartStore = defineStore(
+    'cart',
+    () => {
+        const cart = ref<{ id: string; amount: number }[]>([]);
 
         function addToCart(id: string) {
             for (const product of cart.value) {
@@ -12,12 +14,15 @@ export const useCartStore = defineStore('cart', () => {
                 }
             }
 
-            cart.value.push({ id: id, amount: 1});
+            cart.value.push({ id: id, amount: 1 });
             return;
         }
 
-        function clearCart() {
-            cart.value = [];
+        function removeFromCart(id: string) {
+            const index = cart.value.findIndex(product => product.id === id);
+            if (index !== -1) {
+                cart.value.splice(index, 1);
+            }
         }
 
         const goodsAmount = computed(() => {
@@ -29,7 +34,11 @@ export const useCartStore = defineStore('cart', () => {
             return goodsAmount.value;
         });
 
-        return { cart, addToCart, clearCart, goodsAmount };
+        function clearCart() {
+            cart.value = [];
+        }
+
+        return { cart, addToCart, removeFromCart, clearCart, goodsAmount };
     },
     {
         persist: true,
