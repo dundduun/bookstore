@@ -1,10 +1,8 @@
-import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { defineStore } from 'pinia';
+import { ref, computed } from 'vue';
 
 export const useCartStore = defineStore('cart', () => {
         const cart = ref<{ id: string, amount: number }[]>([]);
-
-        // Add computed cart item's amount...
 
         function addToCart(id: string) {
             for (const product of cart.value) {
@@ -22,11 +20,16 @@ export const useCartStore = defineStore('cart', () => {
             cart.value = [];
         }
 
-        function howMuchInCart() {
-            return cart.value.length;
-        }
+        const goodsAmount = computed(() => {
+            const goodsAmount = ref(0);
+            for (const product of cart.value) {
+                goodsAmount.value += product.amount;
+            }
 
-        return { cart, addToCart, clearCart, howMuchInCart };
+            return goodsAmount.value;
+        });
+
+        return { cart, addToCart, clearCart, goodsAmount };
     },
     {
         persist: true,

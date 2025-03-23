@@ -21,7 +21,6 @@ function addToCart() {
     cartStore.addToCart(props.product.id);
     console.log(cartStore.cart);
 }
-
 </script>
 
 <template>

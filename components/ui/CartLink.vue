@@ -1,10 +1,48 @@
+<script setup lang="ts">
+import { watch, nextTick } from 'vue';
+import { useCartStore } from '@/stores/cart';
+
+const cartStore = useCartStore();
+
+const showAnimation = ref(false);
+
+watch(
+    () => cartStore.goodsAmount,
+    async () => {
+        showAnimation.value = true;
+        await nextTick().then(() => {
+            return new Promise((resolve) => setTimeout(resolve, 300));
+        }).then(() => {
+            showAnimation.value = false;
+        });
+    },
+);
+
+cartStore.clearCart();
+</script>
+
 <template>
     <div class="cart-link">
-<!--        <NuxtLink to="/cart">-->
-            <div class="icon-container">
-                <img src="@/public/cart-icon.svg" class="cart-icon" alt="К корзине">
+        <Transition name="fade">
+            <div
+                class="cart-link-container"
+                :class="{ scaleUp: showAnimation }"
+                v-if="cartStore.goodsAmount > 0"
+            >
+                <NuxtLink to="/cart">
+                    <div class="icon-container">
+                        <img
+                            src="@/public/cart-icon.svg"
+                            class="cart-icon"
+                            alt="К корзине"
+                        />
+                    </div>
+                    <div class="goods-amount">
+                        <span>{{ cartStore.goodsAmount }}</span>
+                    </div>
+                </NuxtLink>
             </div>
-<!--        </NuxtLink>-->
+        </Transition>
     </div>
 </template>
 
@@ -17,23 +55,48 @@
     display: block;
     cursor: pointer;
 
-    @media (max-width: 980px) {
-        top: unset;
-        bottom: 10vh;
-    }
+    .cart-link-container {
+        transition: 0.25s;
 
-    .icon-container {
-        background-color: #292929;
-        padding: 20px;
-        border-radius: 100%;
+        &.scaleUp {
+            transform: scale(1.1);
+        }
 
-        .cart-icon {
-            display: block;
-            width: 40px;
-            height: 40px;
+        &:hover {
+            transform: scale(1.03);
+        }
+
+        @media (max-width: 980px) {
+            top: unset;
+            bottom: 10vh;
+        }
+
+        .icon-container {
+            background-color: #292929;
+            padding: 20px;
+            border-radius: 100%;
+
+            .cart-icon {
+                display: block;
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        .goods-amount {
+            position: fixed;
+            margin-top: -25px;
+            margin-left: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: fit-content;
+            min-height: 33px;
+            min-width: 33px;
+            padding: 7px;
+            border-radius: 10px;
+            background-color: $primary;
         }
     }
 }
 </style>
-<script setup lang="ts">
-</script>
