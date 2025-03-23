@@ -1,7 +1,9 @@
 @use '@/assets/styles/gilroy-font.scss';
+@import '@/assets/styles/mixins.scss';
 
 * {
     box-sizing: border-box;
+    line-height: normal;
 }
 
 body {
@@ -11,6 +13,60 @@ body {
     font-weight: normal;
 }
 
+.page-template {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: calc(100vh - 275px);
+
+    h2 {
+        font-size: 40px;
+        margin-top: 20px;
+    }
+}
+
 .leaflet-control-attribution {
     display: none;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
+
+.basic-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    gap: 30px;
+
+    .basic-input {
+        height: 50px;
+        width: 970px;
+        flex: 0 1 auto;
+        padding: 0 25px;
+        border: 2px $background solid;
+        font-size: 16px;
+        font-family: $font-family;
+        color: black;
+        background-color: inherit;
+    }
+
+    .basic-button {
+        height: 60px;
+        min-width: 170px;
+        padding: 0 10px;
+        flex: 0 0 auto;
+        font-size: 20px;
+        font-weight: 500;
+        @include hover-button($background, white, $primary);
+    }
 }

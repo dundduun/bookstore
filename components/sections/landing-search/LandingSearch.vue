@@ -82,13 +82,18 @@ function clickCrossIcon() {
                 placeholder="название / описание книги"
             />
 
-            <img class="loupe-icon" src="@/assets/images/loupe.svg" />
+            <img
+                class="loupe-icon"
+                src="@/assets/images/loupe.svg"
+                alt="Поиск"
+            />
 
-            <Transition class="icon-transition" name="search-icons">
+            <Transition class="icon-transition" name="fade">
                 <img
                     v-if="isSearchLoading"
                     class="loading-icon"
                     src="@/assets/images/search-loading.svg"
+                    alt="Загрузка..."
                 />
 
                 <img
@@ -96,13 +101,14 @@ function clickCrossIcon() {
                     @click="clickCrossIcon"
                     class="cross-icon"
                     src="@/assets/images/cross-icon.svg"
+                    alt="Стереть"
                 />
             </Transition>
 
             <button class="search-button">искать</button>
         </form>
 
-        <Transition name="hints" appear>
+        <Transition name="fade" appear>
             <QueryPopupHints
                 v-if="previousQuery && !isSearchLoading"
                 v-show="isHintsVisible && searchQuery"
@@ -233,20 +239,6 @@ function clickCrossIcon() {
                 width: 100%;
             }
         }
-    }
-
-    .search-icons-enter-active,
-    .search-icons-leave-active,
-    .hints-enter-active,
-    .hints-leave-active {
-        transition: opacity 0.3s ease;
-    }
-
-    .search-icons-enter-from,
-    .search-icons-leave-to,
-    .hints-enter-from,
-    .hints-leave-to {
-        opacity: 0;
     }
 }
 </style>

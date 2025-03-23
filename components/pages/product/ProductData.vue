@@ -58,16 +58,18 @@ onBeforeRouteLeave(() => {
         <div class="text">
             <div class="main-information">
                 <span class="title">
-                    {{ productInstance.title }}
+                    {{ productInstance!.title }}
                 </span>
 
-                <span class="price"> {{ productInstance.price }} р. </span>
+                <span class="price">
+                    {{ productInstance!.price.toLocaleString() }} р.
+                </span>
             </div>
 
             <button class="buy-button" ref="button">купить</button>
 
             <VueMarkdown
-                :source="productInstance.description"
+                :source="productInstance!.description"
                 class="description"
             />
         </div>
@@ -172,7 +174,7 @@ onBeforeRouteLeave(() => {
         }
 
         .buy-button {
-            @include hover-button($background, white);
+            @include hover-button($background, $product-page-background);
             margin-top: 25px;
             padding: 12px 30px;
             font-size: 16px;

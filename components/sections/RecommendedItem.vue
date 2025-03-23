@@ -37,7 +37,9 @@ const { data: giftTokenImage } = client.storage
                     {{ giftToken!.title }}
                 </span>
 
-                <span class="price"> от {{ giftToken!.price }} р. </span>
+                <span class="price">
+                    от {{ giftToken!.price.toLocaleString() }} р.
+                </span>
 
                 <div class="buttons">
                     <button class="buy-button">купить</button>
@@ -65,6 +67,7 @@ const { data: giftTokenImage } = client.storage
     .container {
         display: flex;
         justify-content: center;
+        width: fit-content;
 
         @media (max-width: 1000px) {
             flex-direction: column;

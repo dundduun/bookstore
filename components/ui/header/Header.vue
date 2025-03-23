@@ -1,12 +1,13 @@
 <template>
-    <header>
+    <header class="header">
         <div class="container">
             <NuxtLink class="site-title" to="/">masters bookstore</NuxtLink>
             <nav class="nav">
-                <NuxtLink class="nuxt-link">книги</NuxtLink>
-                <NuxtLink class="nuxt-link">искусство</NuxtLink>
-                <NuxtLink class="nuxt-link">аксессуары</NuxtLink>
-                <NuxtLink class="nuxt-link">контакты</NuxtLink>
+                <NuxtLink class="nuxt-link" to="/books">книги</NuxtLink>
+                <NuxtLink class="nuxt-link" to="/registration">регистрация</NuxtLink>
+                <NuxtLink class="nuxt-link" to="/auth" >авторизация</NuxtLink>
+                <NuxtLink class="nuxt-link">корзина</NuxtLink>
+                <NuxtLink class="nuxt-link">выход</NuxtLink>
             </nav>
         </div>
     </header>
@@ -15,7 +16,7 @@
 <style scoped lang="scss">
 @import '@/assets/styles/mixins.scss';
 
-header {
+.header {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -67,9 +68,13 @@ header {
             }
 
             .nuxt-link {
+                @include kill-link-decoration;
                 color: $font-color;
+                cursor: pointer;
             }
         }
     }
 }
 </style>
+<script setup lang="ts">
+</script>

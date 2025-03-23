@@ -35,6 +35,7 @@ const formalizedDescription = props.searchedInstance.description.replaceAll(
 const searchQuery = inject('searchQuery') as Ref<string>;
 const searchRegexp = new RegExp(searchQuery.value, 'i');
 const titleSqMatchNumber = props.searchedInstance.title.search(searchRegexp);
+// sq stands for 'search query'!
 
 const startOfHint = ref('');
 const sqAtHint = ref('');

@@ -9,7 +9,7 @@ definePageMeta({
 const router = useRouter();
 const { escape } = useMagicKeys();
 watch(escape, (v) => {
-    if (v) router.push('/');
+    if (v) router.back();
 });
 
 const { $gsap } = useNuxtApp();
@@ -38,6 +38,8 @@ onBeforeRouteLeave(() => {
 <style scoped lang="scss">
 .product-page {
     width: 100%;
+    display: flex;
+    justify-content: center;
     background-color: white;
 
     .container {

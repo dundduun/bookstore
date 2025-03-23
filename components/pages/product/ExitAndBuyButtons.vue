@@ -1,19 +1,17 @@
+<script setup lang="ts">
+const router = useRouter();
+function goBack() {
+    router.back();
+}
+</script>
+
 <template>
     <div class="exit-buttons">
-        <NuxtLink to="/" class="text-home-link">← На главную</NuxtLink>
+        <button @click="goBack" class="text-home-link">← Назад</button>
 
-        <NuxtLink to="/" class="mobile-home-link">
-            <img src="@/assets/images/left-arrow.svg" alt="На главную" />
-        </NuxtLink>
-
-        <!-- set cross icon to catalogue when it's done (or to previous page) -->
-        <NuxtLink to="/" class="catalogue-link">
-            <img
-                src="@/assets/images/cross-icon.svg"
-                class="cross-icon"
-                alt="На главную"
-            />
-        </NuxtLink>
+        <button @click="goBack" class="mobile-home-link">
+            <img src="@/assets/images/left-arrow.svg" alt="Назад" />
+        </button>
     </div>
 
     <div class="mobile-buy-button-container">
@@ -25,13 +23,13 @@
 @import '@/assets/styles/mixins.scss';
 
 .exit-buttons {
-    position: fixed;
-    width: 100%;
-    max-width: 2000px;
+    position: absolute;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 2% 0;
+    width: 100%;
+    max-width: 2000px;
+    padding: 15px 2% 0;
 
     @media (max-width: 1100px) {
         background-color: $product-page-background;
@@ -47,6 +45,7 @@
     }
 
     .text-home-link {
+        height: 50px;
         padding: 10px;
         text-decoration: none;
         color: $font-color;
@@ -66,16 +65,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-        }
-    }
-
-    .cross-icon {
-        height: 50px;
-        width: auto;
-        padding: 10px;
-
-        @media (max-width: 560px) {
-            display: none;
         }
     }
 }

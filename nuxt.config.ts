@@ -7,7 +7,17 @@ export default defineNuxtConfig({
 
     devtools: { enabled: true },
     typescript: { strict: true },
-    modules: ['@pinia/nuxt', '@nuxtjs/supabase', '@vueuse/nuxt', 'nuxt-swiper'],
+
+    modules: [
+        '@pinia/nuxt',
+        '@pinia-plugin-persistedstate/nuxt',
+        '@nuxtjs/supabase',
+        '@vueuse/nuxt',
+        'nuxt-swiper',
+        '@nuxtjs/tailwindcss',
+        'shadcn-nuxt',
+        '@element-plus/nuxt',
+    ],
 
     app: {
         head: {
@@ -35,5 +45,5 @@ export default defineNuxtConfig({
         redirect: false,
     },
 
-    compatibilityDate: '2025-01-16',
+    compatibilityDate: '2024-08-11',
 });
