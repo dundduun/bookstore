@@ -6,7 +6,7 @@
                 <NuxtLink class="nuxt-link" to="/books">книги</NuxtLink>
                 <NuxtLink class="nuxt-link" to="/registration">регистрация</NuxtLink>
                 <NuxtLink class="nuxt-link" to="/auth" >авторизация</NuxtLink>
-                <NuxtLink class="nuxt-link">корзина</NuxtLink>
+<!--                <NuxtLink class="nuxt-link">корзина</NuxtLink>-->
                 <NuxtLink class="nuxt-link">выход</NuxtLink>
             </nav>
         </div>
@@ -60,6 +60,7 @@
             justify-content: space-between;
             gap: 20px;
             font-size: 18px;
+            padding-right: 5px;
             text-align: center;
 
             @media (max-width: 980px) {

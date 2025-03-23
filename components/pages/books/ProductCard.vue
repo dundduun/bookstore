@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { selectedProduct } from '@/types';
 import type { Database } from '@/database.types';
+import { useCartStore } from '@/stores/cart';
 
 const client = useSupabaseClient<Database>();
-
 const props = defineProps<{
     product: selectedProduct;
 }>();
@@ -15,6 +15,13 @@ if (props.product.pictures[0]) {
         .getPublicUrl(props.product.pictures[0]);
     picture.value = data;
 }
+
+const cartStore = useCartStore();
+function addToCart() {
+    cartStore.addToCart(props.product.id);
+    console.log(cartStore.cart);
+}
+
 </script>
 
 <template>
@@ -25,6 +32,7 @@ if (props.product.pictures[0]) {
                     v-if="picture.publicUrl"
                     class="picture picture-container-child"
                     :src="picture.publicUrl"
+                    alt="Изображение"
                 />
 
                 <div v-else class="without-picture picture-container-child">
@@ -51,7 +59,7 @@ if (props.product.pictures[0]) {
                 >
                     подробнее
                 </NuxtLink>
-                <button class="buy-button button">купить</button>
+                <button class="buy-button button" @click="addToCart">купить</button>
             </div>
         </div>
     </div>
