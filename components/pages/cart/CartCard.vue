@@ -97,22 +97,25 @@ function removeFromCart() {
 .card {
     .content {
         display: grid;
-        grid-template-columns: 2fr 2fr 1fr 1fr 1fr;
+        grid-template-columns: 2fr 3fr 2fr 1fr 1fr;
         grid-template-rows: 1fr;
         column-gap: 20px;
         justify-items: center;
         align-items: center;
+        width: 1200px;
+        height: 200px;
+
+        max-width: 90vw;
         text-align: center;
 
         .picture-container {
             .picture-container-child {
                 width: 100%;
+                height: 200px;
                 aspect-ratio: 1 / 1;
             }
 
             .picture {
-                width: 200px;
-                height: 200px;
                 object-fit: cover;
             }
 
