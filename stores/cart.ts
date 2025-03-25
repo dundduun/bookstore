@@ -4,11 +4,7 @@ import { ref, computed } from 'vue';
 export const useCartStore = defineStore(
     'cart',
     () => {
-        const cart = ref<{ id: string; amount: number }[]>([
-            { id: '9c356792-ef0b-4cd8-96cc-98a76b1a5cfc', amount: 1 },
-            { id: '44e577c1-8221-4e0c-aafe-1c2a3cbe5c35', amount: 1 },
-            { id: 'be2f4adf-3400-43d6-83c6-cea12e90ba59', amount: 1 },
-        ]);
+        const cart = ref<{ id: string; amount: number }[]>([    ]);
 
         function addToCart(id: string) {
             for (const product of cart.value) {
@@ -23,7 +19,7 @@ export const useCartStore = defineStore(
         }
 
         function removeFromCart(id: string) {
-            const index = cart.value.findIndex((product) => product.id === id);
+            const index = cart.value.findIndex(product => product.id === id);
             if (index !== -1) {
                 cart.value.splice(index, 1);
             }
