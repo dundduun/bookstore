@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Database } from '@@/database.types';
+import { useCartStore } from '@/stores/cart';
 
 const client = useSupabaseClient<Database>();
 
@@ -25,6 +26,13 @@ const { data: giftToken } = await useAsyncData(async () => {
 const { data: giftTokenImage } = client.storage
     .from('product_images')
     .getPublicUrl(giftToken.value!.pictures[0]);
+
+
+const cartStore = useCartStore();
+const giftId = 'c4ca4238-a0b9-2382-0dcc-509a6f75849b';
+function addToCart(): void {
+    cartStore.addToCart(giftId);
+}
 </script>
 
 <template>
@@ -42,10 +50,10 @@ const { data: giftTokenImage } = client.storage
                 </span>
 
                 <div class="buttons">
-                    <button class="buy-button">купить</button>
-                    <button class="like-button">
-                        <img class="like-img" src="@/assets/images/like.svg" />
-                    </button>
+                    <button @click="addToCart" class="buy-button">купить</button>
+<!--                    <button class="like-button">-->
+<!--                        <img class="like-img" src="@/assets/images/like.svg" />-->
+<!--                    </button>-->
                 </div>
 
                 <span class="description">

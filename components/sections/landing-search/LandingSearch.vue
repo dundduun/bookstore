@@ -105,7 +105,7 @@ function clickCrossIcon() {
                 />
             </Transition>
 
-            <button class="search-button">искать</button>
+<!--            <button class="search-button">искать</button>-->
         </form>
 
         <Transition name="fade" appear>

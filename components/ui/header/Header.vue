@@ -1,13 +1,13 @@
 <template>
     <header class="header">
         <div class="container">
-            <NuxtLink class="site-title" to="/">masters bookstore</NuxtLink>
+            <NuxtLink class="site-title" to="/">полка</NuxtLink>
             <nav class="nav">
                 <NuxtLink class="nuxt-link" to="/books">книги</NuxtLink>
                 <NuxtLink class="nuxt-link" to="/registration">регистрация</NuxtLink>
                 <NuxtLink class="nuxt-link" to="/auth" >авторизация</NuxtLink>
 <!--                <NuxtLink class="nuxt-link">корзина</NuxtLink>-->
-                <NuxtLink class="nuxt-link">выход</NuxtLink>
+                <NuxtLink class="nuxt-link" to="/logout">выход</NuxtLink>
             </nav>
         </div>
     </header>

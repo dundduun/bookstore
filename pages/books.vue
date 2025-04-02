@@ -2,7 +2,7 @@
 import CategoriesSidebar from '@/components/pages/books/CategoriesSidebar.vue';
 import CatalogFilter from '@/components/ui/catalog/CatalogFilter.vue';
 import ProductsList from '@/components/pages/books/ProductsList.vue';
-import CartLink from '@/components/ui/CartLink.vue';
+// import CartLink from '@/components/ui/CartLink.vue';
 
 import type { Database } from '@/database.types';
 
@@ -35,12 +35,12 @@ filtersData.maxPrice = mostExpensiveProduct!.price;
 <template>
     <div class="books-page">
         <div class="books-page-container">
-            <CartLink />
+<!--            <CartLink />-->
 
-            <CategoriesSidebar />
+<!--            <CategoriesSidebar />-->
 
             <div class="filter-and-products-list">
-                <CatalogFilter />
+<!--                <CatalogFilter />-->
                 <ProductsList class="products-list" :products />
             </div>
         </div>

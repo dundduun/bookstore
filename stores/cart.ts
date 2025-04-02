@@ -7,15 +7,19 @@ export const useCartStore = defineStore(
         const cart = ref<{ id: string; amount: number }[]>([    ]);
 
         function addToCart(id: string) {
-            for (const product of cart.value) {
-                if (product.id === id) {
-                    product.amount += 1;
-                    return;
+            if (localStorage.getItem('bookshelf-token')) {
+                for (const product of cart.value) {
+                    if (product.id === id) {
+                        product.amount += 1;
+                        return;
+                    }
                 }
-            }
 
-            cart.value.push({ id: id, amount: 1 });
-            return;
+                cart.value.push({ id: id, amount: 1 });
+                return;
+            } else {
+                alert('Вы не зарегистрированы!');
+            }
         }
 
         function removeFromCart(id: string) {
