@@ -68,6 +68,10 @@ function clickCrossIcon() {
     searchedData.value = [];
     inputElement.value.focus();
 }
+
+function clickSearchButton() {
+    inputElement.value.focus();
+}
 </script>
 
 <template>
@@ -105,7 +109,7 @@ function clickCrossIcon() {
                 />
             </Transition>
 
-            <button class="search-button">искать</button>
+            <button @click="clickSearchButton" class="search-button">искать</button>
         </form>
 
         <Transition name="fade" appear>
