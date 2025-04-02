@@ -5,9 +5,12 @@ import RecommendedItem from '@/components/sections/RecommendedItem.vue';
 import MapPreview from '@/components/ui/footer/MapPreview.vue';
 import Contacts from '@/components/ui/footer/contacts/Contacts.vue';
 import SocialMedia from '@/components/ui/footer/SocialMedia.vue';
+import CartLink from '@/components/ui/CartLink.vue';
 </script>
 
 <template>
+    <CartLink />
+
     <Carousel />
 
     <LandingSearch />

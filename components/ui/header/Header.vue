@@ -1,14 +1,27 @@
+<script setup lang="ts">
+const isAuthorized = ref(false);
+
+onMounted(() => {
+    if (localStorage.getItem('bookshelf-token')) {
+        isAuthorized.value = true;
+    }
+});
+</script>
+
 <template>
     <header class="header">
         <div class="container">
             <NuxtLink class="site-title" to="/">полка</NuxtLink>
-            <nav class="nav">
+            <nav v-if="!isAuthorized" class="nav">
                 <NuxtLink class="nuxt-link" to="/books">книги</NuxtLink>
                 <NuxtLink class="nuxt-link" to="/registration">регистрация</NuxtLink>
                 <NuxtLink class="nuxt-link" to="/auth" >авторизация</NuxtLink>
-<!--                <NuxtLink class="nuxt-link">корзина</NuxtLink>-->
-                <NuxtLink class="nuxt-link" to="/logout">выход</NuxtLink>
             </nav>
+
+            <div class="nav authorized" v-if="isAuthorized">
+                <NuxtLink class="nuxt-link" to="/books">книги</NuxtLink>
+                <NuxtLink class="nuxt-link" to="/logout">выход</NuxtLink>
+            </div>
         </div>
     </header>
 </template>
@@ -74,8 +87,10 @@
                 cursor: pointer;
             }
         }
+
+        .authorized {
+            max-width: 200px;
+        }
     }
 }
 </style>
-<script setup lang="ts">
-</script>

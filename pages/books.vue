@@ -5,6 +5,7 @@ import ProductsList from '@/components/pages/books/ProductsList.vue';
 // import CartLink from '@/components/ui/CartLink.vue';
 
 import type { Database } from '@/database.types';
+import CartLink from '@/components/ui/CartLink.vue';
 
 const client = useSupabaseClient<Database>();
 
@@ -35,7 +36,7 @@ filtersData.maxPrice = mostExpensiveProduct!.price;
 <template>
     <div class="books-page">
         <div class="books-page-container">
-<!--            <CartLink />-->
+            <CartLink />
 
 <!--            <CategoriesSidebar />-->
 

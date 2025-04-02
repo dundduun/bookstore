@@ -25,7 +25,7 @@ function addToCart() {
 
 <template>
     <div class="product-card">
-        <NuxtLink class="picture-title-link" :to="`/product/${product.id}`">
+        <NuxtLink class="picture-title-link" :jto="`/product/${product.id}`">
             <div class="picture-container">
                 <img
                     v-if="picture.publicUrl"

@@ -2,6 +2,7 @@
 import ProductData from '@/components/pages/product/ProductData.vue';
 import ExitAndBuyButtons from '@/components/pages/product/ExitAndBuyButtons.vue';
 import SCSSVariables from 'assets/styles/variables.module.scss';
+import CartLink from '@/components/ui/CartLink.vue';
 definePageMeta({
     layout: false,
 });
@@ -28,6 +29,8 @@ onBeforeRouteLeave(() => {
 <template>
     <div class="product-page">
         <div class="container">
+            <CartLink />
+
             <ProductData />
 
             <ExitAndBuyButtons />

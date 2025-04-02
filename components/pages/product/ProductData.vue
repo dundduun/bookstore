@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import VueMarkdown from 'vue-markdown-render';
+import { useCartStore } from '@/stores/cart';
 import type { Database } from '@/database.types';
 
 const client = useSupabaseClient<Database>();
@@ -30,14 +31,23 @@ if (productInstance.pictures[0]) {
 }
 
 const { $gsap } = useNuxtApp();
-const tl = $gsap.timeline({});
 onMounted(() => {
+    const tl = $gsap.timeline({});
     tl.to('.product-data', { y: 0, opacity: 1, duration: 0.3 });
 });
+
 onBeforeRouteLeave(() => {
+    const tl = $gsap.timeline({});
     tl.to('.product-data', { y: 50, opacity: 0.1, duration: 0.3 });
     tl.to('.product-data', { y: 1000, opacity: 0, duration: 30 });
 });
+
+const cartStore = useCartStore();
+
+
+function addToCart(): void {
+    cartStore.addToCart(route.params.id);
+}
 </script>
 
 <template>
@@ -66,7 +76,7 @@ onBeforeRouteLeave(() => {
                 </span>
             </div>
 
-            <button class="buy-button" ref="button">купить</button>
+            <button @click="addToCart" class="buy-button" ref="button">купить</button>
 
             <VueMarkdown
                 :source="productInstance!.description"

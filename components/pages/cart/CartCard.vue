@@ -47,6 +47,10 @@ function decreaseAmount() {
     for (const item of cartStore.cart) {
         if (item.id === props.product.id) {
             item.amount -= 1;
+
+            if (item.amount <= 0) {
+                cartStore.removeFromCart(item.id);
+            }
             return;
         }
     }

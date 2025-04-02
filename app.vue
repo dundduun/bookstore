@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import '@/assets/styles/global.scss';
 import SCSSVariables from 'assets/styles/variables.module.scss';
-import CartLink from '@/components/ui/CartLink.vue';
 
 useHead({
     titleTemplate: (titleChunk) => {
@@ -22,8 +21,6 @@ const { primary } = SCSSVariables;
 
 <template>
     <NuxtLoadingIndicator :color="primary" />
-
-    <CartLink />
 
     <NuxtLayout>
         <NuxtPage />
