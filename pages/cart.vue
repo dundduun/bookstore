@@ -13,6 +13,8 @@ const cartStore = useCartStore();
                 <h2>корзина</h2>
                 <div class="cart-cards">
                     <CartCard v-for="item in cartStore.cart" :key="item.id" :product="item" />
+
+                    <button class="basic-button">купить</button>
                 </div>
             </div>
             <div v-else class="cart-is-empty">
@@ -36,6 +38,9 @@ const cartStore = useCartStore();
 
             .cart-cards {
                 margin-top: 50px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
             }
         }
 
