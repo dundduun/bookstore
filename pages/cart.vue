@@ -4,6 +4,10 @@ import { useCartStore } from '@/stores/cart';
 import CartCard from '@/components/pages/cart/CartCard.vue';
 
 const cartStore = useCartStore();
+
+function buyAll() {
+    cartStore.clearCart();
+}
 </script>
 
 <template>
@@ -14,7 +18,7 @@ const cartStore = useCartStore();
                 <div class="cart-cards">
                     <CartCard v-for="item in cartStore.cart" :key="item.id" :product="item" />
 
-                    <button class="basic-button">купить</button>
+                    <button @click="buyAll" class="basic-button">купить</button>
                 </div>
             </div>
             <div v-else class="cart-is-empty">
