@@ -11,8 +11,8 @@ const email = ref('');
 const password = ref(null);
 
 const errors = ref({
-    email: [],
-    password: [],
+    email: [''],
+    password: [''],
 });
 
 function generateBearerToken() {
@@ -50,7 +50,7 @@ async function authorize() {
         return;
     }
 
-    if (password.value !== users[0].password) {
+    if (password.value !== users![0].password) {
         errors.value.password.push('Неверный пароль')
         return;
     }
@@ -60,7 +60,7 @@ async function authorize() {
     const { error } = await client
         .from('user')
         .update({ token: bearerToken })
-        .eq('id', users[0].id);
+        .eq('id', users![0].id);
 
     if (error) {
         errors.value.email.push('Произошла непредвиденная ошибка, попробуйте позже');

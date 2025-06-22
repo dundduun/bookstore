@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { useCartStore } from '@/stores/cart';
-
 import CartCard from '@/components/pages/cart/CartCard.vue';
 
 const cartStore = useCartStore();
-
 function buyAll() {
     cartStore.clearCart();
 }

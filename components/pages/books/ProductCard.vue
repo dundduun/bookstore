@@ -19,7 +19,6 @@ if (props.product.pictures[0]) {
 const cartStore = useCartStore();
 function addToCart() {
     cartStore.addToCart(props.product.id);
-    console.log(cartStore.cart);
 }
 </script>
 

@@ -58,7 +58,7 @@ function decreaseAmount() {
 
 function removeFromCart() {
     cartStore.removeFromCart(props.product.id);
-}fullProduct
+}
 </script>
 
 <template>

@@ -41,6 +41,7 @@
         "happy-dom": "^17.4.4",
         "jsdom": "^26.0.0",
         "leaflet": "^1.9.4",
+        "msw": "^2.7.3",
         "nuxt": "^3.16.1",
         "playwright-core": "^1.51.1",
         "prettier": "3.2.5",

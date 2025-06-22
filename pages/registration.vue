@@ -36,12 +36,10 @@ async function register() {
         .from('user')
         .select('*')
         .eq('email', email.value);
-    if (users.length !== 0) {
+    if (users!.length !== 0) {
         errors.value.email.push('Email уже занят');
         return;
     }
-
-    // Захэшировать пароль
 
     const { error } = await client
         .from('user')
@@ -53,8 +51,6 @@ async function register() {
         errors.value.email.push('Произошла непредвиденная ошибка');
         return;
     }
-
-    // alert('Регистрация успешна!');
 
     await router.push('/auth');
 }
